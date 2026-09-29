@@ -1,0 +1,6 @@
+{
+  "name": "Mi Merienda — Panadería & Pastelería",
+  "description": "Landing y catálogo digital para Panadería Mi Merienda. Pedidos del día y tortas artesanales por encargo directo a WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
