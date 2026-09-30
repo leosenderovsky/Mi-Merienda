@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { CartProvider, useCart } from './context/CartContext';
 import { products, ProductCategory } from './products';
 import { Header } from './components/Header';
+// DEMO ONLY — borrar este import y esta línea, más PrototypeBanner.tsx
+// y demoBanner.config.ts, para pasar este proyecto a un cliente real
+import { PrototypeBanner } from './components/PrototypeBanner';
 import { Hero } from './components/Hero';
 import { CategoryFilters } from './components/CategoryFilters';
 import { ProductCard } from './components/ProductCard';
@@ -35,13 +38,14 @@ function MainShop() {
 
   return (
     <div className="min-h-screen bg-[#fdf9f3] text-[#1c1c18] flex flex-col font-sans selection:bg-[#ffdead] selection:text-[#422316]">
+      <PrototypeBanner />
       {/* Fixed Sticky Header */}
       <Header
         onNavigateTortas={handleNavigateTortas}
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full pt-32 sm:pt-36 pb-20">
+      <main className="flex-1 w-full pt-32 pb-20 sm:pt-36">
         
         {/* Hero Banner */}
         <Hero />

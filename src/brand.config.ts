@@ -187,6 +187,7 @@ export const brandConfig: BrandConfig = {
     demoBadge: "Marca, productos y precios de ejemplo — prototipo de demostración de sender.ia",
     footerNote: "Hecho con masa madre, harina orgánica y dedicación artesanal.",
   },
+
 };
 
 /**
