@@ -42,15 +42,12 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateTortas }) => {
             <img
               src={brandConfig.brand.logoUrl}
               alt={brandConfig.brand.name}
-              className="h-14 sm:h-16 w-auto object-contain drop-shadow-sm"
+              className="h-20 sm:h-[5.5rem] w-auto max-w-[calc(50vw_-_3rem)] sm:max-w-[min(60vw,24rem)] object-contain drop-shadow-sm"
               onError={(e) => {
                 // Fallback elegante en caso de fallo de red
                 (e.target as HTMLElement).style.display = 'none';
               }}
             />
-            <span className="font-serif text-lg sm:text-xl font-bold text-[#422316] tracking-tight -mt-1">
-              {brandConfig.brand.name}
-            </span>
           </a>
         </div>
 
