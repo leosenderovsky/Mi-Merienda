@@ -86,7 +86,7 @@ export const brandConfig: BrandConfig = {
     name: "Mi Merienda",
     tagline: "Horneando momentos felices desde 2009",
     subtagline: "Panadería & Pastelería Artesanal de Barrio",
-    logoUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBfYzaFUMuW-dc3e3y0YMjkLNgxSPOGbHCa__YQaPZBSV8IqgbLw18iHTUXrJrv29uFX1yJyMVH_ZH8T6gz95D4Cjw8ZbVRGbOyerPKbdFFPNF_qJP0BJpyneybc91k7asJYfgWVhagVQVMJo6XDictvqYTGRt8rWoCRSGcUvs2wUpvSbm2Tg0L-QwREag4aXW6b7OV5MwU_-v0j15SR95nRR_vtPUkR1nUL5ZmKivdHLEK-n96RpoGbr5AdhrkH6Ejj24",
+    logoUrl: "/assets/logo/logo.png",
     badgeHeroKicker: "Tradición y cariño de barrio",
   },
 
@@ -158,8 +158,7 @@ export const brandConfig: BrandConfig = {
         style: "tertiary",
       },
     ],
-    heroImage:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBunsESN2VCXsgVI4dJB60sll7MSXytDPTYBb4VfKJTTbiA4nzqfc-Fskxq0VoTQNs6b08VKufDrit-Pz_KDMwRu8he_JeiJrh5-CrEBPCr-w-xOb-96m2-r0ksPj5wWf-z_s0qr8CRRNI9cyqEz1KHiwLNRYhVVuIdlYHSq6W_M29iGFWXk7zHxljrv0TlEyB72CEZF4_tY857XKaMThF2aiWzzMlUmexqyNNTxEL8vZUOtyH7zaDzjQ",
+    heroImage: "/assets/hero/hero-1.jpg",
   },
 
   orderSteps: [
