@@ -1,6 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product, products } from '../products';
+import { Product } from '../products';
 import { brandConfig, formatCurrency } from '../brand.config';
+
+const cartStorageKey = `${brandConfig.brand.name
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '_')
+  .replace(/^_|_$/g, '')}_cart`;
 
 export interface SelectedOptionState {
   tamano?: {
@@ -69,90 +76,20 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// Inicialización de muestra idéntica al prototipo Stitch de ejemplo
-function getInitialCart(): CartItem[] {
-  const medialunas = products.find(p => p.id === 'medialunas-manteca');
-  const panCampo = products.find(p => p.id === 'pan-campo-masa-madre');
-  const rogel = products.find(p => p.id === 'torta-rogel-tradicional');
-
-  const initialItems: CartItem[] = [];
-
-  if (medialunas) {
-    initialItems.push({
-      id: `${medialunas.id}-surtidas`,
-      productId: medialunas.id,
-      product: medialunas,
-      quantity: 1,
-      selectedOptions: {
-        variedad: {
-          id: 'surtidas',
-          name: 'Surtidas (8 dulces con almíbar, 4 saladas)',
-          extraPrice: 0,
-        },
-      },
-      optionSummary: 'Surtidas (8 dulces con almíbar, 4 saladas)',
-      unitPrice: 4800,
-      totalPrice: 4800,
-    });
-  }
-
-  if (panCampo) {
-    initialItems.push({
-      id: `${panCampo.id}-rebanadas-gruesas`,
-      productId: panCampo.id,
-      product: panCampo,
-      quantity: 1,
-      selectedOptions: {
-        corte: {
-          id: 'rebanadas-gruesas',
-          name: 'Cortado en rebanadas gruesas (1 kg)',
-          extraPrice: 0,
-        },
-      },
-      optionSummary: 'Cortado en rebanadas gruesas (1 kg)',
-      unitPrice: 2200,
-      totalPrice: 2200,
-    });
-  }
-
-  if (rogel) {
-    initialItems.push({
-      id: `${rogel.id}-mediano-cumple`,
-      productId: rogel.id,
-      product: rogel,
-      quantity: 1,
-      selectedOptions: {
-        tamano: {
-          id: 'mediano',
-          name: 'Mediano (16-18 porciones)',
-          extraPrice: 5000,
-        },
-        dedicatoria: '¡Feliz Cumple Mamá!',
-      },
-      optionSummary: 'Mediana (16–18 porc.) • "¡Feliz Cumple Mamá!"',
-      unitPrice: 23500, // 18500 base + 5000 tamano mediano
-      totalPrice: 23500,
-    });
-  }
-
-  return initialItems;
-}
-
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>(() => {
-    // Si hay datos en localStorage se pueden cargar, sino usar los iniciales
     if (typeof window !== 'undefined') {
       try {
-        const saved = localStorage.getItem('mi_merienda_cart');
+        const saved = localStorage.getItem(cartStorageKey);
         if (saved) {
           const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          if (Array.isArray(parsed)) return parsed;
         }
       } catch (e) {
         // Fallback silencioso
       }
     }
-    return getInitialCart();
+    return [];
   });
 
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -162,7 +99,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem('mi_merienda_cart', JSON.stringify(items));
+      localStorage.setItem(cartStorageKey, JSON.stringify(items));
     } catch (e) {
       // ignore
     }
@@ -289,7 +226,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const itemsLines = items
       .map(item => {
         const optionPart = item.optionSummary ? ` (${item.optionSummary})` : '';
-        const unitPart = item.product.unidad ? ` • ${item.product.unidad}` : '';
         return `• ${item.quantity}x ${item.product.nombre}${optionPart} (${formatCurrency(item.totalPrice)})`;
       })
       .join('\n');

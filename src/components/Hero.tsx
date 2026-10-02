@@ -1,6 +1,6 @@
 import React from 'react';
 import { brandConfig } from '../brand.config';
-import { Flame, Sparkles, CheckCircle2, ArrowDown, Headphones } from 'lucide-react';
+import { CheckCircle2, ArrowDown, Headphones } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const handleWhatsAppContact = () => {
@@ -32,14 +32,21 @@ export const Hero: React.FC = () => {
 
           {/* Floating Pill Badges */}
           <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex flex-wrap gap-2 z-10">
-            <span className="px-3 py-1 rounded-full bg-[#fdbe50] text-[#714d00] text-xs font-bold flex items-center gap-1.5 shadow-md">
-              <Flame className="w-3.5 h-3.5 fill-[#714d00]" />
-              Hornadas cada 2 hs
-            </span>
-            <span className="px-3 py-1 rounded-full bg-[#2d4637] text-white text-xs font-bold flex items-center gap-1.5 shadow-md">
-              <Sparkles className="w-3.5 h-3.5 text-[#cdead5]" />
-              100% Masa Madre
-            </span>
+            {brandConfig.hero.badges.map(badge => (
+              <span
+                key={badge.text}
+                className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md ${
+                  badge.style === 'secondary'
+                    ? 'bg-[#fdbe50] text-[#714d00]'
+                    : 'bg-[#2d4637] text-white'
+                }`}
+              >
+                <span className="material-symbols-outlined text-[16px] leading-none" aria-hidden="true">
+                  {badge.icon}
+                </span>
+                {badge.text}
+              </span>
+            ))}
           </div>
         </div>
 

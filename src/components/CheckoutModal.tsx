@@ -19,6 +19,35 @@ import {
   AlertCircle
 } from 'lucide-react';
 
+const getAvailableDates = (items: ReturnType<typeof useCart>['items']) => {
+  const leadTimeHours = items.reduce((maxHours, item) => (
+    item.product.requiresLeadTime
+      ? Math.max(maxHours, item.product.leadTimeHours || 0)
+      : maxHours
+  ), 0);
+  const firstDate = new Date();
+  firstDate.setHours(0, 0, 0, 0);
+  firstDate.setDate(firstDate.getDate() + Math.ceil(leadTimeHours / 24));
+
+  return Array.from({ length: 10 }, (_, index) => {
+    const date = new Date(firstDate);
+    date.setDate(firstDate.getDate() + index);
+    return date;
+  })
+    .filter(date => !brandConfig.contact.closedWeekdays.includes(date.getDay()))
+    .map(date => {
+      const weekday = new Intl.DateTimeFormat('es-AR', { weekday: 'short' })
+        .format(date)
+        .replace('.', '');
+      const label = `${weekday.charAt(0).toUpperCase()}${weekday.slice(1)} ${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}`;
+
+      return {
+        value: `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`,
+        label,
+      };
+    });
+};
+
 export const CheckoutModal: React.FC = () => {
   const {
     items,
@@ -33,12 +62,13 @@ export const CheckoutModal: React.FC = () => {
   } = useCart();
 
   // Form State
+  const availableDates = getAvailableDates(items);
   const [nombre, setNombre] = useState('Valeria Gómez');
-  const [telefono, setTelefono] = useState('+54 9 11 4521-8890');
+  const [telefono, setTelefono] = useState('');
   const [metodo, setMetodo] = useState<'pickup' | 'delivery'>('pickup');
   const [direccion, setDireccion] = useState('Thames 1840');
   const [direccionDetalle, setDireccionDetalle] = useState('4to B');
-  const [fecha, setFecha] = useState('Viernes 28/10');
+  const [selectedDate, setSelectedDate] = useState(() => availableDates[0]?.value ?? '');
   const [franjaHoraria, setFranjaHoraria] = useState('Turno Tarde (16:30 a 18:30 hs)');
   const [notas, setNotas] = useState('Por favor avisarme cuando esté lista la torta para pasar a buscarla con tiempo. ¡Gracias!');
 
@@ -49,6 +79,9 @@ export const CheckoutModal: React.FC = () => {
 
   const deliveryCost = metodo === 'delivery' ? brandConfig.delivery.delivery.price : 0;
   const grandTotal = subtotal + deliveryCost;
+  const fecha = availableDates.find(date => date.value === selectedDate)?.label
+    ?? availableDates[0]?.label
+    ?? '';
 
   const currentInfo: DeliveryInfo = {
     nombre,
@@ -73,8 +106,8 @@ export const CheckoutModal: React.FC = () => {
       setErrorNotice('Por favor completá tu nombre y apellido.');
       return;
     }
-    if (!telefono.trim()) {
-      setErrorNotice('Por favor ingresá tu número de WhatsApp para poder coordinar.');
+    if (telefono.replace(/\D/g, '').length < 8) {
+      setErrorNotice('Por favor ingresá un número de WhatsApp válido (al menos 8 dígitos).');
       return;
     }
     if (metodo === 'delivery' && !direccion.trim()) {
@@ -363,20 +396,21 @@ export const CheckoutModal: React.FC = () => {
                   <select
                     id="pickup-date-select"
                     value={fecha}
-                    onChange={(e) => setFecha(e.target.value)}
+                    onChange={(e) => setSelectedDate(e.target.value)}
                     className="w-full h-11 px-3.5 pr-10 rounded-xl bg-[#ffffff] text-[#1c1c18] text-xs sm:text-sm border border-[#e6e2dc] shadow-xs outline-none appearance-none focus:ring-2 focus:ring-[#5c382a]"
                   >
-                    <option value="Viernes 28/10">Viernes 28 de Octubre (Cumple con 48hs previas)</option>
-                    <option value="Sábado 29/10">Sábado 29 de Octubre</option>
-                    <option value="Domingo 30/10">Domingo 30 de Octubre (Especial meriendas)</option>
-                    <option value="Lunes 31/10">Lunes 31 de Octubre</option>
+                    {availableDates.map(date => (
+                      <option key={date.value} value={date.value}>{date.label}</option>
+                    ))}
                   </select>
                   <ChevronDown className="w-4 h-4 text-[#83746f] absolute right-3 top-3.5 pointer-events-none" />
                 </div>
                 {hasLeadTimeItems && (
                   <span className="text-[11px] text-[#2d4637] flex items-center gap-1 mt-0.5 font-medium">
                     <Clock className="w-3.5 h-3.5 text-[#2d4637]" />
-                    Nuestros horneados artesanales requieren 48 hs de leudado y descanso.
+                    Este pedido requiere {Math.max(...items
+                      .filter(item => item.product.requiresLeadTime)
+                      .map(item => item.product.leadTimeHours || 0))} hs de anticipación.
                   </span>
                 )}
               </div>

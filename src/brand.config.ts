@@ -40,6 +40,7 @@ export interface BrandConfig {
     city: string;
     scheduleWeekday: string;
     scheduleNote: string;
+    closedWeekdays: number[];
   };
   delivery: {
     pickup: {
@@ -115,6 +116,7 @@ export const brandConfig: BrandConfig = {
     city: "Buenos Aires",
     scheduleWeekday: "Martes a Domingo: 07:30 a 20:00 hs",
     scheduleNote: "Lunes cerrado por descanso de horno",
+    closedWeekdays: [1],
   },
 
   delivery: {
