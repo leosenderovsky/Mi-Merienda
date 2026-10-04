@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Product } from '../products';
+import { Product, getProductImageDimensions } from '../products';
 import { formatCurrency } from '../brand.config';
 import { useCart } from '../context/CartContext';
 import { Plus, Check, SlidersHorizontal, Clock, Sparkles } from 'lucide-react';
@@ -57,8 +57,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
         <img
           src={product.imagen}
           alt={product.nombre}
+          width={getProductImageDimensions(product.imagen)?.width}
+          height={getProductImageDimensions(product.imagen)?.height}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
           loading="lazy"
+          decoding="async"
         />
 
         {/* Top Badge (Recién salidas, 24h Fermentación, Salen calientes, etc.) */}

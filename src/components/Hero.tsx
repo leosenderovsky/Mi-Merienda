@@ -25,6 +25,11 @@ export const Hero: React.FC = () => {
           <img
             src={brandConfig.hero.heroImage}
             alt="Panes artesanos y medialunas recién horneadas"
+            width={512}
+            height={279}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
           />
           {/* Measured Scrim for Contrast */}

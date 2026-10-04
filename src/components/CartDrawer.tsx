@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { brandConfig, formatCurrency } from '../brand.config';
+import { getProductImageDimensions } from '../products';
 import {
   ShoppingBasket,
   Trash2,
@@ -139,7 +140,11 @@ export const CartDrawer: React.FC = () => {
                       <img
                         src={item.product.imagen}
                         alt={item.product.nombre}
+                        width={getProductImageDimensions(item.product.imagen)?.width}
+                        height={getProductImageDimensions(item.product.imagen)?.height}
                         className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
                       />
                       <span className="absolute bottom-1 left-1 px-1.5 py-0.5 rounded-full bg-brand-secondary-fixed text-brand-on-secondary-fixed text-[9px] font-bold shadow-xs">
                         {getUnitBadge(item)}

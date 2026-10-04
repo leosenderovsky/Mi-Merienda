@@ -9,6 +9,8 @@
  * ============================================================================
  */
 
+import { getDemoLegend } from './demoBanner.config.ts';
+
 export interface BrandConfig {
   brand: {
     name: string;
@@ -267,7 +269,7 @@ export const brandConfig: BrandConfig = {
   ],
 
   disclaimer: {
-    demoBadge: "Marca, productos y precios de ejemplo — prototipo de demostración de sender.ia",
+    demoBadge: getDemoLegend(),
     footerNote: "Hecho con masa madre, harina orgánica y dedicación artesanal.",
   },
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Product } from '../products';
+import { Product, getProductImageDimensions } from '../products';
 import { brandConfig, formatCurrency } from '../brand.config';
 import { useCart, SelectedOptionState } from '../context/CartContext';
 import {
@@ -135,7 +135,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
             <img
               src={product.imagen}
               alt={product.nombre}
+              width={getProductImageDimensions(product.imagen)?.width}
+              height={getProductImageDimensions(product.imagen)?.height}
               className="w-full h-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-surface via-transparent to-black/30" />
 

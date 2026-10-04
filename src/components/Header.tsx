@@ -42,6 +42,11 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateTortas }) => {
             <img
               src={brandConfig.brand.logoUrl}
               alt={brandConfig.brand.name}
+              width={512}
+              height={512}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="h-20 sm:h-[5.5rem] w-auto max-w-[calc(50vw_-_3rem)] sm:max-w-[min(60vw,24rem)] object-contain drop-shadow-sm"
               onError={(e) => {
                 // Fallback elegante en caso de fallo de red
