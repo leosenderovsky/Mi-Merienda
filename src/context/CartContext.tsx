@@ -2,12 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product } from '../products';
 import { brandConfig, formatCurrency } from '../brand.config';
 
-const cartStorageKey = `${brandConfig.brand.name
-  .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g, '')
-  .toLowerCase()
-  .replace(/[^a-z0-9]+/g, '_')
-  .replace(/^_|_$/g, '')}_cart`;
+const cartStorageKey = brandConfig.storage.cartKey;
 
 export interface SelectedOptionState {
   tamano?: {

@@ -19,16 +19,16 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative pt-2 pb-6 px-4 max-w-4xl mx-auto">
-      <div className="relative overflow-hidden rounded-2xl bg-[#f1ede7] shadow-[0_6px_24px_-4px_rgba(92,56,42,0.08)] flex flex-col border border-[#e6e2dc]">
+      <div className="relative overflow-hidden rounded-2xl bg-brand-surface-container shadow-[0_6px_24px_-4px_rgba(92,56,42,0.08)] flex flex-col border border-brand-surface-container-highest">
         {/* Visual Banner Media */}
-        <div className="w-full h-56 sm:h-72 relative overflow-hidden bg-[#5c382a]">
+        <div className="w-full h-56 sm:h-72 relative overflow-hidden bg-brand-primary-container">
           <img
             src={brandConfig.hero.heroImage}
             alt="Panes artesanos y medialunas recién horneadas"
             className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
           />
           {/* Measured Scrim for Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#422316] via-[#422316]/50 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-primary via-brand-primary/50 to-black/20" />
 
           {/* Floating Pill Badges */}
           <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex flex-wrap gap-2 z-10">
@@ -37,8 +37,8 @@ export const Hero: React.FC = () => {
                 key={badge.text}
                 className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md ${
                   badge.style === 'secondary'
-                    ? 'bg-[#fdbe50] text-[#714d00]'
-                    : 'bg-[#2d4637] text-white'
+                    ? 'bg-brand-secondary-container text-brand-on-secondary-container'
+                    : 'bg-brand-tertiary-container text-white'
                 }`}
               >
                 <span className="material-symbols-outlined text-[16px] leading-none" aria-hidden="true">
@@ -51,26 +51,26 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Hero Narrative Body */}
-        <div className="p-5 sm:p-7 bg-[#f7f3ed] flex flex-col gap-3">
-          <div className="flex items-center gap-1.5 text-[#7e5700]">
-            <CheckCircle2 className="w-4 h-4 text-[#7e5700]" />
+        <div className="p-5 sm:p-7 bg-brand-surface-container-low flex flex-col gap-3">
+          <div className="flex items-center gap-1.5 text-brand-secondary">
+            <CheckCircle2 className="w-4 h-4 text-brand-secondary" />
             <span className="text-xs font-bold uppercase tracking-wider">
               {brandConfig.hero.kicker}
             </span>
           </div>
 
-          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#422316] font-bold leading-tight text-balance">
+          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-primary font-bold leading-tight text-balance">
             {brandConfig.hero.title}
           </h1>
 
-          <p className="text-sm sm:text-base text-[#514440] leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base text-brand-on-surface-variant leading-relaxed max-w-2xl">
             {brandConfig.hero.description}
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-3">
             <button
               onClick={scrollToCatalog}
-              className="px-5 py-2.5 rounded-full bg-[#422316] text-white text-sm sm:text-base font-semibold flex items-center gap-2 hover:bg-[#5c382a] active:scale-95 transition-all shadow-md cursor-pointer"
+              className="px-5 py-2.5 rounded-full bg-brand-primary text-white text-sm sm:text-base font-semibold flex items-center gap-2 hover:bg-brand-primary-container active:scale-95 transition-all shadow-md cursor-pointer"
             >
               <span>{brandConfig.hero.ctaPrimary}</span>
               <ArrowDown className="w-4 h-4" />
@@ -78,9 +78,9 @@ export const Hero: React.FC = () => {
 
             <button
               onClick={handleWhatsAppContact}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-[#f1ede7] text-[#514440] hover:bg-[#ebe8e2] text-xs sm:text-sm font-semibold transition-all active:scale-95 border border-[#d5c3bd]/50 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-brand-surface-container text-brand-on-surface-variant hover:bg-brand-surface-container-high text-xs sm:text-sm font-semibold transition-all active:scale-95 border border-brand-outline-variant/50 cursor-pointer"
             >
-              <Headphones className="w-4 h-4 text-[#2d4637]" />
+              <Headphones className="w-4 h-4 text-brand-tertiary-container" />
               <span>{brandConfig.hero.ctaSecondary}</span>
             </button>
           </div>

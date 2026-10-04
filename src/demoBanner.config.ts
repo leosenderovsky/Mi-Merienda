@@ -1,4 +1,4 @@
-// DEMO ONLY. Al entregar el sitio a un cliente real: borrar este archivo, PrototypeBanner.tsx, su import en App.tsx (marcado DEMO ONLY) y, en Galpón, los offsets del banner en el wrapper de App.tsx.
+// El banner de demostración se puede ocultar desde brand.config.ts.
 export const demoBannerConfig = {
   companyName: (import.meta.env.VITE_DEMO_BRAND_NAME ?? '').trim(),
   link: (import.meta.env.VITE_DEMO_BRAND_URL ?? '').trim(),

@@ -1,8 +1,8 @@
 /**
  * CONFIGURACIÓN DE MARCA (BRAND CONFIG)
  * ============================================================================
- * Este es el único archivo de configuración que hace falta editar para adaptar
- * el sitio a un cliente nuevo (panadería, pastelería o cafetería de barrio).
+ * Editá este archivo, public/assets y el catálogo para adaptar el sitio a un
+ * cliente nuevo (panadería, pastelería o cafetería de barrio).
  * 
  * Contiene: identidad de marca, paleta de colores, tipografías, número de WhatsApp,
  * redes sociales, textos del Hero, horarios de atención y opciones de entrega.
@@ -15,27 +15,52 @@ export interface BrandConfig {
     tagline: string;
     subtagline: string;
     logoUrl: string;
+    favicon32Url: string;
+    appleTouchIconUrl: string;
     badgeHeroKicker: string;
   };
   typography: {
     displayFont: string;
     bodyFont: string;
+    stylesheetUrl: string;
   };
-  colors: {
+  theme: {
     primary: string;
     primaryContainer: string;
+    primaryFixed: string;
+    onPrimaryContainer: string;
     secondary: string;
     secondaryContainer: string;
+    secondaryFixed: string;
+    onSecondaryFixed: string;
+    onSecondaryContainer: string;
+    secondaryEmphasis: string;
     surface: string;
     surfaceContainer: string;
+    surfaceContainerLow: string;
+    surfaceContainerHigh: string;
+    surfaceContainerHighest: string;
+    onSurface: string;
+    onSurfaceVariant: string;
+    outline: string;
+    outlineVariant: string;
     tertiary: string;
     tertiaryContainer: string;
+    tertiaryFixed: string;
+    onTertiaryFixed: string;
+    tertiaryMuted: string;
+    error: string;
+    errorContainer: string;
   };
   contact: {
     // DATOS DE EJEMPLO, reemplazar por cliente
     whatsappNumber: string; // formato internacional sin signos ni espacios, ej: 5491145218890
     // DATOS DE EJEMPLO, reemplazar por cliente
     whatsappDisplay: string;
+    phonePlaceholder: string;
+    customerNamePlaceholder: string;
+    addressPlaceholder: string;
+    addressDetailPlaceholder: string;
     instagramHandle: string;
     instagramUrl: string;
     // DATOS DE EJEMPLO, reemplazar por cliente
@@ -87,8 +112,23 @@ export interface BrandConfig {
     footerNote: string;
   };
   demo: {
+    showPrototypeBanner: boolean;
     /** Activa los datos de ejemplo del checkout para demostraciones. Desactivado por defecto. */
     prefillCheckout: boolean;
+    checkoutDefaults: {
+      name: string;
+      address: string;
+      addressDetail: string;
+      notes: string;
+    };
+  };
+  storage: {
+    cartKey: string;
+  };
+  seo: {
+    titleSuffix: string;
+    description: string;
+    socialImage: string;
   };
 }
 
@@ -98,23 +138,45 @@ export const brandConfig: BrandConfig = {
     tagline: "Horneando momentos felices desde 2009",
     subtagline: "Panadería & Pastelería Artesanal de Barrio",
     logoUrl: "/assets/logo/logo.png",
+    favicon32Url: "/assets/logo/favicon-32.png",
+    appleTouchIconUrl: "/assets/logo/apple-touch-icon.png",
     badgeHeroKicker: "Tradición y cariño de barrio",
   },
 
   typography: {
     displayFont: "'Vollkorn', Georgia, serif",
     bodyFont: "'Plus Jakarta Sans', sans-serif",
+    stylesheetUrl:
+      "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Vollkorn:ital,wght@0,600;0,700;1,600&display=swap",
   },
 
-  colors: {
+  theme: {
     primary: "#422316",
     primaryContainer: "#5c382a",
+    primaryFixed: "#ffdbce",
+    onPrimaryContainer: "#d4a28f",
     secondary: "#7e5700",
     secondaryContainer: "#fdbe50",
+    secondaryFixed: "#ffdead",
+    onSecondaryFixed: "#281900",
+    onSecondaryContainer: "#714d00",
+    secondaryEmphasis: "#604100",
     surface: "#fdf9f3",
     surfaceContainer: "#f1ede7",
+    surfaceContainerLow: "#f7f3ed",
+    surfaceContainerHigh: "#ebe8e2",
+    surfaceContainerHighest: "#e6e2dc",
+    onSurface: "#1c1c18",
+    onSurfaceVariant: "#514440",
+    outline: "#83746f",
+    outlineVariant: "#d5c3bd",
     tertiary: "#173022",
     tertiaryContainer: "#2d4637",
+    tertiaryFixed: "#cdead5",
+    onTertiaryFixed: "#072013",
+    tertiaryMuted: "#b1cdb9",
+    error: "#ba1a1a",
+    errorContainer: "#ffdad6",
   },
 
   contact: {
@@ -122,6 +184,10 @@ export const brandConfig: BrandConfig = {
     whatsappNumber: "5491145218890",
     // DATOS DE EJEMPLO, reemplazar por cliente
     whatsappDisplay: "+54 9 11 4521-8890",
+    phonePlaceholder: "+54 9 11 ...",
+    customerNamePlaceholder: "Ej: Valeria Gómez",
+    addressPlaceholder: "Calle y altura (ej: Thames 1840)",
+    addressDetailPlaceholder: "Piso / Depto / Timbre (ej: 4to B)",
     instagramHandle: "@mimerienda.panaderia",
     instagramUrl: "https://instagram.com/mimerienda.panaderia",
     // DATOS DE EJEMPLO, reemplazar por cliente
@@ -206,7 +272,25 @@ export const brandConfig: BrandConfig = {
   },
 
   demo: {
+    showPrototypeBanner: true,
     prefillCheckout: false,
+    checkoutDefaults: {
+      name: "Valeria Gómez",
+      address: "Thames 1840",
+      addressDetail: "4to B",
+      notes: "Por favor avisarme cuando esté lista la torta para pasar a buscarla con tiempo. ¡Gracias!",
+    },
+  },
+
+  storage: {
+    cartKey: "mi_merienda_cart",
+  },
+
+  seo: {
+    titleSuffix: "Panadería & Pastelería",
+    description:
+      "Panadería y pastelería artesanal Mi Merienda. Productos frescos del día y pedidos especiales por encargo.",
+    socialImage: "/assets/hero/hero-1.jpg",
   },
 };
 

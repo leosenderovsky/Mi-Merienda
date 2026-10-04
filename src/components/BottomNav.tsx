@@ -30,7 +30,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
   };
 
   return (
-    <nav className="fixed bottom-0 w-full z-40 pb-safe bg-[#fdf9f3]/95 backdrop-blur-xl border-t border-[#f1ede7] shadow-[0_-4px_20px_rgba(92,56,42,0.08)] sm:hidden">
+    <nav className="fixed bottom-0 w-full z-40 pb-safe bg-brand-surface/95 backdrop-blur-xl border-t border-brand-surface-container shadow-[0_-4px_20px_rgba(92,56,42,0.08)] sm:hidden">
       <div className="flex items-center justify-around h-16 px-2">
         
         {/* Catálogo Tab */}
@@ -38,8 +38,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
           onClick={handleNavCatalog}
           className={`flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] transition-colors cursor-pointer ${
             selectedCategory === 'all'
-              ? 'text-[#422316] font-bold'
-              : 'text-[#514440] hover:text-[#422316]'
+              ? 'text-brand-primary font-bold'
+              : 'text-brand-on-surface-variant hover:text-brand-primary'
           }`}
         >
           <Store className="w-5 h-5" />
@@ -51,8 +51,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
           onClick={handleNavTortas}
           className={`flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] transition-colors cursor-pointer ${
             selectedCategory === 'tortas'
-              ? 'text-[#422316] font-bold'
-              : 'text-[#514440] hover:text-[#422316]'
+              ? 'text-brand-primary font-bold'
+              : 'text-brand-on-surface-variant hover:text-brand-primary'
           }`}
         >
           <Cake className="w-5 h-5" />
@@ -62,12 +62,12 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
         {/* Carrito Tab (with Total or Badge) */}
         <button
           onClick={() => setIsCartOpen(true)}
-          className="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] transition-colors text-[#422316] font-bold relative cursor-pointer"
+          className="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[44px] transition-colors text-brand-primary font-bold relative cursor-pointer"
         >
           <div className="relative">
-            <ShoppingBag className="w-5 h-5 text-[#422316]" />
+            <ShoppingBag className="w-5 h-5 text-brand-primary" />
             {totalItems > 0 && (
-              <span className="absolute -top-1.5 -right-2 px-1 min-w-[16px] h-4 rounded-full bg-[#fdbe50] text-[#714d00] text-[9px] font-bold flex items-center justify-center shadow-xs">
+              <span className="absolute -top-1.5 -right-2 px-1 min-w-[16px] h-4 rounded-full bg-brand-secondary-container text-brand-on-secondary-container text-[9px] font-bold flex items-center justify-center shadow-xs">
                 {totalItems}
               </span>
             )}
@@ -80,7 +80,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
         {/* Contacto Tab */}
         <button
           onClick={handleNavContact}
-          className="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-[#514440] hover:text-[#422316] transition-colors cursor-pointer"
+          className="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-brand-on-surface-variant hover:text-brand-primary transition-colors cursor-pointer"
         >
           <PhoneCall className="w-5 h-5" />
           <span className="text-[11px]">Contacto</span>

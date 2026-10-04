@@ -1,5 +1,5 @@
 /**
- * CATÁLOGO DE PRODUCTOS - "MI MERIENDA"
+ * CATÁLOGO DE PRODUCTOS
  * ============================================================================
  * Estructura de datos desacoplada de la interfaz gráfica.
  * 

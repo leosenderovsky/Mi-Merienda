@@ -50,10 +50,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
   return (
     <article
       onClick={() => onOpenDetail(product)}
-      className="group flex flex-col bg-[#ffffff] rounded-2xl shadow-[0_4px_16px_-2px_rgba(92,56,42,0.06)] hover:shadow-[0_8px_24px_-4px_rgba(92,56,42,0.12)] border border-[#f1ede7] overflow-hidden transition-all duration-300 cursor-pointer"
+      className="group flex flex-col bg-white rounded-2xl shadow-[0_4px_16px_-2px_rgba(92,56,42,0.06)] hover:shadow-[0_8px_24px_-4px_rgba(92,56,42,0.12)] border border-brand-surface-container overflow-hidden transition-all duration-300 cursor-pointer"
     >
       {/* Product Image Box */}
-      <div className="relative w-full h-48 sm:h-52 bg-[#f1ede7] overflow-hidden">
+      <div className="relative w-full h-48 sm:h-52 bg-brand-surface-container overflow-hidden">
         <img
           src={product.imagen}
           alt={product.nombre}
@@ -63,18 +63,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
 
         {/* Top Badge (Recién salidas, 24h Fermentación, Salen calientes, etc.) */}
         {product.badge && (
-          <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#fdf9f3]/95 backdrop-blur-md text-[#7e5700] text-xs font-bold shadow-sm flex items-center gap-1.5 border border-[#ebe8e2]">
+          <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-brand-surface/95 backdrop-blur-md text-brand-secondary text-xs font-bold shadow-sm flex items-center gap-1.5 border border-brand-surface-container-high">
             {product.requiresLeadTime ? (
-              <Clock className="w-3.5 h-3.5 text-[#7e5700]" />
+              <Clock className="w-3.5 h-3.5 text-brand-secondary" />
             ) : (
-              <Sparkles className="w-3.5 h-3.5 text-[#fdbe50] fill-[#fdbe50]" />
+              <Sparkles className="w-3.5 h-3.5 text-brand-secondary-container fill-brand-secondary-container" />
             )}
             <span>{product.badge}</span>
           </span>
         )}
 
         {/* Bottom Unit Tag */}
-        <span className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-[#ffffff]/90 backdrop-blur-md text-[#514440] text-[11px] font-bold shadow-sm border border-[#ebe8e2] capitalize">
+        <span className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-brand-on-surface-variant text-[11px] font-bold shadow-sm border border-brand-surface-container-high capitalize">
           {unitLabelText()}
         </span>
       </div>
@@ -82,21 +82,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
       {/* Product Details Content */}
       <div className="p-4 sm:p-5 flex flex-col justify-between flex-1 gap-3">
         <div className="flex flex-col gap-1">
-          <h3 className="font-serif text-lg sm:text-xl text-[#422316] font-semibold leading-snug group-hover:text-[#5c382a] transition-colors">
+          <h3 className="font-serif text-lg sm:text-xl text-brand-primary font-semibold leading-snug group-hover:text-brand-primary-container transition-colors">
             {product.nombre}
           </h3>
-          <p className="text-xs sm:text-sm text-[#514440] leading-relaxed line-clamp-2">
+          <p className="text-xs sm:text-sm text-brand-on-surface-variant leading-relaxed line-clamp-2">
             {product.descripción}
           </p>
         </div>
 
         {/* Price & Action Row */}
-        <div className="flex items-center justify-between pt-2 border-t border-[#f7f3ed]">
+        <div className="flex items-center justify-between pt-2 border-t border-brand-surface-container-low">
           <div className="flex flex-col">
-            <span className="text-[10px] text-[#83746f] uppercase font-bold tracking-wider">
+            <span className="text-[10px] text-brand-outline uppercase font-bold tracking-wider">
               {product.requiresLeadTime ? 'Encargo especial' : `Precio ${product.unidad}`}
             </span>
-            <span className="font-serif text-xl sm:text-2xl text-[#422316] font-bold">
+            <span className="font-serif text-xl sm:text-2xl text-brand-primary font-bold">
               {formatCurrency(product.precio)}
             </span>
           </div>
@@ -109,10 +109,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
                 e.stopPropagation();
                 onOpenDetail(product);
               }}
-              className="px-4 py-2 rounded-full bg-[#2d4637] hover:bg-[#173022] text-[#ffffff] text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer"
+              className="px-4 py-2 rounded-full bg-brand-tertiary-container hover:bg-brand-tertiary text-white text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer"
             >
               <span>Personalizar y pedir</span>
-              <SlidersHorizontal className="w-4 h-4 text-[#cdead5]" />
+              <SlidersHorizontal className="w-4 h-4 text-brand-tertiary-fixed" />
             </button>
           ) : (
             <button
@@ -120,13 +120,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
               onClick={handleQuickAdd}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer ${
                 isAddedFeedback
-                  ? 'bg-[#2d4637] text-white'
-                  : 'bg-[#422316] hover:bg-[#5c382a] text-white'
+                  ? 'bg-brand-tertiary-container text-white'
+                  : 'bg-brand-primary hover:bg-brand-primary-container text-white'
               }`}
             >
               {isAddedFeedback ? (
                 <>
-                  <Check className="w-4 h-4 text-[#cdead5]" />
+                  <Check className="w-4 h-4 text-brand-tertiary-fixed" />
                   <span>¡Sumado!</span>
                 </>
               ) : (

@@ -1,42 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Vollkorn", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-headline: "Vollkorn", Georgia, serif;
-  --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-brand-display);
+  --font-sans: var(--font-brand-body);
+  --font-headline: var(--font-brand-display);
+  --font-body: var(--font-brand-body);
 
-  --color-surface: #fdf9f3;
-  --color-surface-container: #f1ede7;
-  --color-surface-container-low: #f7f3ed;
-  --color-surface-container-high: #ebe8e2;
-  --color-surface-container-highest: #e6e2dc;
-  --color-surface-container-lowest: #ffffff;
-
-  --color-primary: #422316;
-  --color-primary-container: #5c382a;
-  --color-primary-fixed: #ffdbce;
-  --color-primary-fixed-dim: #f0bba7;
-  --color-on-primary: #ffffff;
-  --color-on-primary-container: #d4a28f;
-
-  --color-secondary: #7e5700;
-  --color-secondary-container: #fdbe50;
-  --color-secondary-fixed: #ffdead;
-  --color-secondary-fixed-dim: #fabc4d;
-  --color-on-secondary-fixed: #281900;
-  --color-on-secondary-container: #714d00;
-
-  --color-tertiary: #173022;
-  --color-tertiary-container: #2d4637;
-  --color-tertiary-fixed: #cdead5;
-  --color-on-tertiary-fixed: #072013;
-  --color-on-tertiary: #ffffff;
-
-  --color-on-surface: #1c1c18;
-  --color-on-surface-variant: #514440;
-  --color-outline: #83746f;
-  --color-outline-variant: #d5c3bd;
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-container: var(--brand-primaryContainer);
+  --color-brand-primary-fixed: var(--brand-primaryFixed);
+  --color-brand-on-primary-container: var(--brand-onPrimaryContainer);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-secondary-container: var(--brand-secondaryContainer);
+  --color-brand-secondary-fixed: var(--brand-secondaryFixed);
+  --color-brand-on-secondary-fixed: var(--brand-onSecondaryFixed);
+  --color-brand-on-secondary-container: var(--brand-onSecondaryContainer);
+  --color-brand-secondary-emphasis: var(--brand-secondaryEmphasis);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-surface-container: var(--brand-surfaceContainer);
+  --color-brand-surface-container-low: var(--brand-surfaceContainerLow);
+  --color-brand-surface-container-high: var(--brand-surfaceContainerHigh);
+  --color-brand-surface-container-highest: var(--brand-surfaceContainerHighest);
+  --color-brand-on-surface: var(--brand-onSurface);
+  --color-brand-on-surface-variant: var(--brand-onSurfaceVariant);
+  --color-brand-outline: var(--brand-outline);
+  --color-brand-outline-variant: var(--brand-outlineVariant);
+  --color-brand-tertiary: var(--brand-tertiary);
+  --color-brand-tertiary-container: var(--brand-tertiaryContainer);
+  --color-brand-tertiary-fixed: var(--brand-tertiaryFixed);
+  --color-brand-on-tertiary-fixed: var(--brand-onTertiaryFixed);
+  --color-brand-tertiary-muted: var(--brand-tertiaryMuted);
+  --color-brand-error: var(--brand-error);
+  --color-brand-error-container: var(--brand-errorContainer);
 }
 
 @layer base {
@@ -45,9 +40,9 @@
     -webkit-tap-highlight-color: transparent;
   }
   body {
-    background-color: var(--color-surface, #fdf9f3);
-    color: var(--color-on-surface, #1c1c18);
-    font-family: var(--font-body, "Plus Jakarta Sans", sans-serif);
+    background-color: var(--brand-surface);
+    color: var(--brand-onSurface);
+    font-family: var(--font-brand-body);
   }
 }
 

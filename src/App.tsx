@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { brandConfig } from './brand.config';
 import { CartProvider, useCart } from './context/CartContext';
 import { products, ProductCategory } from './products';
 import { Header } from './components/Header';
-// DEMO ONLY — borrar este import y esta línea, más PrototypeBanner.tsx
-// y demoBanner.config.ts, para pasar este proyecto a un cliente real
+// El banner DEMO se puede desactivar desde brand.config.ts.
 import { PrototypeBanner } from './components/PrototypeBanner';
 import { Hero } from './components/Hero';
 import { CategoryFilters } from './components/CategoryFilters';
@@ -37,8 +37,8 @@ function MainShop() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fdf9f3] text-[#1c1c18] flex flex-col font-sans selection:bg-[#ffdead] selection:text-[#422316]">
-      <PrototypeBanner />
+    <div className="min-h-screen bg-brand-surface text-brand-on-surface flex flex-col font-sans selection:bg-brand-secondary-fixed selection:text-brand-primary">
+      {brandConfig.demo.showPrototypeBanner && <PrototypeBanner />}
       {/* Fixed Sticky Header */}
       <Header
         onNavigateTortas={handleNavigateTortas}
@@ -60,13 +60,13 @@ function MainShop() {
         {/* Catalog Grid */}
         <section className="max-w-4xl mx-auto px-4 py-2">
           {filteredProducts.length === 0 ? (
-            <div className="text-center py-16 bg-[#ffffff] rounded-2xl border border-[#f1ede7] p-8">
-              <p className="font-serif text-lg text-[#422316]">
+            <div className="text-center py-16 bg-white rounded-2xl border border-brand-surface-container p-8">
+              <p className="font-serif text-lg text-brand-primary">
                 No hay productos en esta categoría por el momento.
               </p>
               <button
                 onClick={() => setSelectedCategory('all')}
-                className="mt-3 px-4 py-2 rounded-full bg-[#422316] text-white text-xs font-semibold"
+                className="mt-3 px-4 py-2 rounded-full bg-brand-primary text-white text-xs font-semibold"
               >
                 Ver todos los productos
               </button>
@@ -115,16 +115,16 @@ function MainShop() {
       {/* Global Interactive Toast Notification */}
       {toast && (
         <div className="fixed bottom-24 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 sm:w-auto z-50 animate-in fade-in slide-in-from-bottom-2 duration-200">
-          <div className="bg-[#173022] text-[#ffffff] px-4 py-3 rounded-2xl shadow-xl flex items-center justify-between gap-4 border border-[#2d4637]">
+          <div className="bg-brand-tertiary text-white px-4 py-3 rounded-2xl shadow-xl flex items-center justify-between gap-4 border border-brand-tertiary-container">
             <div className="flex items-center gap-2.5 min-w-0">
-              <CheckCircle2 className="w-5 h-5 text-[#cdead5] shrink-0" />
+              <CheckCircle2 className="w-5 h-5 text-brand-tertiary-fixed shrink-0" />
               <span className="text-xs sm:text-sm font-medium truncate">
                 {toast}
               </span>
             </div>
             <button
               onClick={() => setIsCartOpen(true)}
-              className="text-xs text-[#cdead5] font-bold hover:underline shrink-0 cursor-pointer flex items-center gap-1"
+              className="text-xs text-brand-tertiary-fixed font-bold hover:underline shrink-0 cursor-pointer flex items-center gap-1"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>Ver canasta</span>
