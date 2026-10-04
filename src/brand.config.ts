@@ -32,14 +32,19 @@ export interface BrandConfig {
     tertiaryContainer: string;
   };
   contact: {
+    // DATOS DE EJEMPLO, reemplazar por cliente
     whatsappNumber: string; // formato internacional sin signos ni espacios, ej: 5491145218890
+    // DATOS DE EJEMPLO, reemplazar por cliente
     whatsappDisplay: string;
     instagramHandle: string;
     instagramUrl: string;
+    // DATOS DE EJEMPLO, reemplazar por cliente
     address: string;
     city: string;
+    // DATOS DE EJEMPLO, reemplazar por cliente
     scheduleWeekday: string;
     scheduleNote: string;
+    // DATOS DE EJEMPLO, reemplazar por cliente
     closedWeekdays: number[];
   };
   delivery: {
@@ -55,6 +60,7 @@ export interface BrandConfig {
       label: string;
       description: string;
     };
+    // DATOS DE EJEMPLO, reemplazar por cliente
     timeSlots: string[];
     leadNoticeCake: string;
   };
@@ -79,6 +85,10 @@ export interface BrandConfig {
   disclaimer: {
     demoBadge: string;
     footerNote: string;
+  };
+  demo: {
+    /** Activa los datos de ejemplo del checkout para demostraciones. Desactivado por defecto. */
+    prefillCheckout: boolean;
   };
 }
 
@@ -108,14 +118,19 @@ export const brandConfig: BrandConfig = {
   },
 
   contact: {
+    // DATOS DE EJEMPLO, reemplazar por cliente
     whatsappNumber: "5491145218890",
+    // DATOS DE EJEMPLO, reemplazar por cliente
     whatsappDisplay: "+54 9 11 4521-8890",
     instagramHandle: "@mimerienda.panaderia",
     instagramUrl: "https://instagram.com/mimerienda.panaderia",
+    // DATOS DE EJEMPLO, reemplazar por cliente
     address: "Av. San Martín 2840, Barrio Norte",
     city: "Buenos Aires",
+    // DATOS DE EJEMPLO, reemplazar por cliente
     scheduleWeekday: "Martes a Domingo: 07:30 a 20:00 hs",
     scheduleNote: "Lunes cerrado por descanso de horno",
+    // DATOS DE EJEMPLO, reemplazar por cliente
     closedWeekdays: [1],
   },
 
@@ -132,6 +147,7 @@ export const brandConfig: BrandConfig = {
       label: "+$1.500",
       description: "Reparto seguro en bicicleta y auto térmico",
     },
+    // DATOS DE EJEMPLO, reemplazar por cliente
     timeSlots: [
       "Turno Mañana (10:00 a 12:30 hs)",
       "Turno Tarde (16:30 a 18:30 hs)",
@@ -189,6 +205,9 @@ export const brandConfig: BrandConfig = {
     footerNote: "Hecho con masa madre, harina orgánica y dedicación artesanal.",
   },
 
+  demo: {
+    prefillCheckout: false,
+  },
 };
 
 /**

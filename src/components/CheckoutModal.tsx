@@ -63,14 +63,16 @@ export const CheckoutModal: React.FC = () => {
 
   // Form State
   const availableDates = getAvailableDates(items);
-  const [nombre, setNombre] = useState('Valeria Gómez');
+  const [nombre, setNombre] = useState(brandConfig.demo.prefillCheckout ? 'Valeria Gómez' : '');
   const [telefono, setTelefono] = useState('');
   const [metodo, setMetodo] = useState<'pickup' | 'delivery'>('pickup');
-  const [direccion, setDireccion] = useState('Thames 1840');
-  const [direccionDetalle, setDireccionDetalle] = useState('4to B');
+  const [direccion, setDireccion] = useState(brandConfig.demo.prefillCheckout ? 'Thames 1840' : '');
+  const [direccionDetalle, setDireccionDetalle] = useState(brandConfig.demo.prefillCheckout ? '4to B' : '');
   const [selectedDate, setSelectedDate] = useState(() => availableDates[0]?.value ?? '');
-  const [franjaHoraria, setFranjaHoraria] = useState('Turno Tarde (16:30 a 18:30 hs)');
-  const [notas, setNotas] = useState('Por favor avisarme cuando esté lista la torta para pasar a buscarla con tiempo. ¡Gracias!');
+  const [franjaHoraria, setFranjaHoraria] = useState(brandConfig.delivery.timeSlots[0] ?? '');
+  const [notas, setNotas] = useState(brandConfig.demo.prefillCheckout
+    ? 'Por favor avisarme cuando esté lista la torta para pasar a buscarla con tiempo. ¡Gracias!'
+    : '');
 
   const [isSummaryExpanded, setIsSummaryExpanded] = useState(false);
   const [errorNotice, setErrorNotice] = useState<string | null>(null);
