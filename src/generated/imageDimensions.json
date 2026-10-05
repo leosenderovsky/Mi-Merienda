@@ -1,7 +1,7 @@
 {
   "/assets/hero/hero-1.jpg": {
-    "width": 512,
-    "height": 279
+    "width": 2560,
+    "height": 1440
   },
   "/assets/logo/apple-touch-icon.png": {
     "width": 180,
@@ -12,8 +12,8 @@
     "height": 32
   },
   "/assets/logo/logo.png": {
-    "width": 512,
-    "height": 512
+    "width": 1600,
+    "height": 1655
   },
   "/assets/products/baguette-rustica.jpg": {
     "width": 1600,
@@ -21,11 +21,11 @@
   },
   "/assets/products/chipa-correntino.jpg": {
     "width": 1600,
-    "height": 872
+    "height": 1200
   },
   "/assets/products/medialunas-manteca.jpg": {
     "width": 1600,
-    "height": 872
+    "height": 1200
   },
   "/assets/products/pan-campo-masa-madre.jpg": {
     "width": 1600,
@@ -41,7 +41,7 @@
   },
   "/assets/products/torta-rogel-tradicional.jpg": {
     "width": 1600,
-    "height": 872
+    "height": 1200
   },
   "/assets/products/vigilantes-sacramentos.jpg": {
     "width": 1600,

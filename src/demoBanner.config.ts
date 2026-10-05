@@ -1,4 +1,4 @@
-// El banner de demostración se puede ocultar desde brand.config.ts.
+// DEMO ONLY. El banner se oculta poniendo demo.showPrototypeBanner en false en brand.config.ts. Al entregar el sitio a un cliente real: borrar este archivo, PrototypeBanner.tsx, su import y la bandera demo.showPrototypeBanner en App.tsx y brand.config.ts.
 export const demoBannerConfig = {
   companyName: (import.meta.env?.VITE_DEMO_BRAND_NAME ?? '').trim(),
   link: (import.meta.env?.VITE_DEMO_BRAND_URL ?? '').trim(),
