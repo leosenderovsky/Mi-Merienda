@@ -1,6 +1,7 @@
 import React from 'react';
 import { brandConfig, formatCurrency } from '../brand.config';
 import { useCart } from '../context/CartContext';
+import { getProductImageDimensions } from '../products';
 import { MessageCircle, ShoppingBag } from 'lucide-react';
 
 interface HeaderProps {
@@ -11,6 +12,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onNavigateTortas }) => {
   const { totalItems, subtotal, setIsCartOpen } = useCart();
+  const logoDimensions = getProductImageDimensions(brandConfig.brand.logoUrl);
 
   const handleWhatsAppDirect = () => {
     const defaultMsg = encodeURIComponent(
@@ -42,8 +44,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateTortas }) => {
             <img
               src={brandConfig.brand.logoUrl}
               alt={brandConfig.brand.name}
-              width={512}
-              height={512}
+              width={logoDimensions?.width}
+              height={logoDimensions?.height}
               loading="eager"
               fetchPriority="high"
               decoding="async"

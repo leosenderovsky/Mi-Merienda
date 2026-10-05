@@ -24,6 +24,10 @@
  * ============================================================================
  */
 
+import imageDimensions from './generated/imageDimensions.json';
+
+const imageDimensionsBySource: Record<string, { width: number; height: number }> = imageDimensions;
+
 export type ProductCategory = 'panes' | 'facturas' | 'tortas' | 'salados';
 
 export interface ProductOptionChoice {
@@ -59,19 +63,8 @@ export interface Product {
   opciones?: ProductOption[];
 }
 
-const PRODUCT_IMAGE_DIMENSIONS: Record<string, { width: number; height: number }> = {
-  '/assets/products/baguette-rustica.jpg': { width: 1600, height: 1195 },
-  '/assets/products/chipa-correntino.jpg': { width: 1600, height: 872 },
-  '/assets/products/medialunas-manteca.jpg': { width: 1600, height: 872 },
-  '/assets/products/pan-campo-masa-madre.jpg': { width: 1600, height: 1195 },
-  '/assets/products/sandwiches-miga-especiales.jpg': { width: 1600, height: 1195 },
-  '/assets/products/tarta-frutillas-pastelera.jpg': { width: 1600, height: 1195 },
-  '/assets/products/torta-rogel-tradicional.jpg': { width: 1600, height: 872 },
-  '/assets/products/vigilantes-sacramentos.jpg': { width: 1600, height: 1195 },
-};
-
 export function getProductImageDimensions(src: string) {
-  return PRODUCT_IMAGE_DIMENSIONS[src];
+  return imageDimensionsBySource[src];
 }
 
 export const CATEGORIES: Array<{ id: 'all' | ProductCategory; name: string }> = [

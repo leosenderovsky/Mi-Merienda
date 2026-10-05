@@ -4,11 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run generate:image-dimensions",
     "dev": "vite --port=3000 --host=0.0.0.0",
+    "prebuild": "npm run generate:image-dimensions",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
+    "generate:image-dimensions": "node scripts/generate-image-dimensions.mjs",
     "make:icons": "node scripts/make-icons.mjs",
     "check:images": "node scripts/check-images.mjs",
     "check:images:strict": "node scripts/check-images.mjs --strict"

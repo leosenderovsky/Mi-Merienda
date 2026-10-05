@@ -1,8 +1,11 @@
 import React from 'react';
 import { brandConfig } from '../brand.config';
+import { getProductImageDimensions } from '../products';
 import { CheckCircle2, ArrowDown, Headphones } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+  const heroImageDimensions = getProductImageDimensions(brandConfig.hero.heroImage);
+
   const handleWhatsAppContact = () => {
     const msg = encodeURIComponent(
       `¡Hola ${brandConfig.brand.name}! Me gustaría consultar sobre la disponibilidad de los productos de hoy.`
@@ -25,8 +28,8 @@ export const Hero: React.FC = () => {
           <img
             src={brandConfig.hero.heroImage}
             alt="Panes artesanos y medialunas recién horneadas"
-            width={512}
-            height={279}
+            width={heroImageDimensions?.width}
+            height={heroImageDimensions?.height}
             loading="eager"
             fetchPriority="high"
             decoding="async"

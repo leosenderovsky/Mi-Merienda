@@ -7,6 +7,8 @@ import sharp from 'sharp';
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const imageDirectory = path.join(projectRoot, 'public', 'assets', 'products');
 const productsFile = path.join(projectRoot, 'src', 'products.ts');
+const generatedDimensionsFile = path.join(projectRoot, 'src', 'generated', 'imageDimensions.json');
+const assetsDirectory = path.join(projectRoot, 'public', 'assets');
 const strict = process.argv.includes('--strict');
 const minimumWidth = 1200;
 const expectedRatio = 4 / 3;
@@ -20,7 +22,44 @@ const formatBytes = bytes => {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 };
 
+async function listImageFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const nestedFiles = await Promise.all(entries.map(entry => {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return listImageFiles(entryPath);
+    return /\.(?:jpe?g|png|webp)$/i.test(entry.name) ? [entryPath] : [];
+  }));
+  return nestedFiles.flat();
+}
+
 try {
+  const assetPaths = (await listImageFiles(assetsDirectory)).sort();
+  const currentDimensions = {};
+  for (const assetPath of assetPaths) {
+    const metadata = await sharp(assetPath).metadata();
+    if (!metadata.width || !metadata.height) {
+      throw new Error(`No se pudieron leer las dimensiones de ${assetPath}.`);
+    }
+    const publicPath = `/${path.relative(assetsDirectory, assetPath).split(path.sep).join('/')}`;
+    currentDimensions[`/assets${publicPath}`] = {
+      width: metadata.width,
+      height: metadata.height,
+    };
+  }
+
+  let generatedDimensions = {};
+  try {
+    generatedDimensions = JSON.parse(await readFile(generatedDimensionsFile, 'utf8'));
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  if (JSON.stringify(currentDimensions) !== JSON.stringify(generatedDimensions)) {
+    warnings.push({
+      filename: 'src/generated/imageDimensions.json',
+      issue: 'no coincide con las imágenes reales; ejecutá npm run generate:image-dimensions',
+    });
+  }
+
   const productSource = await readFile(productsFile, 'utf8');
   const expectedFiles = new Set(
     [...productSource.matchAll(/imagen:\s*["']\/assets\/products\/([^"']+\.jpg)["']/g)]
