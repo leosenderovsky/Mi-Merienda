@@ -292,7 +292,7 @@ export const brandConfig: BrandConfig = {
     titleSuffix: "Panadería & Pastelería",
     description:
       "Panadería y pastelería artesanal Mi Merienda. Productos frescos del día y pedidos especiales por encargo.",
-    socialImage: "/assets/hero/hero-1.jpg",
+    socialImage: "/assets/misc/og-image.jpg",
   },
 };
 

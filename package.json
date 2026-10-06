@@ -13,6 +13,9 @@
     "lint": "tsc --noEmit",
     "generate:image-dimensions": "node scripts/generate-image-dimensions.mjs",
     "make:icons": "node scripts/make-icons.mjs",
+    "check:icons": "node scripts/check-icons.mjs",
+    "logo:optimize": "node scripts/optimize-logo.mjs",
+    "make:og": "node scripts/make-og-image.mjs",
     "check:images": "node scripts/check-images.mjs",
     "check:images:strict": "node scripts/check-images.mjs --strict"
   },

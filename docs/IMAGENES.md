@@ -17,3 +17,15 @@ catálogo, además de advertir si las dimensiones generadas están desactualizad
 Las advertencias no hacen fallar el comando. Para usarlo como control estricto
 y obtener un código de salida distinto de cero ante advertencias, ejecutá
 `npm run check:images:strict`.
+
+Para actualizar los íconos de marca a partir de `public/assets/logo/logo.png`,
+ejecutá `npm run make:icons`. `npm run check:icons` comprueba que los archivos
+generados estén actualizados y que el ícono de Apple sea opaco y de 180x180.
+
+`npm run logo:optimize` conserva una copia del original en `.image-originals/`
+(no versionada) y optimiza el logo PNG para el encabezado, con un máximo de
+800 px de ancho y 120 KB.
+
+`npm run make:og` recorta el centro de `public/assets/hero/hero-1.jpg` para
+generar `public/assets/misc/og-image.jpg` de 1200x630 y hasta 200 KB, usado en
+la vista previa de enlaces.
