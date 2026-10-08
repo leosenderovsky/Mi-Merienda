@@ -96,7 +96,7 @@ Partí de `.env.example`. No hace falta completar variables para levantar la app
 | `VITE_DEMO_BRAND_NAME` | Nombre que puede mostrarse en el banner de demo. |
 | `VITE_DEMO_BRAND_URL` | Enlace del banner; solo se acepta si es HTTP o HTTPS. |
 
-Para la URL del sitio, `vite.config.ts` resuelve en este orden: `VITE_SITE_URL` leído por `loadEnv` para el modo activo; `process.env.VITE_SITE_URL`; `process.env.DEPLOY_PRIME_URL`; `process.env.URL`; y, si ninguno tiene valor, usa rutas relativas. La URL resultante se usa para canonical y para hacer absoluta la URL de la imagen social.
+Para la URL del sitio, `vite.config.ts` resuelve en este orden: `VITE_SITE_URL` leído por `loadEnv` para el modo activo o por `process.env`; en contexto `production`, `process.env.URL`; en otros contextos, `process.env.DEPLOY_PRIME_URL`; como respaldo, `process.env.URL` y luego `process.env.DEPLOY_PRIME_URL`; y, si ninguno tiene valor, usa rutas relativas. La URL resultante se usa para canonical y para hacer absoluta la URL de la imagen social.
 
 ## Modo demo
 
@@ -114,7 +114,19 @@ El repositorio no incluye configuración propia de Netlify. En la configuración
 - **Directorio de publicación:** `dist`
 - **URL canónica:** definí `VITE_SITE_URL` con la URL pública del sitio si querés fijarla explícitamente.
 
-Vite genera el contenido de publicación en `dist`; el hook `prebuild` actualiza primero las dimensiones de imágenes. No hace falta agregar un comando de verificación que no exista en el proyecto.
+Vite genera el contenido de publicación en `dist`; el hook `prebuild` actualiza primero las dimensiones de imágenes.
+
+### Verificar un deploy
+
+Cada build publica `build-info.json` en la raíz de `dist`, sin cache y con `X-Robots-Tag: noindex`. Ese archivo expone el commit, rama, contexto, fuente de URL y solo booleanos para las variables `VITE_SITE_URL`, `VITE_DEMO_BRAND_NAME` y `VITE_DEMO_BRAND_URL`. El HTML también incluye `<meta name="build-commit" content="...">` en el `<head>`.
+
+Después de publicar, verificá el deploy con:
+
+```sh
+npm run verify:deploy -- https://<sitio>.netlify.app
+```
+
+El comando compara el commit publicado contra `origin/main`, revisa la fuente de URL usada por Netlify y comprueba con GET que `canonical` y `og:image` respondan 200.
 
 ### Verificación antes de entregar
 
