@@ -153,65 +153,88 @@ const urlWarning =
     ? 'ATENCION: production usa DEPLOY_PRIME_URL'
     : 'OK';
 
-console.table([
-  {
-    item: 'Commit publicado',
-    valor: buildInfo.commit || 'unknown',
-    estado: isUpToDate ? 'OK' : 'DESACTUALIZADO',
-  },
-  {
-    item: 'Commit main',
-    valor: mainCommit || 'unknown',
-    estado: mainCommit ? 'OK' : 'FALTA',
-  },
-  {
-    item: 'Contexto',
-    valor: buildInfo.context || 'unknown',
-    estado: 'INFO',
-  },
-  {
-    item: 'URL',
-    valor: buildInfo.siteUrl || '(relativa)',
-    estado: urlWarning,
-  },
-  {
-    item: 'Fuente URL',
-    valor: buildInfo.siteUrlSource || 'unknown',
-    estado: urlWarning,
-  },
-  {
-    item: 'VITE_SITE_URL',
-    valor: Boolean(buildInfo.env?.VITE_SITE_URL),
-    estado: buildInfo.env?.VITE_SITE_URL ? 'OK' : 'NO DEFINIDA',
-  },
-  {
-    item: 'VITE_DEMO_BRAND_NAME',
-    valor: Boolean(buildInfo.env?.VITE_DEMO_BRAND_NAME),
-    estado: buildInfo.env?.VITE_DEMO_BRAND_NAME ? 'OK' : 'NO DEFINIDA',
-  },
-  {
-    item: 'VITE_DEMO_BRAND_URL',
-    valor: Boolean(buildInfo.env?.VITE_DEMO_BRAND_URL),
-    estado: buildInfo.env?.VITE_DEMO_BRAND_URL ? 'OK' : 'NO DEFINIDA',
-  },
-  {
-    item: 'canonical',
-    valor: canonicalUrl || '(faltante)',
-    estado: canonicalStatus === 200 ? 'OK' : `HTTP ${canonicalStatus || 'ERROR'}`,
-  },
-  {
-    item: 'og:image',
-    valor: ogImageUrl || '(faltante)',
-    estado: ogImageStatus === 200 ? 'OK' : `HTTP ${ogImageStatus || 'ERROR'}`,
-  },
-]);
+const checks = [];
 
-if (failures.length > 0) {
-  console.error('\nFallas bloqueantes:');
-  for (const failure of failures) {
-    console.error(`- ${failure}`);
-  }
-  process.exit(1);
+// Commit publicado
+checks.push({
+  Verificación: 'Commit publicado',
+  Estado: isUpToDate ? 'OK' : 'ERROR',
+  Detalle: buildInfo.commit || 'unknown',
+});
+
+// Commit main
+checks.push({
+  Verificación: 'Commit origen main',
+  Estado: mainCommit ? 'OK' : 'ERROR',
+  Detalle: mainCommit || 'no disponible',
+});
+
+// Contexto deploy
+checks.push({
+  Verificación: 'Contexto deploy',
+  Estado: 'INFO',
+  Detalle: buildInfo.context || 'unknown',
+});
+
+// URL sitio
+const siteUrlStatus = !buildInfo.siteUrl
+  ? buildInfo.context === 'production' ? 'ERROR' : 'INFO'
+  : buildInfo.context === 'production' && buildInfo.siteUrlSource === 'DEPLOY_PRIME_URL'
+    ? 'ATENCIÓN'
+    : 'OK';
+
+checks.push({
+  Verificación: 'URL del sitio',
+  Estado: siteUrlStatus,
+  Detalle: buildInfo.siteUrl || '(relativa)',
+});
+
+// Fuente URL
+checks.push({
+  Verificación: 'Fuente URL sitio',
+  Estado: siteUrlStatus,
+  Detalle: buildInfo.siteUrlSource || 'desconocida',
+});
+
+// Variables de entorno
+checks.push({
+  Verificación: 'VITE_SITE_URL',
+  Estado: buildInfo.env?.VITE_SITE_URL ? 'OK' : 'INFO',
+  Detalle: buildInfo.env?.VITE_SITE_URL ? 'definida' : 'no definida',
+});
+checks.push({
+  Verificación: 'VITE_DEMO_BRAND_NAME',
+  Estado: buildInfo.env?.VITE_DEMO_BRAND_NAME ? 'OK' : 'INFO',
+  Detalle: buildInfo.env?.VITE_DEMO_BRAND_NAME ? 'definida' : 'no definida',
+});
+checks.push({
+  Verificación: 'VITE_DEMO_BRAND_URL',
+  Estado: buildInfo.env?.VITE_DEMO_BRAND_URL ? 'OK' : 'INFO',
+  Detalle: buildInfo.env?.VITE_DEMO_BRAND_URL ? 'definida' : 'no definida',
+});
+
+// Canonical
+checks.push({
+  Verificación: 'Canonical tag',
+  Estado: canonicalStatus === 200 ? 'OK' : 'ERROR',
+  Detalle: canonicalUrl || '(faltante)',
+});
+
+// OG Image
+checks.push({
+  Verificación: 'Imagen Open Graph',
+  Estado: ogImageStatus === 200 ? 'OK' : 'ERROR',
+  Detalle: ogImageUrl || '(faltante)',
+});
+
+console.table(checks);
+
+// Exit code solo si hay algún ERROR
+const hasErrors = checks.some(c => c.Estado === 'ERROR');
+process.exitCode = hasErrors ? 1 : 0;
+
+if (process.exitCode === 0) {
+  console.log('\n✅ Deploy verificado correctamente.');
+} else {
+  console.log('\n❌ Hay errores bloqueantes en el deploy.');
 }
-
-console.log('\nDeploy verificado correctamente.');

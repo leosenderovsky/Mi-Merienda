@@ -20,6 +20,13 @@ export interface BrandConfig {
     favicon32Url: string;
     appleTouchIconUrl: string;
     badgeHeroKicker: string;
+    /** Recorte opcional para favicon: fracciones 0-1 del logo original */
+    faviconCrop?: {
+      left: number;
+      top: number;
+      width: number;
+      height: number;
+    };
   };
   typography: {
     displayFont: string;
@@ -143,6 +150,12 @@ export const brandConfig: BrandConfig = {
     favicon32Url: "/assets/logo/favicon-32.png",
     appleTouchIconUrl: "/assets/logo/apple-touch-icon.png",
     badgeHeroKicker: "Tradición y cariño de barrio",
+    faviconCrop: {
+      left: 0.20,
+      top: 0.02,
+      width: 0.60,
+      height: 0.56,
+    },
   },
 
   typography: {

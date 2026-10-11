@@ -17,8 +17,51 @@ const [red, green, blue] = surface[1].match(/.{2}/g).map(channel => Number.parse
 
 export async function generateIconBuffers() {
   const icons = [];
-  for (const size of [32, 180]) {
-    const padding = Math.round(size * 0.16);
+
+  // Favicon 32px: usa recorte específico si existe, padding 6% máximo
+  {
+    const size = 32;
+    let logoSource = sharp(logoPath);
+
+    if (brandConfig.brand.faviconCrop) {
+      // Obtener dimensiones originales del logo
+      const { width: originalWidth, height: originalHeight } = await logoSource.metadata();
+      logoSource = logoSource.extract({
+        left: Math.round(originalWidth * brandConfig.brand.faviconCrop.left),
+        top: Math.round(originalHeight * brandConfig.brand.faviconCrop.top),
+        width: Math.round(originalWidth * brandConfig.brand.faviconCrop.width),
+        height: Math.round(originalHeight * brandConfig.brand.faviconCrop.height),
+      });
+    }
+
+    const padding = Math.round(size * 0.06);
+    const logo = await logoSource
+      .resize(size - padding * 2, size - padding * 2, {
+        fit: 'contain',
+        background: { r: red, g: green, b: blue, alpha: 0 },
+      })
+      .png()
+      .toBuffer();
+
+    const buffer = await sharp({
+      create: {
+        width: size,
+        height: size,
+        channels: 4,
+        background: { r: red, g: green, b: blue, alpha: 1 },
+      },
+    })
+      .composite([{ input: logo, gravity: 'centre' }])
+      .png()
+      .toBuffer();
+
+    icons.push({ filename: 'favicon-32.png', buffer });
+  }
+
+  // Apple Touch Icon 180px: logo completo, padding 16%
+  {
+    const size = 180;
+    const padding = Math.round(size * 0.14);
     const logo = await sharp(logoPath)
       .resize(size - padding * 2, size - padding * 2, {
         fit: 'contain',
@@ -39,11 +82,9 @@ export async function generateIconBuffers() {
       .png()
       .toBuffer();
 
-    icons.push({
-      filename: size === 32 ? 'favicon-32.png' : 'apple-touch-icon.png',
-      buffer,
-    });
+    icons.push({ filename: 'apple-touch-icon.png', buffer });
   }
+
   return icons;
 }
 
