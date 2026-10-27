@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Txt } from './Txt';
 import { useCart, DeliveryInfo } from '../context/CartContext';
-import { brandConfig, formatCurrency } from '../brand.config';
+import { getAvailableDates } from '../lib/availableDates';
+import { brandConfig, formatCurrency, formatText } from '../brand.config';
 import {
   ArrowLeft,
   ShoppingBag,
@@ -19,34 +21,11 @@ import {
   AlertCircle
 } from 'lucide-react';
 
-const getAvailableDates = (items: ReturnType<typeof useCart>['items']) => {
-  const leadTimeHours = items.reduce((maxHours, item) => (
-    item.product.requiresLeadTime
-      ? Math.max(maxHours, item.product.leadTimeHours || 0)
-      : maxHours
-  ), 0);
-  const firstDate = new Date();
-  firstDate.setHours(0, 0, 0, 0);
-  firstDate.setDate(firstDate.getDate() + Math.ceil(leadTimeHours / 24));
-
-  return Array.from({ length: 10 }, (_, index) => {
-    const date = new Date(firstDate);
-    date.setDate(firstDate.getDate() + index);
-    return date;
-  })
-    .filter(date => !brandConfig.contact.closedWeekdays.includes(date.getDay()))
-    .map(date => {
-      const weekday = new Intl.DateTimeFormat('es-AR', { weekday: 'short' })
-        .format(date)
-        .replace('.', '');
-      const label = `${weekday.charAt(0).toUpperCase()}${weekday.slice(1)} ${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}`;
-
-      return {
-        value: `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`,
-        label,
-      };
-    });
-};
+const getLeadTimeHours = (items: ReturnType<typeof useCart>['items']) => items.reduce((maxHours, item) => (
+  item.product.requiresLeadTime
+    ? Math.max(maxHours, item.product.leadTimeHours || 0)
+    : maxHours
+), 0);
 
 export const CheckoutModal: React.FC = () => {
   const {
@@ -62,7 +41,7 @@ export const CheckoutModal: React.FC = () => {
   } = useCart();
 
   // Form State
-  const availableDates = getAvailableDates(items);
+  const availableDates = getAvailableDates(getLeadTimeHours(items));
   const [nombre, setNombre] = useState(
     brandConfig.demo.prefillCheckout ? brandConfig.demo.checkoutDefaults.name : '',
   );
@@ -111,15 +90,15 @@ export const CheckoutModal: React.FC = () => {
 
   const handleConfirmOrder = () => {
     if (!nombre.trim()) {
-      setErrorNotice('Por favor completá tu nombre y apellido.');
+      setErrorNotice(brandConfig.ui.checkout.errors.name);
       return;
     }
     if (telefono.replace(/\D/g, '').length < 8) {
-      setErrorNotice('Por favor ingresá un número de WhatsApp válido (al menos 8 dígitos).');
+      setErrorNotice(brandConfig.ui.checkout.errors.phone);
       return;
     }
     if (metodo === 'delivery' && !direccion.trim()) {
-      setErrorNotice('Por favor ingresá la dirección para el envío.');
+      setErrorNotice(brandConfig.ui.checkout.errors.address);
       return;
     }
 
@@ -136,18 +115,14 @@ export const CheckoutModal: React.FC = () => {
           <button
             onClick={handleBackToCart}
             className="w-10 h-10 rounded-full bg-brand-surface-container text-brand-primary flex items-center justify-center hover:bg-brand-surface-container-high active:scale-95 transition-all cursor-pointer"
-            aria-label="Volver a la canasta"
+            aria-label={brandConfig.ui.checkout.backLabel}
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
 
           <div className="flex flex-col items-center text-center">
-            <span className="font-serif text-base font-bold text-brand-primary leading-tight">
-              Confirmación De Pedido
-            </span>
-            <span className="text-[11px] text-brand-secondary font-semibold">
-              {brandConfig.brand.name} Artesanal
-            </span>
+            <Txt as="span" className="font-serif text-base font-bold text-brand-primary leading-tight" value={brandConfig.ui.checkout.title} />
+            <Txt as="span" className="text-[11px] text-brand-secondary font-semibold" value={formatText(brandConfig.ui.checkout.titleBadge, { name: brandConfig.brand.name })} />
           </div>
 
           <div className="w-10 h-10 rounded-full bg-brand-tertiary-container text-white flex items-center justify-center shadow-sm">
@@ -161,15 +136,13 @@ export const CheckoutModal: React.FC = () => {
           {/* Progress Tracker Banner */}
           <div className="px-4 py-3.5 bg-brand-surface-container-low border-b border-brand-surface-container-highest">
             <div className="flex items-center justify-between mb-1.5 text-xs">
-              <span className="font-bold text-brand-primary">Paso 2 de 2</span>
-              <span className="text-brand-outline">Datos &amp; Cierre</span>
+              <Txt as="span" className="font-bold text-brand-primary" value={brandConfig.ui.checkout.step} />
+              <Txt as="span" className="text-brand-outline" value={brandConfig.ui.checkout.stepTitle} />
             </div>
             <div className="w-full bg-brand-surface-container-highest h-2 rounded-full overflow-hidden">
               <div className="bg-brand-secondary-container h-full rounded-full transition-all duration-500 w-full" />
             </div>
-            <p className="font-serif text-lg text-brand-primary font-semibold mt-2">
-              Entrega &amp; Confirmación
-            </p>
+            <Txt as="p" className="font-serif text-lg text-brand-primary font-semibold mt-2" value={brandConfig.ui.checkout.stepSubtitle} />
           </div>
 
           <div className="px-4 space-y-4">
@@ -183,9 +156,7 @@ export const CheckoutModal: React.FC = () => {
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-brand-primary">
-                        {totalItems} delicias
-                      </span>
+                      <Txt as="span" className="text-xs font-bold text-brand-primary" value={formatText(brandConfig.ui.checkout.itemsCount, { count: String(totalItems) })} />
                       <span className="w-1 h-1 rounded-full bg-brand-outline" />
                       <span className="text-xs font-bold text-brand-secondary">
                         {formatCurrency(subtotal)}
@@ -202,7 +173,7 @@ export const CheckoutModal: React.FC = () => {
                   onClick={() => setIsSummaryExpanded(!isSummaryExpanded)}
                   className="px-3 py-1.5 rounded-full bg-brand-surface-container text-brand-primary text-xs font-semibold flex items-center gap-1 hover:bg-brand-surface-container-high active:scale-95 transition-all cursor-pointer shrink-0"
                 >
-                  <span>{isSummaryExpanded ? 'Ocultar' : 'Ver detalle'}</span>
+                  <span>{isSummaryExpanded ? brandConfig.ui.checkout.summaryHide : brandConfig.ui.checkout.summaryShow}</span>
                   <ChevronDown
                     className={`w-3.5 h-3.5 transition-transform duration-200 ${
                       isSummaryExpanded ? 'rotate-180' : ''
@@ -234,13 +205,13 @@ export const CheckoutModal: React.FC = () => {
 
                   {metodo === 'delivery' && (
                     <div className="flex justify-between items-center py-1 text-brand-secondary">
-                      <span className="font-semibold">Envío en el barrio</span>
+                      <Txt as="span" className="font-semibold" value={brandConfig.ui.checkout.deliveryLine} />
                       <span className="font-bold">+{formatCurrency(deliveryCost)}</span>
                     </div>
                   )}
 
                   <div className="flex justify-between items-center pt-2 mt-1 border-t border-brand-surface-container">
-                    <span className="font-bold text-sm text-brand-primary">Total Estimado</span>
+                    <Txt as="span" className="font-bold text-sm text-brand-primary" value={brandConfig.ui.checkout.total} />
                     <span className="font-serif text-lg text-brand-secondary font-bold">
                       {formatCurrency(grandTotal)}
                     </span>
@@ -261,13 +232,11 @@ export const CheckoutModal: React.FC = () => {
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1.5 text-brand-primary">
                 <User className="w-4 h-4 text-brand-primary" />
-                <h3 className="font-serif text-base font-bold">1. Datos de Contacto</h3>
+                <Txt as="h3" className="font-serif text-base font-bold" value={brandConfig.ui.checkout.sectionContact} />
               </div>
 
               <div className="flex flex-col gap-1">
-                <label htmlFor="client-name" className="text-xs font-semibold text-brand-on-surface-variant">
-                  Nombre y Apellido
-                </label>
+                <Txt as="label" htmlFor="client-name" className="text-xs font-semibold text-brand-on-surface-variant" value={brandConfig.ui.checkout.nameLabel} />
                 <input
                   id="client-name"
                   type="text"
@@ -279,9 +248,7 @@ export const CheckoutModal: React.FC = () => {
               </div>
 
               <div className="flex flex-col gap-1">
-                <label htmlFor="client-phone" className="text-xs font-semibold text-brand-on-surface-variant">
-                  WhatsApp / Móvil
-                </label>
+                <Txt as="label" htmlFor="client-phone" className="text-xs font-semibold text-brand-on-surface-variant" value={brandConfig.ui.checkout.phoneLabel} />
                 <input
                   id="client-phone"
                   type="tel"
@@ -292,7 +259,7 @@ export const CheckoutModal: React.FC = () => {
                 />
                 <div className="flex items-center gap-1 text-[11px] text-brand-tertiary-container mt-0.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-brand-tertiary-container" />
-                  <span>Te responderemos a este número para coordinar el pedido.</span>
+                  <Txt as="span" value={brandConfig.ui.checkout.phoneHelp} />
                 </div>
               </div>
             </div>
@@ -301,7 +268,7 @@ export const CheckoutModal: React.FC = () => {
             <div className="flex flex-col gap-2 pt-1">
               <div className="flex items-center gap-1.5 text-brand-primary">
                 <Bike className="w-4 h-4 text-brand-primary" />
-                <h3 className="font-serif text-base font-bold">2. Método de Entrega</h3>
+                <Txt as="h3" className="font-serif text-base font-bold" value={brandConfig.ui.checkout.sectionDelivery} />
               </div>
 
               {/* Option A: Pickup */}
@@ -393,13 +360,11 @@ export const CheckoutModal: React.FC = () => {
             <div className="flex flex-col gap-2 pt-1">
               <div className="flex items-center gap-1.5 text-brand-primary">
                 <Calendar className="w-4 h-4 text-brand-primary" />
-                <h3 className="font-serif text-base font-bold">3. Fecha y Franja Horaria</h3>
+                <Txt as="h3" className="font-serif text-base font-bold" value={brandConfig.ui.checkout.sectionDate} />
               </div>
 
               <div className="flex flex-col gap-1">
-                <label htmlFor="pickup-date-select" className="text-xs font-semibold text-brand-on-surface-variant">
-                  Día programado
-                </label>
+                <Txt as="label" htmlFor="pickup-date-select" className="text-xs font-semibold text-brand-on-surface-variant" value={brandConfig.ui.checkout.dateLabel} />
                 <div className="relative">
                   <select
                     id="pickup-date-select"
@@ -416,17 +381,17 @@ export const CheckoutModal: React.FC = () => {
                 {hasLeadTimeItems && (
                   <span className="text-[11px] text-brand-tertiary-container flex items-center gap-1 mt-0.5 font-medium">
                     <Clock className="w-3.5 h-3.5 text-brand-tertiary-container" />
-                    Este pedido requiere {Math.max(...items
-                      .filter(item => item.product.requiresLeadTime)
-                      .map(item => item.product.leadTimeHours || 0))} hs de anticipación.
+                    {formatText(brandConfig.ui.checkout.leadTime, {
+                      hours: String(Math.max(...items
+                        .filter(item => item.product.requiresLeadTime)
+                        .map(item => item.product.leadTimeHours || 0))),
+                    })}
                   </span>
                 )}
               </div>
 
               <div className="flex flex-col gap-1">
-                <label htmlFor="pickup-slot-select" className="text-xs font-semibold text-brand-on-surface-variant">
-                  Franja horaria estimada
-                </label>
+                <Txt as="label" htmlFor="pickup-slot-select" className="text-xs font-semibold text-brand-on-surface-variant" value={brandConfig.ui.checkout.timeSlotLabel} />
                 <div className="relative">
                   <select
                     id="pickup-slot-select"
@@ -447,16 +412,14 @@ export const CheckoutModal: React.FC = () => {
             <div className="flex flex-col gap-1 pt-1">
               <div className="flex items-center gap-1.5 text-brand-primary">
                 <FileText className="w-4 h-4 text-brand-primary" />
-                <label htmlFor="notes-textarea" className="font-serif text-base font-bold">
-                  4. Aclaraciones especiales
-                </label>
+                <Txt as="label" htmlFor="notes-textarea" className="font-serif text-base font-bold" value={brandConfig.ui.checkout.sectionNotes} />
               </div>
               <textarea
                 id="notes-textarea"
                 rows={2}
                 value={notas}
                 onChange={(e) => setNotas(e.target.value)}
-                placeholder="Escribí notas sobre la dedicatoria o indicaciones..."
+                placeholder={brandConfig.ui.checkout.notesPlaceholder}
                 className="w-full p-3 rounded-xl bg-white text-brand-on-surface text-xs sm:text-sm border border-brand-surface-container-highest shadow-xs outline-none resize-none focus:ring-2 focus:ring-brand-primary-container"
               />
             </div>
@@ -465,10 +428,8 @@ export const CheckoutModal: React.FC = () => {
             <div className="flex flex-col gap-1.5 pt-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-brand-primary flex items-center gap-1">
-                  <MessageCircle className="w-4 h-4 text-brand-tertiary-container" />
-                  Vista previa del mensaje
-                </span>
-                <span className="text-[11px] text-brand-outline">Se enviará en directo</span>
+                  <MessageCircle className="w-4 h-4 text-brand-tertiary-container" />{brandConfig.ui.checkout.previewTitle}</span>
+                <Txt as="span" className="text-[11px] text-brand-outline" value={brandConfig.ui.checkout.previewBadge} />
               </div>
 
               <div className="p-4 rounded-2xl bg-brand-tertiary-fixed text-brand-on-tertiary-fixed shadow-md relative overflow-hidden font-sans text-xs leading-relaxed border border-brand-tertiary-muted">
@@ -486,14 +447,12 @@ export const CheckoutModal: React.FC = () => {
                 className="w-full h-14 bg-brand-tertiary-container hover:bg-brand-tertiary text-white rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_10px_24px_-4px_rgba(45,70,55,0.3)] active:scale-95 transition-all cursor-pointer"
               >
                 <Send className="w-5 h-5 text-brand-tertiary-fixed" />
-                <span>Confirmar y enviar por WhatsApp</span>
+                <Txt as="span" value={brandConfig.ui.checkout.confirm} />
               </button>
 
               <div className="flex items-center justify-center gap-1.5 text-center px-4">
                 <Lock className="w-3.5 h-3.5 text-brand-outline shrink-0" />
-                <p className="text-[11px] text-brand-on-surface-variant">
-                  Al tocar el botón se abrirá WhatsApp con el mensaje listo. Sin tarjetas ni registros.
-                </p>
+                <Txt as="p" className="text-[11px] text-brand-on-surface-variant" value={brandConfig.ui.checkout.confirmNote} />
               </div>
             </div>
 

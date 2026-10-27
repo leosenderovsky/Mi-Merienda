@@ -28,7 +28,10 @@ npm run preview
 - `src/`: aplicación React, estilos, configuración y datos.
 - `src/components/`: componentes de catálogo, carrito, checkout y secciones de la landing.
 - `src/context/CartContext.tsx`: estado de la canasta, persistencia local y armado del pedido para WhatsApp.
-- `src/brand.config.ts`: identidad, contenido, tema, entrega y SEO editables.
+- `src/data/brand.json`: **todos los datos y textos editables** (identidad, tema, entrega, SEO y textos de la interfaz).
+- `src/data/brand.schema.json`: esquema con etiquetas en español, tipos y reglas; `docs/CAMPOS.md` es la tabla de campos generada.
+- `src/brand.config.ts`: envoltorio que importa `brand.json` y exporta `brandConfig` (no se edita).
+- `src/components/Txt.tsx`: muestra un texto editable y no dibuja nada si está vacío.
 - `src/products.ts`: categorías y catálogo del prototipo.
 - `src/generated/`: datos generados para las dimensiones de las imágenes.
 - `public/assets/`: logo, iconos, imágenes del hero, catálogo y vista previa social.
@@ -39,7 +42,7 @@ npm run preview
 
 Hacé los cambios en este orden:
 
-1. Editá `src/brand.config.ts`. Cada bloque controla:
+1. Editá `src/data/brand.json` (la tabla completa está en `docs/CAMPOS.md`). Cada bloque controla:
    - `brand`: nombre, textos de marca, logo e iconos.
    - `typography`: nombres de tipografías y URL de la hoja de estilos.
    - `theme`: colores semánticos del sitio.
@@ -51,6 +54,7 @@ Hacé los cambios en este orden:
    - `demo`: banner de prototipo, valores de checkout y si se precargan.
    - `storage`: clave de `localStorage` usada para guardar la canasta.
    - `seo`: sufijo del título, descripción y recurso de imagen social.
+   - `howToOrder`, `extras` y `ui`: títulos, botones, avisos, mensajes de WhatsApp y precio del pack de velita.
 2. Los tokens de `theme` se inyectan como variables CSS desde `src/main.tsx`; ahí también se asignan las dos familias tipográficas.
 3. Actualizá `src/products.ts`: cada producto tiene identificador, nombre, categoría, precio, unidad, imagen, descripción y, opcionalmente, `badge`, `requiresLeadTime`, `leadTimeHours` y `opciones`. Las opciones admiten `radio`, `checkbox` y `text`; las alternativas y los extras de precio se expresan con `extraPrice`.
 4. Si cambia el rubro, ajustá la unión `ProductCategory` y la lista `CATEGORIES` en `src/products.ts`. Revisá también la navegación específica de “Tortas por encargo” en `src/App.tsx` y `src/components/Header.tsx`.
@@ -58,7 +62,29 @@ Hacé los cambios en este orden:
 
 ### Fechas de entrega
 
-`src/components/CheckoutModal.tsx` toma el mayor `leadTimeHours` entre los productos de la canasta que requieren anticipación. Redondea esas horas hacia arriba a días, suma el resultado a la fecha de hoy y muestra hasta diez fechas candidatas, excluyendo los días indicados en `contact.closedWeekdays`. Los turnos salen de `delivery.timeSlots`.
+`src/lib/availableDates.ts` (usado por `CheckoutModal.tsx` y por la ficha de producto) toma el mayor `leadTimeHours` entre los productos de la canasta que requieren anticipación. Redondea esas horas hacia arriba a días, suma el resultado a la fecha de hoy y muestra hasta diez fechas candidatas, excluyendo los días indicados en `contact.closedWeekdays`. Los turnos salen de `delivery.timeSlots`.
+
+### Todos los textos son editables (y quitables)
+
+Ningún texto visible está escrito en el código: todo sale de `src/data/brand.json`, incluidos botones, títulos, avisos, etiquetas de accesibilidad y los mensajes de WhatsApp.
+
+- **Cambiar un texto:** editá su valor (por ejemplo `ui.footer.addressTitle` de "Local Barrial" a "Dónde estamos").
+- **Quitar un elemento:** dejá su texto **vacío** (`""`); el elemento no se dibuja.
+- **Textos con variables:** `{name}`, `{count}`, `{hours}`, `{price}`, etc. se reemplazan solos; el esquema indica cuáles admite cada texto y `check:config` falla si usás una desconocida.
+- Los nombres, descripciones y opciones de productos están en `src/products.ts` (también datos editables).
+
+Si agregás un componente, sus textos van a `brand.json` y a `brand.schema.json`; `npm run check:texts` lo verifica.
+
+## Datos, validación y pruebas
+
+| Comando | Para qué sirve |
+| --- | --- |
+| `npm run generate:types` | Genera `src/generated/brand.types.ts` desde el esquema (corre solo en `dev` y `build`; el archivo se commitea). |
+| `npm run check:config` | Valida `brand.json` contra el esquema, imágenes, URLs, colores, WhatsApp y variables de texto. |
+| `npm run check:config:strict` | Además exige reemplazar los datos de ejemplo y rechaza los textos de `prototype-markers.json`. **Falla en el prototipo, a propósito.** |
+| `npm run check:texts` | Falla si algún texto visible está escrito en el código en vez de salir de `brand.json`. |
+| `npm run check:render` | Renderiza la aplicación sin navegador y falla ante cualquier excepción. |
+| `npm run docs:fields` | Regenera `docs/CAMPOS.md`. |
 
 ## Imágenes y logo
 
@@ -102,7 +128,7 @@ Para la URL del sitio, `vite.config.ts` resuelve en este orden: `VITE_SITE_URL` 
 
 `src/components/PrototypeBanner.tsx` muestra el aviso controlado por `brandConfig.demo.showPrototypeBanner`. El nombre y el enlace opcionales vienen de las variables `VITE_DEMO_BRAND_NAME` y `VITE_DEMO_BRAND_URL` leídas en `src/demoBanner.config.ts`. `getDemoLegend()` arma la leyenda de prototipo que aparece en el pie.
 
-`brandConfig.demo.prefillCheckout` controla si el checkout toma los valores de `checkoutDefaults`; está apagado por defecto. Antes de entregar, reemplazá todos los valores y contenidos de muestra. En particular, buscá en `src/brand.config.ts` los campos marcados **“DATOS DE EJEMPLO, reemplazar por cliente”**: WhatsApp, nombre visible de WhatsApp, dirección y ciudad, horarios, días de cierre y turnos de entrega. Revisá también textos, precios, catálogo, imágenes y valores de checkout.
+`brandConfig.demo.prefillCheckout` controla si el checkout toma los valores de `checkoutDefaults`; está apagado por defecto. Antes de entregar, reemplazá todos los valores y contenidos de muestra. Corré `npm run check:config:strict`: lista cada dato de ejemplo (WhatsApp, dirección, horarios, turnos, textos de marca) que falta reemplazar en `src/data/brand.json`. Revisá también textos, precios, catálogo, imágenes y valores de checkout.
 
 Para mantener el código de demo pero ocultar el aviso, poné `showPrototypeBanner` en `false` y dejá `prefillCheckout` en `false`. Para retirarlo del todo, además quitá el componente, su import y la bandera según indica `src/demoBanner.config.ts`; revisá la leyenda `disclaimer.demoBadge` que consume `src/components/Footer.tsx`. No publiques el prototipo con datos de muestra.
 
@@ -130,7 +156,7 @@ El comando compara el commit publicado contra `origin/main`, revisa la fuente de
 
 ### Verificación antes de entregar
 
-- [ ] Reemplazá marca, contacto, horarios y días cerrados en `src/brand.config.ts`.
+- [ ] Reemplazá marca, contacto, horarios, días cerrados y textos en `src/data/brand.json` hasta que pase `npm run check:config:strict`.
 - [ ] Reemplazá y revisá productos, precios, unidades, opciones e imágenes en `src/products.ts`.
 - [ ] Revisá las categorías y la navegación si cambió el rubro.
 - [ ] Ocultá o sacá el banner demo; confirmá que `prefillCheckout` esté apagado.
@@ -141,6 +167,8 @@ npm run make:icons
 npm run check:icons
 npm run check:images:strict
 npm run lint
+npm run check:texts
+npm run check:render
 npm run build
 ```
 

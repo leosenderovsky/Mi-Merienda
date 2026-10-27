@@ -1,6 +1,7 @@
 import React from 'react';
+import { Txt } from './Txt';
 import { useCart } from '../context/CartContext';
-import { formatCurrency } from '../brand.config';
+import { brandConfig, formatCurrency } from '../brand.config';
 import { ShoppingBag, ChevronRight } from 'lucide-react';
 
 export const FloatingCartBar: React.FC = () => {
@@ -18,11 +19,9 @@ export const FloatingCartBar: React.FC = () => {
             <ShoppingBag className="w-5 h-5" />
           </div>
           <div className="flex flex-col">
-            <span className="text-[10px] text-brand-primary-fixed uppercase tracking-wider font-bold">
-              Tu pedido actual
-            </span>
+            <Txt as="span" className="text-[10px] text-brand-primary-fixed uppercase tracking-wider font-bold" value={brandConfig.ui.cartBar.label} />
             <span className="font-serif text-sm sm:text-base font-bold text-white leading-tight">
-              {totalItems} {totalItems === 1 ? 'ítem' : 'ítems'} • {formatCurrency(subtotal)}
+              {totalItems} {totalItems === 1 ? brandConfig.ui.cartBar.itemSingular : brandConfig.ui.cartBar.itemPlural} • {formatCurrency(subtotal)}
             </span>
           </div>
         </div>
@@ -31,7 +30,7 @@ export const FloatingCartBar: React.FC = () => {
           onClick={() => setIsCartOpen(true)}
           className="px-4 py-2 rounded-full bg-brand-secondary-container hover:bg-brand-secondary-container text-brand-on-secondary-container font-bold text-xs sm:text-sm flex items-center gap-1 shadow-sm active:scale-95 transition-all cursor-pointer"
         >
-          <span>Ver Carrito</span>
+          <Txt as="span" value={brandConfig.ui.cartBar.view} />
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>

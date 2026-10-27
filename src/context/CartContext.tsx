@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product } from '../products';
-import { brandConfig, formatCurrency } from '../brand.config';
+import { brandConfig, formatCurrency, formatText } from '../brand.config';
 
 const cartStorageKey = brandConfig.storage.cartKey;
 
@@ -125,8 +125,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       summaries.push(options.corte.name);
     }
     if (options.velita) {
-      extra += 1200;
-      summaries.push('Con Velita + Bengalita');
+      extra += brandConfig.extras.candlePackPrice;
+      summaries.push(brandConfig.ui.cart.candleSummary);
     }
     if (options.dedicatoria && options.dedicatoria.trim()) {
       summaries.push(`"${options.dedicatoria.trim()}"`);
@@ -167,7 +167,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       ];
     });
 
-    showToast(`¡${product.nombre} sumado a tu canasta!`);
+    showToast(formatText(brandConfig.ui.toast.added, { product: product.nombre }));
   };
 
   const updateQuantity = (cartItemId: string, delta: number) => {
@@ -191,12 +191,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const removeFromCart = (cartItemId: string) => {
     setItems(prev => prev.filter(item => item.id !== cartItemId));
-    showToast('Producto eliminado de la canasta');
+    showToast(brandConfig.ui.toast.removed);
   };
 
   const clearCart = () => {
     setItems([]);
-    showToast('Tu canasta ha sido vaciada');
+    showToast(brandConfig.ui.toast.cleared);
   };
 
   const totalItems = items.reduce((acc, curr) => acc + curr.quantity, 0);
@@ -209,38 +209,44 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const deliveryCost = isDelivery ? brandConfig.delivery.delivery.price : 0;
     const finalTotal = subtotal + deliveryCost;
 
+    const w = brandConfig.ui.whatsapp;
     let modalityText = '';
     if (isDelivery) {
-      const address = info.direccion?.trim() || '(Dirección a confirmar)';
+      const address = info.direccion?.trim() || w.addressPending;
       const details = info.direccionDetalle?.trim() ? ` [${info.direccionDetalle.trim()}]` : '';
-      modalityText = `Envío a domicilio en: ${address}${details} (${info.fecha} - ${info.franjaHoraria})`;
+      modalityText = formatText(w.deliveryMode, { address, details, date: info.fecha, slot: info.franjaHoraria });
     } else {
-      modalityText = `Retiro en local (${info.fecha} - ${info.franjaHoraria})`;
+      modalityText = formatText(w.pickupMode, { date: info.fecha, slot: info.franjaHoraria });
     }
 
     const itemsLines = items
-      .map(item => {
-        const optionPart = item.optionSummary ? ` (${item.optionSummary})` : '';
-        return `• ${item.quantity}x ${item.product.nombre}${optionPart} (${formatCurrency(item.totalPrice)})`;
-      })
+      .map(item => formatText(w.itemLine, {
+        quantity: String(item.quantity),
+        name: item.product.nombre,
+        options: item.optionSummary ? ` (${item.optionSummary})` : '',
+        price: formatCurrency(item.totalPrice),
+      }))
       .join('\n');
 
     const deliveryLine = isDelivery
-      ? `\n• Envío a Domicilio (${formatCurrency(deliveryCost)})`
+      ? `\n${formatText(w.deliveryLine, { price: formatCurrency(deliveryCost) })}`
       : '';
 
     const noteLine = info.notas && info.notas.trim()
-      ? `\n📝 *Nota:* ${info.notas.trim()}`
+      ? `\n${formatText(w.noteLine, { note: info.notas.trim() })}`
       : '';
 
-    return `🥖 *Nuevo Pedido - ${brandConfig.brand.name}*
-👤 *Cliente:* ${info.nombre.trim() || 'Cliente'}
-📱 *WhatsApp:* ${info.telefono.trim() || 'No especificado'}
-📍 *Modalidad:* ${modalityText}
--------------------------
-${itemsLines}${deliveryLine}
--------------------------
-💰 *Total estimado: ${formatCurrency(finalTotal)}*${noteLine}`;
+    const separator = '-------------------------';
+    return [
+      formatText(w.orderTitle, { name: brandConfig.brand.name }),
+      formatText(w.customerLine, { customer: info.nombre.trim() || w.customerFallback }),
+      formatText(w.phoneLine, { phone: info.telefono.trim() || w.notSpecified }),
+      formatText(w.modeLine, { mode: modalityText }),
+      separator,
+      `${itemsLines}${deliveryLine}`,
+      separator,
+      `${formatText(w.totalLine, { total: formatCurrency(finalTotal) })}${noteLine}`,
+    ].join('\n');
   };
 
   const sendWhatsAppOrder = (info: DeliveryInfo) => {

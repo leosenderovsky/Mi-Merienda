@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "site": "mi-merienda",
+  "brand": {
+    "name": "Mi Merienda",
+    "tagline": "Horneando momentos felices desde 2009",
+    "subtagline": "Panadería & Pastelería Artesanal de Barrio",
+    "logoUrl": "/assets/logo/logo.png",
+    "favicon32Url": "/assets/logo/favicon-32.png",
+    "appleTouchIconUrl": "/assets/logo/apple-touch-icon.png",
+    "badgeHeroKicker": "Tradición y cariño de barrio",
+    "faviconCrop": {
+      "left": 0.2,
+      "top": 0.02,
+      "width": 0.6,
+      "height": 0.56
+    }
+  },
+  "typography": {
+    "displayFont": "'Vollkorn', Georgia, serif",
+    "bodyFont": "'Plus Jakarta Sans', sans-serif",
+    "stylesheetUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Vollkorn:ital,wght@0,600;0,700;1,600&display=swap"
+  },
+  "theme": {
+    "primary": "#422316",
+    "primaryContainer": "#5c382a",
+    "primaryFixed": "#ffdbce",
+    "onPrimaryContainer": "#d4a28f",
+    "secondary": "#7e5700",
+    "secondaryContainer": "#fdbe50",
+    "secondaryFixed": "#ffdead",
+    "onSecondaryFixed": "#281900",
+    "onSecondaryContainer": "#714d00",
+    "secondaryEmphasis": "#604100",
+    "surface": "#fdf9f3",
+    "surfaceContainer": "#f1ede7",
+    "surfaceContainerLow": "#f7f3ed",
+    "surfaceContainerHigh": "#ebe8e2",
+    "surfaceContainerHighest": "#e6e2dc",
+    "onSurface": "#1c1c18",
+    "onSurfaceVariant": "#514440",
+    "outline": "#83746f",
+    "outlineVariant": "#d5c3bd",
+    "tertiary": "#173022",
+    "tertiaryContainer": "#2d4637",
+    "tertiaryFixed": "#cdead5",
+    "onTertiaryFixed": "#072013",
+    "tertiaryMuted": "#b1cdb9",
+    "error": "#ba1a1a",
+    "errorContainer": "#ffdad6"
+  },
+  "contact": {
+    "whatsappNumber": "5491145218890",
+    "whatsappDisplay": "+54 9 11 4521-8890",
+    "phonePlaceholder": "+54 9 11 ...",
+    "customerNamePlaceholder": "Ej: Valeria Gómez",
+    "addressPlaceholder": "Calle y altura (ej: Thames 1840)",
+    "addressDetailPlaceholder": "Piso / Depto / Timbre (ej: 4to B)",
+    "instagramHandle": "@mimerienda.panaderia",
+    "instagramUrl": "https://instagram.com/mimerienda.panaderia",
+    "address": "Av. San Martín 2840, Barrio Norte",
+    "city": "Buenos Aires",
+    "scheduleWeekday": "Martes a Domingo: 07:30 a 20:00 hs",
+    "scheduleNote": "Lunes cerrado por descanso de horno",
+    "closedWeekdays": [
+      1
+    ]
+  },
+  "delivery": {
+    "pickup": {
+      "title": "Retiro en el local",
+      "price": 0,
+      "label": "Gratis",
+      "description": "Av. San Martín 2840 • Horario a convenir"
+    },
+    "delivery": {
+      "title": "Envío en el barrio",
+      "price": 1500,
+      "label": "+$1.500",
+      "description": "Reparto seguro en bicicleta y auto térmico"
+    },
+    "timeSlots": [
+      "Turno Mañana (10:00 a 12:30 hs)",
+      "Turno Tarde (16:30 a 18:30 hs)",
+      "Turno Cierre (18:30 a 20:00 hs)"
+    ],
+    "leadNoticeCake": "Tu pedido incluye productos del día y una torta artesanal por encargo que requiere 48 hs de anticipación."
+  },
+  "hero": {
+    "kicker": "Tradición y cariño de barrio",
+    "title": "El sabor del barrio, horneado con amor cada mañana",
+    "description": "Panadería y pastelería artesanal. Productos frescos del día y pedidos especiales por encargo para tus momentos dulces.",
+    "ctaPrimary": "Ver catálogo del día",
+    "ctaSecondary": "Atención por WhatsApp",
+    "badges": [
+      {
+        "text": "Hornadas cada 2 hs",
+        "icon": "local_fire_department",
+        "style": "secondary"
+      },
+      {
+        "text": "100% Masa Madre",
+        "icon": "eco",
+        "style": "tertiary"
+      }
+    ],
+    "heroImage": "/assets/hero/hero-1.jpg",
+    "imageAlt": "Panes artesanos y medialunas recién horneadas"
+  },
+  "orderSteps": [
+    {
+      "step": 1,
+      "title": "Elegí tus favoritos",
+      "description": "Seleccioná facturas del día o programá tortas con anticipación de 48hs."
+    },
+    {
+      "step": 2,
+      "title": "Completá tus datos",
+      "description": "Elegí retiro sin cargo en nuestro local o entrega express en el barrio."
+    },
+    {
+      "step": 3,
+      "title": "Confirmación directa por WhatsApp",
+      "description": "Te enviamos el resumen, coordinás el abono y recibís aviso cuando esté listo."
+    }
+  ],
+  "disclaimer": {
+    "footerNote": "Hecho con masa madre, harina orgánica y dedicación artesanal."
+  },
+  "demo": {
+    "showPrototypeBanner": true,
+    "prefillCheckout": false,
+    "checkoutDefaults": {
+      "name": "Valeria Gómez",
+      "address": "Thames 1840",
+      "addressDetail": "4to B",
+      "notes": "Por favor avisarme cuando esté lista la torta para pasar a buscarla con tiempo. ¡Gracias!"
+    }
+  },
+  "storage": {
+    "cartKey": "mi_merienda_cart"
+  },
+  "seo": {
+    "titleSuffix": "Panadería & Pastelería",
+    "description": "Panadería y pastelería artesanal Mi Merienda. Productos frescos del día y pedidos especiales por encargo.",
+    "socialImage": "/assets/misc/og-image.jpg"
+  },
+  "ui": {
+    "catalog": {
+      "emptyCategory": "No hay productos en esta categoría por el momento.",
+      "viewAll": "Ver todos los productos",
+      "title": "Nuestras Especialidades",
+      "countLabel": "{count} Variedades"
+    },
+    "toast": {
+      "viewBasket": "Ver canasta",
+      "removed": "Producto eliminado de la canasta",
+      "cleared": "Tu canasta ha sido vaciada",
+      "added": "¡{product} sumado a tu canasta!"
+    },
+    "bottomNav": {
+      "catalog": "Catálogo",
+      "cakes": "Tortas",
+      "basket": "Canasta",
+      "contact": "Contacto"
+    },
+    "units": {
+      "order": "Encargo",
+      "dozen": "Docena",
+      "kilo": "1 Kilo",
+      "halfKilo": "500 grs",
+      "perDozen": "Por docena",
+      "perKilo": "Por kilo",
+      "perHalfKilo": "Por 1/2 kilo",
+      "unitTemplate": "Unidad ({unit})"
+    },
+    "cart": {
+      "title": "Tu canasta de delicias",
+      "subtitleEmpty": "Sin productos seleccionados aún",
+      "clearTitle": "Vaciar canasta",
+      "clear": "Vaciar",
+      "closeLabel": "Cerrar canasta",
+      "emptyTitle": "Tu canasta está vacía",
+      "emptyDescription": "¡Pasá por el catálogo y descubrí los panes recién horneados, facturas caseras y tortas por encargo!",
+      "emptyButton": "Explorar catálogo",
+      "leadNoticeTitle": "Aviso de horneado fresco",
+      "decreaseLabel": "Restar 1",
+      "increaseLabel": "Sumar 1",
+      "subtotal": "Subtotal de productos",
+      "shipping": "Envío / Retiro",
+      "shippingNote": "A convenir en siguiente paso",
+      "total": "Total estimado",
+      "totalNote": "Sin recargos adicionales",
+      "paymentNoteStart": "Los pedidos se abonan al retirar en el mostrador o por",
+      "paymentNoteEmphasis": "transferencia bancaria directa",
+      "paymentNoteEnd": "al confirmar los detalles por WhatsApp. Cero comisiones de plataforma.",
+      "continue": "Continuar a datos de entrega",
+      "keepShopping": "Seguir sumando delicias del catálogo",
+      "candleSummary": "Con Velita + Bengalita",
+      "subtitleFilled": "{count} delicias horneadas preparadas con amor",
+      "removeLabel": "Eliminar {name}"
+    },
+    "checkout": {
+      "errors": {
+        "name": "Por favor completá tu nombre y apellido.",
+        "phone": "Por favor ingresá un número de WhatsApp válido (al menos 8 dígitos).",
+        "address": "Por favor ingresá la dirección para el envío."
+      },
+      "backLabel": "Volver a la canasta",
+      "title": "Confirmación De Pedido",
+      "step": "Paso 2 de 2",
+      "stepTitle": "Datos & Cierre",
+      "stepSubtitle": "Entrega & Confirmación",
+      "summaryHide": "Ocultar",
+      "summaryShow": "Ver detalle",
+      "deliveryLine": "Envío en el barrio",
+      "total": "Total Estimado",
+      "sectionContact": "1. Datos de Contacto",
+      "nameLabel": "Nombre y Apellido",
+      "phoneLabel": "WhatsApp / Móvil",
+      "phoneHelp": "Te responderemos a este número para coordinar el pedido.",
+      "sectionDelivery": "2. Método de Entrega",
+      "sectionDate": "3. Fecha y Franja Horaria",
+      "dateLabel": "Día programado",
+      "timeSlotLabel": "Franja horaria estimada",
+      "sectionNotes": "4. Aclaraciones especiales",
+      "notesPlaceholder": "Escribí notas sobre la dedicatoria o indicaciones...",
+      "previewTitle": "Vista previa del mensaje",
+      "previewBadge": "Se enviará en directo",
+      "confirm": "Confirmar y enviar por WhatsApp",
+      "confirmNote": "Al tocar el botón se abrirá WhatsApp con el mensaje listo. Sin tarjetas ni registros.",
+      "titleBadge": "{name} Artesanal",
+      "itemsCount": "{count} delicias",
+      "leadTime": "Este pedido requiere {hours} hs de anticipación."
+    },
+    "cartBar": {
+      "label": "Tu pedido actual",
+      "itemSingular": "ítem",
+      "itemPlural": "ítems",
+      "view": "Ver Carrito"
+    },
+    "footer": {
+      "hoursTitle": "Horarios de Atención",
+      "addressTitle": "Local Barrial",
+      "socialTitle": "Comunidad & Redes",
+      "socialNote": "Seguinos para ver los horneados",
+      "title": "Panadería {name}"
+    },
+    "header": {
+      "whatsappLabel": "WhatsApp directo",
+      "whatsappTitle": "Consultar por WhatsApp",
+      "cartTitle": "Ver canasta de delicias",
+      "navProducts": "Productos",
+      "navCakes": "Tortas por encargo",
+      "navHowToOrder": "Cómo pedir",
+      "navContact": "Contacto",
+      "cartLabel": "Ver carrito: {count} ítems"
+    },
+    "productCard": {
+      "specialOrder": "Encargo especial",
+      "customize": "Personalizar y pedir",
+      "added": "¡Sumado!",
+      "add": "Agregar",
+      "priceLabel": "Precio {unit}"
+    },
+    "productDetail": {
+      "dedicationDefault": "¡Feliz Cumple Mamá!",
+      "backLabel": "Volver al catálogo",
+      "title": "Detalle de Producto",
+      "whatsappLabel": "Consultar por WhatsApp",
+      "favoriteBadge": "Favorito artesanal",
+      "bakedToday": "Horneado en el día",
+      "bakedOnDemand": "Horneado a pedido",
+      "freshStock": "Stock fresco",
+      "freshness": "Garantía de frescura: se elabora la mañana de tu entrega",
+      "sectionSize": "1. Seleccionar tamaño",
+      "required": "Obligatorio",
+      "included": "Incluido",
+      "sectionCustom": "2. Personalización y celebración",
+      "optional": "(Opcional)",
+      "dedicationPlaceholder": "Ej: ¡Feliz Cumple Mamá!",
+      "candlePackTitle": "Pack Velita dorada + Bengalita artesanal",
+      "candlePackNote": "Lista para encender y festejar",
+      "sectionDate": "3. Fecha estimada de retiro o entrega",
+      "nearestSlot": "Turno más cercano disponible",
+      "quantity": "Cantidad",
+      "quantityNote": "Unidades para esta fecha",
+      "decreaseLabel": "Disminuir cantidad",
+      "increaseLabel": "Aumentar cantidad",
+      "addToOrder": "Agregar al pedido",
+      "askWhatsapp": "Consultar dudas por WhatsApp antes de pedir",
+      "titleBadge": "{name} Artesanal",
+      "leadBadge": "{hours} hs de anticipación",
+      "basePrice": "Precio base: {price}",
+      "nearestSlotValue": "{date} — {slot}"
+    },
+    "whatsapp": {
+      "addressPending": "(Dirección a confirmar)",
+      "customerFallback": "Cliente",
+      "notSpecified": "No especificado",
+      "consult": "¡Hola {name}! Quisiera hacerles una consulta sobre los productos del día.",
+      "availability": "¡Hola {name}! Me gustaría consultar sobre la disponibilidad de los productos de hoy.",
+      "cakeInquiry": "¡Hola {name}! Tengo una consulta sobre {product} por encargo.",
+      "orderTitle": "🥖 *Nuevo Pedido - {name}*",
+      "customerLine": "👤 *Cliente:* {customer}",
+      "phoneLine": "📱 *WhatsApp:* {phone}",
+      "modeLine": "📍 *Modalidad:* {mode}",
+      "deliveryMode": "Envío a domicilio en: {address}{details} ({date} - {slot})",
+      "pickupMode": "Retiro en local ({date} - {slot})",
+      "itemLine": "• {quantity}x {name}{options} ({price})",
+      "deliveryLine": "• Envío a Domicilio ({price})",
+      "noteLine": "📝 *Nota:* {note}",
+      "totalLine": "💰 *Total estimado: {total}*"
+    }
+  },
+  "howToOrder": {
+    "title": "¿Cómo hacer tu pedido?",
+    "subtitle": "Simple, rápido y con la cercanía que nos caracteriza desde hace 15 años."
+  },
+  "extras": {
+    "candlePackPrice": 1200
+  }
+}

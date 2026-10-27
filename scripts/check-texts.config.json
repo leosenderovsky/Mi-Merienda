@@ -1,0 +1,9 @@
+{
+  "excludeFiles": [
+    "src/products.ts",
+    "src/components/PrototypeBanner.tsx",
+    "src/demoBanner.config.ts",
+    "src/generated/brand.types.ts"
+  ],
+  "allowStrings": []
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Txt } from './Txt';
 import { Product, getProductImageDimensions } from '../products';
-import { formatCurrency } from '../brand.config';
+import { brandConfig, formatCurrency, formatText } from '../brand.config';
 import { useCart } from '../context/CartContext';
 import { Plus, Check, SlidersHorizontal, Clock, Sparkles } from 'lucide-react';
 
@@ -41,10 +42,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
   };
 
   const unitLabelText = () => {
-    if (product.unidad === 'docena') return 'Por docena';
-    if (product.unidad === 'kilo') return 'Por kilo';
-    if (product.unidad === '500 grs') return 'Por 1/2 kilo';
-    return product.unidad.startsWith('unidad') ? product.unidad : `Unidad (${product.unidad})`;
+    if (product.unidad === 'docena') return brandConfig.ui.units.perDozen;
+    if (product.unidad === 'kilo') return brandConfig.ui.units.perKilo;
+    if (product.unidad === '500 grs') return brandConfig.ui.units.perHalfKilo;
+    return product.unidad.startsWith('unidad') ? product.unidad : formatText(brandConfig.ui.units.unitTemplate, { unit: product.unidad });
   };
 
   return (
@@ -97,7 +98,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
         <div className="flex items-center justify-between pt-2 border-t border-brand-surface-container-low">
           <div className="flex flex-col">
             <span className="text-[10px] text-brand-outline uppercase font-bold tracking-wider">
-              {product.requiresLeadTime ? 'Encargo especial' : `Precio ${product.unidad}`}
+              {product.requiresLeadTime ? brandConfig.ui.productCard.specialOrder : formatText(brandConfig.ui.productCard.priceLabel, { unit: product.unidad })}
             </span>
             <span className="font-serif text-xl sm:text-2xl text-brand-primary font-bold">
               {formatCurrency(product.precio)}
@@ -114,7 +115,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
               }}
               className="px-4 py-2 rounded-full bg-brand-tertiary-container hover:bg-brand-tertiary text-white text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all active:scale-95 shadow-sm cursor-pointer"
             >
-              <span>Personalizar y pedir</span>
+              <Txt as="span" value={brandConfig.ui.productCard.customize} />
               <SlidersHorizontal className="w-4 h-4 text-brand-tertiary-fixed" />
             </button>
           ) : (
@@ -130,12 +131,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
               {isAddedFeedback ? (
                 <>
                   <Check className="w-4 h-4 text-brand-tertiary-fixed" />
-                  <span>¡Sumado!</span>
+                  <Txt as="span" value={brandConfig.ui.productCard.added} />
                 </>
               ) : (
                 <>
                   <Plus className="w-4 h-4" />
-                  <span>Agregar</span>
+                  <Txt as="span" value={brandConfig.ui.productCard.add} />
                 </>
               )}
             </button>

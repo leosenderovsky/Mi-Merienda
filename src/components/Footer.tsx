@@ -1,5 +1,6 @@
 import React from 'react';
-import { brandConfig } from '../brand.config';
+import { Txt } from './Txt';
+import { brandConfig, formatText } from '../brand.config';
 import { Store, Clock, MapPin, Instagram } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -13,9 +14,7 @@ export const Footer: React.FC = () => {
             <Store className="w-6 h-6" />
           </div>
           <div className="flex flex-col">
-            <span className="font-serif text-lg sm:text-xl font-bold text-brand-primary">
-              Panadería {brandConfig.brand.name}
-            </span>
+            <Txt as="span" className="font-serif text-lg sm:text-xl font-bold text-brand-primary" value={formatText(brandConfig.ui.footer.title, { name: brandConfig.brand.name })} />
             <span className="text-xs text-brand-secondary font-semibold">
               {brandConfig.brand.tagline}
             </span>
@@ -28,7 +27,7 @@ export const Footer: React.FC = () => {
           <div className="flex items-start gap-3 p-3 rounded-xl bg-white/60 border border-brand-surface-container-highest/60">
             <Clock className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
             <div className="flex flex-col text-xs">
-              <span className="font-bold text-brand-primary">Horarios de Atención</span>
+              <Txt as="span" className="font-bold text-brand-primary" value={brandConfig.ui.footer.hoursTitle} />
               <span className="text-brand-on-surface-variant mt-0.5">{brandConfig.contact.scheduleWeekday}</span>
               <span className="text-[11px] text-brand-outline mt-0.5">{brandConfig.contact.scheduleNote}</span>
             </div>
@@ -38,7 +37,7 @@ export const Footer: React.FC = () => {
           <div className="flex items-start gap-3 p-3 rounded-xl bg-white/60 border border-brand-surface-container-highest/60">
             <MapPin className="w-4 h-4 text-brand-primary shrink-0 mt-0.5" />
             <div className="flex flex-col text-xs">
-              <span className="font-bold text-brand-primary">Local Barrial</span>
+              <Txt as="span" className="font-bold text-brand-primary" value={brandConfig.ui.footer.addressTitle} />
               <span className="text-brand-on-surface-variant mt-0.5">{brandConfig.contact.address}</span>
               <span className="text-[11px] text-brand-outline mt-0.5">{brandConfig.contact.city}</span>
             </div>
@@ -53,11 +52,9 @@ export const Footer: React.FC = () => {
           >
             <Instagram className="w-4 h-4 text-brand-primary group-hover:text-brand-secondary shrink-0 mt-0.5" />
             <div className="flex flex-col text-xs">
-              <span className="font-bold text-brand-primary group-hover:text-brand-secondary">
-                Comunidad &amp; Redes
-              </span>
+              <Txt as="span" className="font-bold text-brand-primary group-hover:text-brand-secondary" value={brandConfig.ui.footer.socialTitle} />
               <span className="text-brand-on-surface-variant mt-0.5">{brandConfig.contact.instagramHandle}</span>
-              <span className="text-[11px] text-brand-outline mt-0.5">Seguinos para ver los horneados</span>
+              <Txt as="span" className="text-[11px] text-brand-outline mt-0.5" value={brandConfig.ui.footer.socialNote} />
             </div>
           </a>
         </div>
