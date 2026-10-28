@@ -1,4 +1,5 @@
 import React from 'react';
+import { Txt } from './Txt';
 import { brandConfig } from '../brand.config';
 import { CakeSlice } from 'lucide-react';
 
@@ -11,14 +12,10 @@ export const HowToOrder: React.FC = () => {
           <div className="w-9 h-9 rounded-full bg-brand-secondary-container text-brand-on-secondary-container flex items-center justify-center shrink-0">
             <CakeSlice className="w-5 h-5" />
           </div>
-          <h3 className="font-serif text-lg sm:text-xl text-brand-primary font-bold">
-            ¿Cómo hacer tu pedido?
-          </h3>
+          <Txt as="h3" className="font-serif text-lg sm:text-xl text-brand-primary font-bold" value={brandConfig.howToOrder.title} />
         </div>
 
-        <p className="text-xs sm:text-sm text-brand-on-surface-variant leading-relaxed">
-          Simple, rápido y con la cercanía que nos caracteriza desde hace 15 años.
-        </p>
+        <Txt as="p" className="text-xs sm:text-sm text-brand-on-surface-variant leading-relaxed" value={brandConfig.howToOrder.subtitle} />
 
         <div className="flex flex-col gap-3 mt-2">
           {brandConfig.orderSteps.map((step) => (

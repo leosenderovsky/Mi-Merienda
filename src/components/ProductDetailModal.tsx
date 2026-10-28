@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Txt } from './Txt';
 import { Product, getProductImageDimensions } from '../products';
-import { brandConfig, formatCurrency } from '../brand.config';
+import { brandConfig, formatCurrency, formatText } from '../brand.config';
 import { useCart, SelectedOptionState } from '../context/CartContext';
+import { getAvailableDates } from '../lib/availableDates';
 import {
   ArrowLeft,
   Star,
@@ -29,7 +31,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
 
   // Estados de opciones seleccionadas
   const [selectedSize, setSelectedSize] = useState<any>(null);
-  const [dedication, setDedication] = useState('¡Feliz Cumple Mamá!');
+  const [dedication, setDedication] = useState(brandConfig.ui.productDetail.dedicationDefault);
   const [hasSparkler, setHasSparkler] = useState(false);
   const [selectedVariedad, setSelectedVariedad] = useState<any>(null);
   const [selectedCorte, setSelectedCorte] = useState<any>(null);
@@ -64,7 +66,15 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
   const extraSize = selectedSize ? selectedSize.extraPrice : 0;
   const extraVariedad = selectedVariedad ? selectedVariedad.extraPrice : 0;
   const extraCorte = selectedCorte ? selectedCorte.extraPrice : 0;
-  const extraSparkler = hasSparkler ? 1200 : 0;
+  const extraSparkler = hasSparkler ? brandConfig.extras.candlePackPrice : 0;
+
+  const nearestDate = getAvailableDates(product.leadTimeHours || 0)[0];
+  const nearestSlotText = nearestDate
+    ? formatText(brandConfig.ui.productDetail.nearestSlotValue, {
+        date: nearestDate.label,
+        slot: brandConfig.delivery.timeSlots[0] ?? '',
+      })
+    : '';
 
   const unitPrice = product.precio + extraSize + extraVariedad + extraCorte + extraSparkler;
   const totalPrice = unitPrice * quantity;
@@ -84,7 +94,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
 
   const handleWhatsAppConsult = () => {
     const msg = encodeURIComponent(
-      `¡Hola ${brandConfig.brand.name}! Tengo una consulta sobre ${product.nombre} por encargo.`
+      formatText(brandConfig.ui.whatsapp.cakeInquiry, { name: brandConfig.brand.name, product: product.nombre })
     );
     window.open(`https://wa.me/${brandConfig.contact.whatsappNumber}?text=${msg}`, '_blank', 'noopener,noreferrer');
   };
@@ -104,24 +114,20 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
           <button
             onClick={onClose}
             className="w-10 h-10 rounded-full bg-brand-surface-container text-brand-primary flex items-center justify-center hover:bg-brand-surface-container-high active:scale-95 transition-all cursor-pointer"
-            aria-label="Volver al catálogo"
+            aria-label={brandConfig.ui.productDetail.backLabel}
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
           
           <div className="flex flex-col items-center text-center">
-            <span className="font-serif text-base font-bold text-brand-primary leading-tight">
-              Detalle de Producto
-            </span>
-            <span className="text-[11px] text-brand-secondary font-semibold">
-              {brandConfig.brand.name} Artesanal
-            </span>
+            <Txt as="span" className="font-serif text-base font-bold text-brand-primary leading-tight" value={brandConfig.ui.productDetail.title} />
+            <Txt as="span" className="text-[11px] text-brand-secondary font-semibold" value={formatText(brandConfig.ui.productDetail.titleBadge, { name: brandConfig.brand.name })} />
           </div>
 
           <button
             onClick={handleWhatsAppConsult}
             className="w-10 h-10 rounded-full bg-brand-tertiary-container text-white flex items-center justify-center hover:bg-brand-tertiary active:scale-95 transition-all cursor-pointer shadow-sm"
-            aria-label="Consultar por WhatsApp"
+            aria-label={brandConfig.ui.productDetail.whatsappLabel}
           >
             <MessageCircle className="w-5 h-5 text-brand-tertiary-fixed" />
           </button>
@@ -146,9 +152,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
             {/* Top Badges */}
             <div className="absolute top-3 left-3 flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-brand-primary text-xs font-bold shadow-sm">
-                <Star className="w-3.5 h-3.5 text-brand-secondary-container fill-brand-secondary-container" />
-                Favorito artesanal
-              </span>
+                <Star className="w-3.5 h-3.5 text-brand-secondary-container fill-brand-secondary-container" />{brandConfig.ui.productDetail.favoriteBadge}</span>
             </div>
 
             {/* Bottom Anticipation Notice */}
@@ -156,16 +160,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
               {product.requiresLeadTime ? (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-secondary-fixed text-brand-on-secondary-fixed text-xs font-bold shadow-sm">
                   <Clock className="w-3.5 h-3.5 text-brand-secondary" />
-                  {product.leadTimeHours || 48} hs de anticipación
+                  {formatText(brandConfig.ui.productDetail.leadBadge, { hours: String(product.leadTimeHours || 48) })}
                 </span>
               ) : (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-tertiary-fixed text-brand-on-tertiary-fixed text-xs font-bold shadow-sm">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Horneado en el día
-                </span>
+                  <Sparkles className="w-3.5 h-3.5" />{brandConfig.ui.productDetail.bakedToday}</span>
               )}
               <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-brand-on-surface-variant text-[11px] font-semibold">
-                {product.requiresLeadTime ? 'Horneado a pedido' : 'Stock fresco'}
+                {product.requiresLeadTime ? brandConfig.ui.productDetail.bakedOnDemand : brandConfig.ui.productDetail.freshStock}
               </span>
             </div>
           </div>
@@ -182,9 +184,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                   {formatCurrency(unitPrice)}
                 </span>
                 {extraSize > 0 && (
-                  <span className="text-xs text-brand-outline">
-                    Precio base: {formatCurrency(product.precio)}
-                  </span>
+                  <Txt as="span" className="text-xs text-brand-outline" value={formatText(brandConfig.ui.productDetail.basePrice, { price: formatCurrency(product.precio) })} />
                 )}
               </div>
 
@@ -194,7 +194,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
 
               <div className="pt-2 flex items-center gap-2 text-brand-tertiary text-xs font-semibold bg-brand-tertiary-fixed/40 px-3.5 py-2.5 rounded-xl border border-brand-tertiary-fixed/60">
                 <ShieldCheck className="w-4 h-4 text-brand-tertiary-container shrink-0" />
-                <span>Garantía de frescura: se elabora la mañana de tu entrega</span>
+                <Txt as="span" value={brandConfig.ui.productDetail.freshness} />
               </div>
             </div>
 
@@ -202,10 +202,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
             {sizeOption && sizeOption.choices && (
               <div className="bg-white rounded-2xl p-5 shadow-[0_4px_16px_-2px_rgba(92,56,42,0.06)] border border-brand-surface-container space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-sm text-brand-primary">
-                    1. Seleccionar tamaño
-                  </span>
-                  <span className="text-xs font-bold text-brand-secondary">Obligatorio</span>
+                  <Txt as="span" className="font-semibold text-sm text-brand-primary" value={brandConfig.ui.productDetail.sectionSize} />
+                  <Txt as="span" className="text-xs font-bold text-brand-secondary" value={brandConfig.ui.productDetail.required} />
                 </div>
 
                 <div className="space-y-2">
@@ -248,7 +246,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                               : 'bg-brand-secondary-container text-brand-on-secondary-container'
                           }`}
                         >
-                          {choice.extraPrice === 0 ? 'Incluido' : `+${formatCurrency(choice.extraPrice)}`}
+                          {choice.extraPrice === 0 ? brandConfig.ui.productDetail.included : `+${formatCurrency(choice.extraPrice)}`}
                         </span>
                       </label>
                     );
@@ -343,9 +341,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
             {/* Card 3: Personalization & Dedication (for cakes) */}
             {(dedicationOption || velitaOption) && (
               <div className="bg-white rounded-2xl p-5 shadow-[0_4px_16px_-2px_rgba(92,56,42,0.06)] border border-brand-surface-container space-y-3">
-                <span className="font-semibold text-sm text-brand-primary">
-                  2. Personalización y celebración
-                </span>
+                <Txt as="span" className="font-semibold text-sm text-brand-primary" value={brandConfig.ui.productDetail.sectionCustom} />
 
                 {dedicationOption && (
                   <div className="space-y-1.5">
@@ -353,7 +349,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       <label htmlFor="dedication-text" className="font-semibold text-brand-on-surface-variant">
                         {dedicationOption.title}
                       </label>
-                      <span className="text-brand-outline">(Opcional)</span>
+                      <Txt as="span" className="text-brand-outline" value={brandConfig.ui.productDetail.optional} />
                     </div>
 
                     <div className="relative">
@@ -363,7 +359,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                         maxLength={30}
                         value={dedication}
                         onChange={(e) => setDedication(e.target.value)}
-                        placeholder="Ej: ¡Feliz Cumple Mamá!"
+                        placeholder={brandConfig.ui.productDetail.dedicationPlaceholder}
                         className="w-full h-12 px-3.5 pr-14 rounded-xl bg-brand-surface-container-low text-brand-primary text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary-container border border-brand-surface-container-highest"
                       />
                       <span className="absolute right-3 top-3.5 text-[11px] text-brand-outline">
@@ -383,16 +379,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                         className="w-4 h-4 rounded accent-brand-primary cursor-pointer"
                       />
                       <div className="flex flex-col">
-                        <span className="text-sm font-bold text-brand-primary">
-                          Pack Velita dorada + Bengalita artesanal
-                        </span>
-                        <span className="text-xs text-brand-on-surface-variant">
-                          Lista para encender y festejar
-                        </span>
+                        <Txt as="span" className="text-sm font-bold text-brand-primary" value={brandConfig.ui.productDetail.candlePackTitle} />
+                        <Txt as="span" className="text-xs text-brand-on-surface-variant" value={brandConfig.ui.productDetail.candlePackNote} />
                       </div>
                     </div>
                     <span className="text-xs px-2.5 py-1 rounded-full bg-brand-secondary-fixed text-brand-on-secondary-fixed font-bold">
-                      +$1.200
+                      +{formatCurrency(brandConfig.extras.candlePackPrice)}
                     </span>
                   </label>
                 )}
@@ -402,19 +394,15 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
             {/* Card 4: Estimated Lead Time */}
             {product.requiresLeadTime && (
               <div className="bg-white rounded-2xl p-5 shadow-[0_4px_16px_-2px_rgba(92,56,42,0.06)] border border-brand-surface-container space-y-2">
-                <span className="font-semibold text-sm text-brand-primary">
-                  3. Fecha estimada de retiro o entrega
-                </span>
+                <Txt as="span" className="font-semibold text-sm text-brand-primary" value={brandConfig.ui.productDetail.sectionDate} />
                 <div className="flex items-center gap-3 p-3.5 rounded-xl bg-brand-surface-container-low border border-brand-surface-container-highest">
                   <div className="w-10 h-10 rounded-full bg-brand-tertiary-fixed flex items-center justify-center text-brand-on-tertiary-fixed shrink-0">
                     <CalendarCheck className="w-5 h-5 text-brand-tertiary" />
                   </div>
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[10px] text-brand-outline uppercase font-bold tracking-wider">
-                      Turno más cercano disponible
-                    </span>
+                    <Txt as="span" className="text-[10px] text-brand-outline uppercase font-bold tracking-wider" value={brandConfig.ui.productDetail.nearestSlot} />
                     <span className="text-sm font-bold text-brand-primary">
-                      Viernes 28 de Octubre — Turno Tarde (16 a 19 hs)
+                      {nearestSlotText}
                     </span>
                   </div>
                 </div>
@@ -424,8 +412,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
             {/* Card 5: Quantity Stepper */}
             <div className="bg-white rounded-2xl p-4 shadow-[0_4px_16px_-2px_rgba(92,56,42,0.06)] border border-brand-surface-container flex items-center justify-between">
               <div className="flex flex-col">
-                <span className="font-semibold text-sm text-brand-primary">Cantidad</span>
-                <span className="text-xs text-brand-outline">Unidades para esta fecha</span>
+                <Txt as="span" className="font-semibold text-sm text-brand-primary" value={brandConfig.ui.productDetail.quantity} />
+                <Txt as="span" className="text-xs text-brand-outline" value={brandConfig.ui.productDetail.quantityNote} />
               </div>
 
               <div className="flex items-center gap-3 bg-brand-surface-container-low p-1.5 rounded-full border border-brand-surface-container-highest">
@@ -433,7 +421,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                   type="button"
                   onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
                   className="w-9 h-9 rounded-full bg-white text-brand-primary flex items-center justify-center font-bold shadow-sm active:scale-90 transition-transform cursor-pointer"
-                  aria-label="Disminuir cantidad"
+                  aria-label={brandConfig.ui.productDetail.decreaseLabel}
                 >
                   <Minus className="w-4 h-4" />
                 </button>
@@ -444,7 +432,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                   type="button"
                   onClick={() => setQuantity(prev => Math.min(20, prev + 1))}
                   className="w-9 h-9 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold shadow-sm active:scale-90 transition-transform cursor-pointer"
-                  aria-label="Aumentar cantidad"
+                  aria-label={brandConfig.ui.productDetail.increaseLabel}
                 >
                   <Plus className="w-4 h-4" />
                 </button>
@@ -460,7 +448,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
               >
                 <span className="flex items-center gap-2">
                   <ShoppingBag className="w-5 h-5 text-brand-primary-fixed" />
-                  <span>Agregar al pedido</span>
+                  <Txt as="span" value={brandConfig.ui.productDetail.addToOrder} />
                 </span>
                 <span className="font-bold text-base sm:text-lg">
                   {formatCurrency(totalPrice)}
@@ -473,7 +461,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                 className="w-full py-3 px-4 rounded-2xl bg-brand-tertiary-fixed/50 hover:bg-brand-tertiary-fixed/80 text-brand-tertiary font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition-all cursor-pointer border border-brand-tertiary-fixed"
               >
                 <MessageCircle className="w-4 h-4 text-brand-tertiary-container" />
-                <span>Consultar dudas por WhatsApp antes de pedir</span>
+                <Txt as="span" value={brandConfig.ui.productDetail.askWhatsapp} />
               </button>
             </div>
 

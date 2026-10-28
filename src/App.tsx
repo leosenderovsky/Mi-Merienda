@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Txt } from './components/Txt';
 import { brandConfig } from './brand.config';
 import { CartProvider, useCart } from './context/CartContext';
 import { products, ProductCategory } from './products';
@@ -61,15 +62,10 @@ function MainShop() {
         <section className="max-w-4xl mx-auto px-4 py-2">
           {filteredProducts.length === 0 ? (
             <div className="text-center py-16 bg-white rounded-2xl border border-brand-surface-container p-8">
-              <p className="font-serif text-lg text-brand-primary">
-                No hay productos en esta categoría por el momento.
-              </p>
-              <button
+              <Txt as="p" className="font-serif text-lg text-brand-primary" value={brandConfig.ui.catalog.emptyCategory} />
+              <Txt as="button"
                 onClick={() => setSelectedCategory('all')}
-                className="mt-3 px-4 py-2 rounded-full bg-brand-primary text-white text-xs font-semibold"
-              >
-                Ver todos los productos
-              </button>
+                className="mt-3 px-4 py-2 rounded-full bg-brand-primary text-white text-xs font-semibold" value={brandConfig.ui.catalog.viewAll} />
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -127,7 +123,7 @@ function MainShop() {
               className="text-xs text-brand-tertiary-fixed font-bold hover:underline shrink-0 cursor-pointer flex items-center gap-1"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
-              <span>Ver canasta</span>
+              <Txt as="span" value={brandConfig.ui.toast.viewBasket} />
             </button>
           </div>
         </div>

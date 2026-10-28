@@ -1,4 +1,6 @@
 import React from 'react';
+import { Txt } from './Txt';
+import { brandConfig, formatText } from '../brand.config';
 import { CATEGORIES, ProductCategory, Product } from '../products';
 
 interface CategoryFiltersProps {
@@ -20,12 +22,8 @@ export const CategoryFilters: React.FC<CategoryFiltersProps> = ({
   return (
     <section id="catalogo" className="pt-2 pb-3 max-w-4xl mx-auto px-4 scroll-mt-28">
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="font-serif text-xl sm:text-2xl text-brand-primary font-semibold">
-          Nuestras Especialidades
-        </h2>
-        <span className="text-xs sm:text-sm text-brand-secondary font-bold">
-          {productsList.length} Variedades
-        </span>
+        <Txt as="h2" className="font-serif text-xl sm:text-2xl text-brand-primary font-semibold" value={brandConfig.ui.catalog.title} />
+        <Txt as="span" className="text-xs sm:text-sm text-brand-secondary font-bold" value={formatText(brandConfig.ui.catalog.countLabel, { count: String(productsList.length) })} />
       </div>
 
       <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">

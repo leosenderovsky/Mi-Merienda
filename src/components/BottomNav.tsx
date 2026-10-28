@@ -1,6 +1,7 @@
 import React from 'react';
+import { Txt } from './Txt';
 import { useCart } from '../context/CartContext';
-import { formatCurrency } from '../brand.config';
+import { brandConfig, formatCurrency } from '../brand.config';
 import { ProductCategory } from '../products';
 import { Store, Cake, ShoppingBag, PhoneCall } from 'lucide-react';
 
@@ -43,7 +44,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
           }`}
         >
           <Store className="w-5 h-5" />
-          <span className="text-[11px]">Catálogo</span>
+          <Txt as="span" className="text-[11px]" value={brandConfig.ui.bottomNav.catalog} />
         </button>
 
         {/* Tortas Tab */}
@@ -56,7 +57,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
           }`}
         >
           <Cake className="w-5 h-5" />
-          <span className="text-[11px]">Tortas</span>
+          <Txt as="span" className="text-[11px]" value={brandConfig.ui.bottomNav.cakes} />
         </button>
 
         {/* Carrito Tab (with Total or Badge) */}
@@ -73,7 +74,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
             )}
           </div>
           <span className="text-[11px]">
-            {totalItems > 0 ? formatCurrency(subtotal) : 'Canasta'}
+            {totalItems > 0 ? formatCurrency(subtotal) : brandConfig.ui.bottomNav.basket}
           </span>
         </button>
 
@@ -83,7 +84,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
           className="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-brand-on-surface-variant hover:text-brand-primary transition-colors cursor-pointer"
         >
           <PhoneCall className="w-5 h-5" />
-          <span className="text-[11px]">Contacto</span>
+          <Txt as="span" className="text-[11px]" value={brandConfig.ui.bottomNav.contact} />
         </button>
 
       </div>

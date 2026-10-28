@@ -1,5 +1,6 @@
 import React from 'react';
-import { brandConfig, formatCurrency } from '../brand.config';
+import { Txt } from './Txt';
+import { brandConfig, formatCurrency, formatText } from '../brand.config';
 import { useCart } from '../context/CartContext';
 import { getProductImageDimensions } from '../products';
 import { MessageCircle, ShoppingBag } from 'lucide-react';
@@ -16,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateTortas }) => {
 
   const handleWhatsAppDirect = () => {
     const defaultMsg = encodeURIComponent(
-      `¡Hola ${brandConfig.brand.name}! Quisiera hacerles una consulta sobre los productos del día.`
+      formatText(brandConfig.ui.whatsapp.consult, { name: brandConfig.brand.name })
     );
     window.open(`https://wa.me/${brandConfig.contact.whatsappNumber}?text=${defaultMsg}`, '_blank', 'noopener,noreferrer');
   };
@@ -63,8 +64,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateTortas }) => {
           {/* WhatsApp Directo */}
           <button
             onClick={handleWhatsAppDirect}
-            aria-label="WhatsApp directo"
-            title="Consultar por WhatsApp"
+            aria-label={brandConfig.ui.header.whatsappLabel}
+            title={brandConfig.ui.header.whatsappTitle}
             className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-brand-tertiary-container text-white flex items-center justify-center transition-all hover:bg-brand-tertiary active:scale-95 shadow-[0_2px_8px_rgba(45,70,55,0.25)] cursor-pointer"
           >
             <MessageCircle className="w-5 h-5 text-brand-tertiary-fixed" />
@@ -73,8 +74,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateTortas }) => {
           {/* Cart Bag */}
           <button
             onClick={() => setIsCartOpen(true)}
-            aria-label={`Ver carrito: ${totalItems} ítems`}
-            title="Ver canasta de delicias"
+            aria-label={formatText(brandConfig.ui.header.cartLabel, { count: String(totalItems) })}
+            title={brandConfig.ui.header.cartTitle}
             className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-brand-surface-container text-brand-primary flex items-center justify-center relative transition-all hover:bg-brand-surface-container-high active:scale-95 shadow-sm cursor-pointer"
           >
             <ShoppingBag className="w-5 h-5" />
@@ -89,30 +90,18 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateTortas }) => {
 
       {/* Secondary Navigation Links */}
       <div className="max-w-4xl mx-auto px-4 pb-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar justify-center">
-        <button
+        <Txt as="button"
           onClick={() => scrollToSection('catalogo')}
-          className="shrink-0 px-3.5 py-1 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-medium hover:bg-brand-primary-container transition-colors cursor-pointer shadow-sm"
-        >
-          Productos
-        </button>
-        <button
+          className="shrink-0 px-3.5 py-1 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-medium hover:bg-brand-primary-container transition-colors cursor-pointer shadow-sm" value={brandConfig.ui.header.navProducts} />
+        <Txt as="button"
           onClick={onNavigateTortas ? onNavigateTortas : () => scrollToSection('catalogo')}
-          className="shrink-0 px-3.5 py-1 rounded-full bg-brand-surface-container text-brand-on-surface-variant text-xs sm:text-sm font-medium hover:bg-brand-surface-container-high transition-colors cursor-pointer"
-        >
-          Tortas por encargo
-        </button>
-        <button
+          className="shrink-0 px-3.5 py-1 rounded-full bg-brand-surface-container text-brand-on-surface-variant text-xs sm:text-sm font-medium hover:bg-brand-surface-container-high transition-colors cursor-pointer" value={brandConfig.ui.header.navCakes} />
+        <Txt as="button"
           onClick={() => scrollToSection('como-pedir')}
-          className="shrink-0 px-3.5 py-1 rounded-full bg-brand-surface-container text-brand-on-surface-variant text-xs sm:text-sm font-medium hover:bg-brand-surface-container-high transition-colors cursor-pointer"
-        >
-          Cómo pedir
-        </button>
-        <button
+          className="shrink-0 px-3.5 py-1 rounded-full bg-brand-surface-container text-brand-on-surface-variant text-xs sm:text-sm font-medium hover:bg-brand-surface-container-high transition-colors cursor-pointer" value={brandConfig.ui.header.navHowToOrder} />
+        <Txt as="button"
           onClick={() => scrollToSection('contacto')}
-          className="shrink-0 px-3.5 py-1 rounded-full bg-brand-surface-container text-brand-on-surface-variant text-xs sm:text-sm font-medium hover:bg-brand-surface-container-high transition-colors cursor-pointer"
-        >
-          Contacto
-        </button>
+          className="shrink-0 px-3.5 py-1 rounded-full bg-brand-surface-container text-brand-on-surface-variant text-xs sm:text-sm font-medium hover:bg-brand-surface-container-high transition-colors cursor-pointer" value={brandConfig.ui.header.navContact} />
       </div>
     </header>
   );

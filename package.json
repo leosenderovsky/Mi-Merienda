@@ -7,9 +7,9 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "predev": "npm run generate:image-dimensions",
+    "predev": "npm run generate:types && npm run generate:image-dimensions",
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "prebuild": "npm run generate:image-dimensions",
+    "prebuild": "npm run generate:types && npm run generate:image-dimensions",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
@@ -21,7 +21,13 @@
     "make:og": "node scripts/make-og-image.mjs",
     "check:images": "node scripts/check-images.mjs",
     "check:images:strict": "node scripts/check-images.mjs --strict",
-    "verify:deploy": "node scripts/verify-deploy.mjs"
+    "verify:deploy": "node scripts/verify-deploy.mjs",
+    "generate:types": "node scripts/generate-types.mjs",
+    "check:config": "node scripts/check-config.mjs",
+    "check:config:strict": "node scripts/check-config.mjs --strict",
+    "check:render": "node scripts/check-render.mjs",
+    "check:texts": "node scripts/check-texts.mjs",
+    "docs:fields": "node scripts/generate-fields-doc.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
@@ -32,10 +38,14 @@
     "vite": "^8.3.0"
   },
   "devDependencies": {
+    "@babel/parser": "^7.29.11",
     "@types/node": "^22.14.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "autoprefixer": "^10.4.21",
+    "json-schema-to-typescript": "^16.0.0",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.21.0",

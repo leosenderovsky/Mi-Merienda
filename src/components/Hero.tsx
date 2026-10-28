@@ -1,5 +1,5 @@
 import React from 'react';
-import { brandConfig } from '../brand.config';
+import { brandConfig, formatText } from '../brand.config';
 import { getProductImageDimensions } from '../products';
 import { CheckCircle2, ArrowDown, Headphones } from 'lucide-react';
 
@@ -8,7 +8,7 @@ export const Hero: React.FC = () => {
 
   const handleWhatsAppContact = () => {
     const msg = encodeURIComponent(
-      `¡Hola ${brandConfig.brand.name}! Me gustaría consultar sobre la disponibilidad de los productos de hoy.`
+      formatText(brandConfig.ui.whatsapp.availability, { name: brandConfig.brand.name })
     );
     window.open(`https://wa.me/${brandConfig.contact.whatsappNumber}?text=${msg}`, '_blank', 'noopener,noreferrer');
   };
@@ -27,7 +27,7 @@ export const Hero: React.FC = () => {
         <div className="w-full h-56 sm:h-72 relative overflow-hidden bg-brand-primary-container">
           <img
             src={brandConfig.hero.heroImage}
-            alt="Panes artesanos y medialunas recién horneadas"
+            alt={brandConfig.hero.imageAlt}
             width={heroImageDimensions?.width}
             height={heroImageDimensions?.height}
             loading="eager"
