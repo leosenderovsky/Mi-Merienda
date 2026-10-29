@@ -655,7 +655,6 @@
           "required": [
             "title",
             "price",
-            "label",
             "description"
           ],
           "properties": {
@@ -676,17 +675,6 @@
               "type": "integer",
               "description": "Valor numérico.",
               "x-widget": "number"
-            },
-            "label": {
-              "title": "Retiro en el local: etiqueta",
-              "x-group": "Contacto",
-              "type": "string",
-              "x-widget": "text",
-              "description": "Texto editable. Dejalo vacío para ocultar el elemento.",
-              "x-exampleData": true,
-              "examples": [
-                "Gratis"
-              ]
             },
             "description": {
               "title": "Retiro en el local: descripción",
@@ -710,7 +698,6 @@
           "required": [
             "title",
             "price",
-            "label",
             "description"
           ],
           "properties": {
@@ -731,17 +718,6 @@
               "type": "integer",
               "description": "Valor numérico.",
               "x-widget": "number"
-            },
-            "label": {
-              "title": "Envío a domicilio: etiqueta",
-              "x-group": "Contacto",
-              "type": "string",
-              "x-widget": "text",
-              "description": "Texto editable. Dejalo vacío para ocultar el elemento.",
-              "x-exampleData": true,
-              "examples": [
-                "+$1.500"
-              ]
             },
             "description": {
               "title": "Envío a domicilio: descripción",
@@ -1164,7 +1140,8 @@
         "header",
         "productCard",
         "productDetail",
-        "whatsapp"
+        "whatsapp",
+        "delivery"
       ],
       "properties": {
         "catalog": {
@@ -1604,7 +1581,6 @@
             "stepSubtitle",
             "summaryHide",
             "summaryShow",
-            "deliveryLine",
             "total",
             "sectionContact",
             "nameLabel",
@@ -1704,13 +1680,6 @@
             },
             "summaryShow": {
               "title": "Pedido: ver detalle",
-              "x-group": "Textos",
-              "type": "string",
-              "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
-            },
-            "deliveryLine": {
-              "title": "Pedido: línea de envío",
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
@@ -2520,6 +2489,29 @@
               "description": "Texto con variables que el sitio reemplaza solo: {total}. Dejalo vacío para ocultar el elemento.",
               "x-vars": [
                 "total"
+              ]
+            }
+          }
+        },
+        "delivery": {
+          "type": "object",
+          "additionalProperties": false,
+          "title": "Envío",
+          "description": "Textos relacionados a las opciones de entrega y envío.",
+          "x-group": "Textos de interfaz",
+          "required": [
+            "freeLabel"
+          ],
+          "properties": {
+            "freeLabel": {
+              "title": "Envío gratis: etiqueta",
+              "x-group": "Textos de interfaz",
+              "type": "string",
+              "x-widget": "text",
+              "description": "Texto editable. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Gratis"
               ]
             }
           }

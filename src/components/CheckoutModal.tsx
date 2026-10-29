@@ -205,7 +205,7 @@ export const CheckoutModal: React.FC = () => {
 
                   {metodo === 'delivery' && (
                     <div className="flex justify-between items-center py-1 text-brand-secondary">
-                      <Txt as="span" className="font-semibold" value={brandConfig.ui.checkout.deliveryLine} />
+                      <Txt as="span" className="font-semibold" value={brandConfig.delivery.delivery.title} />
                       <span className="font-bold">+{formatCurrency(deliveryCost)}</span>
                     </div>
                   )}

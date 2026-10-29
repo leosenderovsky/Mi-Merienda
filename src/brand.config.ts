@@ -6,17 +6,7 @@
 
 import brandJson from './data/brand.json' with { type: 'json' };
 import { getDemoLegend } from './demoBanner.config.ts';
-import type { BrandConfig } from './generated/brand.types.ts';
-
-export type { BrandConfig };
-
-export const brandConfig: BrandConfig = {
-  ...(brandJson as BrandConfig),
-  disclaimer: {
-    ...brandJson.disclaimer,
-    demoBadge: getDemoLegend(),
-  },
-};
+import type { BrandConfig as BrandConfigJson } from './generated/brand.types.ts';
 
 /** Formateador de moneda argentina con punto separador de miles ($4.800). */
 export function formatCurrency(amount: number): string {
@@ -32,3 +22,35 @@ export function formatText(template: string, vars: Record<string, string>): stri
 export function hasText(value?: string | null): boolean {
   return typeof value === 'string' && value.trim() !== '';
 }
+
+export type BrandConfig = Omit<BrandConfigJson, 'delivery'> & {
+  delivery: Omit<BrandConfigJson['delivery'], 'pickup' | 'delivery'> & {
+    pickup: BrandConfigJson['delivery']['pickup'] & { label: string };
+    delivery: BrandConfigJson['delivery']['delivery'] & { label: string };
+  };
+};
+
+export const brandConfig: BrandConfig = {
+  ...(brandJson as unknown as BrandConfigJson),
+  delivery: {
+    ...brandJson.delivery,
+    pickup: {
+      ...brandJson.delivery.pickup,
+      label:
+        brandJson.delivery.pickup.price > 0
+          ? '+' + formatCurrency(brandJson.delivery.pickup.price)
+          : brandJson.ui.delivery.freeLabel,
+    },
+    delivery: {
+      ...brandJson.delivery.delivery,
+      label:
+        brandJson.delivery.delivery.price > 0
+          ? '+' + formatCurrency(brandJson.delivery.delivery.price)
+          : brandJson.ui.delivery.freeLabel,
+    },
+  },
+  disclaimer: {
+    ...brandJson.disclaimer,
+    demoBadge: getDemoLegend(),
+  },
+};

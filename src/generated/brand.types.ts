@@ -231,10 +231,6 @@ export type RetiroEnElLocalPrecio = number;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type RetiroEnElLocalEtiqueta = string;
-/**
- * Texto editable. Dejalo vacío para ocultar el elemento.
- */
 export type RetiroEnElLocalDescripcion = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
@@ -244,10 +240,6 @@ export type EnvioADomicilioTitulo = string;
  * Valor numérico.
  */
 export type EnvioADomicilioPrecio = number;
-/**
- * Texto editable. Dejalo vacío para ocultar el elemento.
- */
-export type EnvioADomicilioEtiqueta = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
@@ -595,10 +587,6 @@ export type PedidoVerDetalle = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoLineaDeEnvio = string;
-/**
- * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
- */
 export type PedidoTotal = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
@@ -939,6 +927,10 @@ export type MensajesDeWhatsAppLineaDelTotal = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
+export type EnvioGratisEtiqueta = string;
+/**
+ * Texto editable. Dejalo vacío para ocultar el elemento.
+ */
 export type ComoPedirTitulo = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
@@ -1064,7 +1056,6 @@ export interface Entrega {
 export interface RetiroEnElLocal {
   title: RetiroEnElLocalTitulo;
   price: RetiroEnElLocalPrecio;
-  label: RetiroEnElLocalEtiqueta;
   description: RetiroEnElLocalDescripcion;
 }
 /**
@@ -1073,7 +1064,6 @@ export interface RetiroEnElLocal {
 export interface EnvioADomicilio {
   title: EnvioADomicilioTitulo;
   price: EnvioADomicilioPrecio;
-  label: EnvioADomicilioEtiqueta;
   description: EnvioADomicilioDescripcion;
 }
 /**
@@ -1140,6 +1130,7 @@ export interface TextosDeLaInterfaz {
   productCard: TarjetaDeProducto;
   productDetail: FichaDeProducto;
   whatsapp: MensajesDeWhatsApp;
+  delivery: Envio;
 }
 /**
  * Título, contador y mensaje de categoría vacía.
@@ -1222,7 +1213,6 @@ export interface Pedido {
   stepSubtitle: PedidoSubtituloDelPaso;
   summaryHide: PedidoOcultarDetalle;
   summaryShow: PedidoVerDetalle;
-  deliveryLine: PedidoLineaDeEnvio;
   total: PedidoTotal;
   sectionContact: PedidoSeccionDeContacto;
   nameLabel: PedidoCampoNombre;
@@ -1346,6 +1336,12 @@ export interface MensajesDeWhatsApp {
   deliveryLine: MensajesDeWhatsAppLineaDeEnvio;
   noteLine: MensajesDeWhatsAppLineaDeNota;
   totalLine: MensajesDeWhatsAppLineaDelTotal;
+}
+/**
+ * Textos relacionados a las opciones de entrega y envío.
+ */
+export interface Envio {
+  freeLabel: EnvioGratisEtiqueta;
 }
 /**
  * Título y bajada de la sección de pasos.
