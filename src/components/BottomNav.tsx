@@ -2,7 +2,7 @@ import React from 'react';
 import { Txt } from './Txt';
 import { useCart } from '../context/CartContext';
 import { brandConfig, formatCurrency } from '../brand.config';
-import { ProductCategory } from '../products';
+import { ProductCategory, specialCategoryId } from '../catalog';
 import { Store, Cake, ShoppingBag, PhoneCall } from 'lucide-react';
 
 interface BottomNavProps {
@@ -20,7 +20,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
   };
 
   const handleNavTortas = () => {
-    onSelectCategory('tortas');
+    onSelectCategory(specialCategoryId);
     const el = document.getElementById('catalogo');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
@@ -51,7 +51,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
         <button
           onClick={handleNavTortas}
           className={`flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] transition-colors cursor-pointer ${
-            selectedCategory === 'tortas'
+            selectedCategory === specialCategoryId
               ? 'text-brand-primary font-bold'
               : 'text-brand-on-surface-variant hover:text-brand-primary'
           }`}
@@ -73,7 +73,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
               </span>
             )}
           </div>
-          <span className="text-[11px]">
+          <span className="text-[11px] font-bold text-brand-primary">
             {totalItems > 0 ? formatCurrency(subtotal) : brandConfig.ui.bottomNav.basket}
           </span>
         </button>
@@ -81,7 +81,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ onSelectCategory, selected
         {/* Contacto Tab */}
         <button
           onClick={handleNavContact}
-          className="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] text-brand-on-surface-variant hover:text-brand-primary transition-colors cursor-pointer"
+          className="flex flex-col items-center justify-center gap-0.5 min-w-[56px] min-h-[44px] transition-colors text-brand-on-surface-variant hover:text-brand-primary cursor-pointer"
         >
           <PhoneCall className="w-5 h-5" />
           <Txt as="span" className="text-[11px]" value={brandConfig.ui.bottomNav.contact} />

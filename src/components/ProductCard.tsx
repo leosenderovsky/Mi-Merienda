@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Txt } from './Txt';
-import { Product, getProductImageDimensions } from '../products';
+import { Product, getProductImageDimensions, getUnit } from '../catalog';
 import { brandConfig, formatCurrency, formatText } from '../brand.config';
 import { useCart } from '../context/CartContext';
 import { Plus, Check, SlidersHorizontal, Clock, Sparkles } from 'lucide-react';
@@ -14,7 +14,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
   const { addToCart } = useCart();
   const [isAddedFeedback, setIsAddedFeedback] = useState(false);
 
-  const isCustomizable = product.categoría === 'tortas' || (product.opciones && product.opciones.length > 1);
+  const isCustomizable = Boolean(product.requiresLeadTime || (product.opciones && product.opciones.length > 1));
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -42,9 +42,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
   };
 
   const unitLabelText = () => {
-    if (product.unidad === 'docena') return brandConfig.ui.units.perDozen;
-    if (product.unidad === 'kilo') return brandConfig.ui.units.perKilo;
-    if (product.unidad === '500 grs') return brandConfig.ui.units.perHalfKilo;
+    const configured = getUnit(product.unidad);
+    if (configured) return configured.priceLabel;
     return product.unidad.startsWith('unidad') ? product.unidad : formatText(brandConfig.ui.units.unitTemplate, { unit: product.unidad });
   };
 
