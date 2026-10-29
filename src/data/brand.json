@@ -148,7 +148,8 @@
       "emptyCategory": "No hay productos en esta categoría por el momento.",
       "viewAll": "Ver todos los productos",
       "title": "Nuestras Especialidades",
-      "countLabel": "{count} Variedades"
+      "countLabel": "{count} Variedades",
+      "allCategoryLabel": "Todos"
     },
     "toast": {
       "viewBasket": "Ver canasta",
@@ -164,12 +165,6 @@
     },
     "units": {
       "order": "Encargo",
-      "dozen": "Docena",
-      "kilo": "1 Kilo",
-      "halfKilo": "500 grs",
-      "perDozen": "Por docena",
-      "perKilo": "Por kilo",
-      "perHalfKilo": "Por 1/2 kilo",
       "unitTemplate": "Unidad ({unit})"
     },
     "cart": {

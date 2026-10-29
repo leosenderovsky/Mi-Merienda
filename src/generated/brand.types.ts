@@ -11,319 +11,319 @@ export type IdentificadorDelSitio = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type MarcaNombre = string;
+export type NombreDeMarca = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type MarcaFraseDeLaMarca = string;
+export type LemaOFrasePrincipal = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type MarcaSubfrase = string;
+export type SubtituloDeLaMarca = string;
 /**
  * Ruta pública de la imagen (carpeta public/assets).
  */
-export type MarcaArchivoDelLogo = string;
+export type LogotipoPrincipal = string;
 /**
  * Ruta pública de la imagen (carpeta public/assets).
  */
-export type MarcaFavicon = string;
+export type FaviconDelSitio = string;
 /**
  * Ruta pública de la imagen (carpeta public/assets).
  */
-export type MarcaIconoApple = string;
+export type IconoParaPantallaDeInicioDeApple = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type MarcaSelloDelHero = string;
+export type EtiquetaDestacadaEnPortada = string;
 /**
  * Valor numérico.
  */
-export type RecorteDelFaviconIzquierda = number;
+export type MargenIzquierdoDeRecorte = number;
 /**
  * Valor numérico.
  */
-export type RecorteDelFaviconArriba = number;
+export type MargenSuperiorDeRecorte = number;
 /**
  * Valor numérico.
  */
-export type RecorteDelFaviconAncho = number;
+export type AnchoDelRecorte = number;
 /**
  * Valor numérico.
  */
-export type RecorteDelFaviconAlto = number;
+export type AltoDelRecorte = number;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type TipografiasFuenteDeTitulos = string;
+export type TipografiaDeTitulos = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type TipografiasFuenteDeTexto = string;
+export type TipografiaDeTextoGeneral = string;
 /**
  * Dirección web completa (https://…).
  */
-export type TipografiasHojaDeFuentes = string;
+export type EnlaceATipografiasWeb = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresColorPrincipal = string;
+export type ColorPrincipalColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresContenedorPrincipal = string;
+export type ContenedorPrincipalColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresPrincipalClaro = string;
+export type PrincipalClaroColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresTextoSobreContenedorPrincipal = string;
+export type TextoSobreContenedorPrincipalColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresColorSecundario = string;
+export type ColorSecundarioColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresContenedorSecundario = string;
+export type ContenedorSecundarioColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresSecundarioClaro = string;
+export type SecundarioClaroColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresTextoSobreSecundarioClaro = string;
+export type TextoSobreSecundarioClaroColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresTextoSobreContenedorSecundario = string;
+export type TextoSobreContenedorSecundarioColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresSecundarioDeEnfasis = string;
+export type SecundarioDeEnfasisColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresFondoDePagina = string;
+export type FondoDePaginaColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresContenedor = string;
+export type ContenedorColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresContenedorBajo = string;
+export type ContenedorBajoColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresContenedorAlto = string;
+export type ContenedorAltoColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresContenedorMaximo = string;
+export type ContenedorMaximoColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresTextoPrincipal = string;
+export type TextoPrincipalColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresTextoSecundario = string;
+export type TextoSecundarioColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresBorde = string;
+export type BordeColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresBordeSuave = string;
+export type BordeSuaveColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresColorTerciario = string;
+export type ColorTerciarioColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresContenedorTerciario = string;
+export type ContenedorTerciarioColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresTerciarioClaro = string;
+export type TerciarioClaroColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresTextoSobreTerciarioClaro = string;
+export type TextoSobreTerciarioClaroColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresTerciarioApagado = string;
+export type TerciarioApagadoColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresError = string;
+export type ErrorColores = string;
 /**
  * Color en formato #RRGGBB.
  */
-export type ColoresContenedorDeError = string;
+export type ContenedorDeErrorColores = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoNumeroDeWhatsAppSoloDigitos = string;
+export type NumeroDeWhatsAppSoloDigitosContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoWhatsAppVisible = string;
+export type WhatsAppVisibleContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoAyudaDelCampoTelefono = string;
+export type AyudaDelCampoTelefonoContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoAyudaDelCampoNombre = string;
+export type AyudaDelCampoNombreContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoAyudaDelCampoDireccion = string;
+export type AyudaDelCampoDireccionContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoAyudaDelCampoPisoDepto = string;
+export type AyudaDelCampoPisoDeptoContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoUsuarioDeInstagram = string;
+export type NombreDeUsuarioDeInstagram = string;
 /**
  * Dirección web completa (https://…).
  */
-export type ContactoEnlaceDeInstagram = string;
+export type EnlaceDeInstagramContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoDireccion = string;
+export type DireccionContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoCiudad = string;
+export type CiudadYProvincia = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoHorarioDeAtencion = string;
+export type HorarioDeAtencionContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ContactoNotaDeHorarios = string;
+export type NotaDeHorariosContacto = string;
 /**
  * Lista editable.
  */
-export type ContactoDiasCerrados0Domingo6Sabado = number[];
+export type DiasCerrados0Domingo6SabadoContacto = number[];
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type RetiroEnElLocalTitulo = string;
+export type TituloDeRetiroEnElLocal = string;
 /**
  * Valor numérico.
  */
-export type RetiroEnElLocalPrecio = number;
+export type PrecioDeRetiroEnElLocal = number;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type RetiroEnElLocalDescripcion = string;
+export type DescripcionDeRetiroEnElLocal = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type EnvioADomicilioTitulo = string;
+export type TituloDeEnvioADomicilio = string;
 /**
  * Valor numérico.
  */
-export type EnvioADomicilioPrecio = number;
+export type PrecioDeEnvioADomicilio = number;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type EnvioADomicilioDescripcion = string;
+export type DescripcionDeEnvioADomicilio = string;
 /**
  * Lista editable.
  */
-export type EntregaFranjasHorarias = string[];
+export type TurnosDisponiblesParaEntregaORetiro = string[];
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type EntregaAvisoDeAnticipacionParaTortas = string;
+export type MensajeSobreTiempoDeAnticipacionParaTortas = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type HeroSobretitulo = string;
+export type SobretituloHero = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type HeroTitulo = string;
+export type TituloDeHero = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type HeroDescripcion = string;
+export type DescripcionDeHero = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type HeroBotonPrincipal = string;
+export type BotonDeLlamadaALaAccionPrincipal = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type HeroBotonSecundario = string;
+export type BotonSecundarioParaContacto = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type SellosDelHeroTexto = string;
+export type TextoVisible = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type SellosDelHeroIcono = string;
+export type IconoDeSellosDelHero = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type SellosDelHeroEstilo = "secondary" | "tertiary";
+export type EstiloVisual = "secondary" | "tertiary";
 /**
  * Etiquetas sobre la imagen del hero.
  */
 export type SellosDelHero = {
-  text: SellosDelHeroTexto;
-  icon: SellosDelHeroIcono;
-  style: SellosDelHeroEstilo;
+  text: TextoVisible;
+  icon: IconoDeSellosDelHero;
+  style: EstiloVisual;
 }[];
 /**
  * Ruta pública de la imagen (carpeta public/assets).
  */
-export type HeroImagenDelHero = string;
+export type ImagenDelHeroHero = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type HeroTextoAlternativoDeLaImagen = string;
+export type TextoAlternativoAccesibleDeLaImagen = string;
 /**
  * Valor numérico.
  */
-export type PasosParaPedirPaso = number;
+export type PasoPasosParaPedir = number;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type PasosParaPedirTitulo = string;
+export type TituloDePasosParaPedir = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type PasosParaPedirDescripcion = string;
+export type DescripcionDePasosParaPedir = string;
 /**
  * Lista de pasos de la sección «Cómo hacer tu pedido».
  */
 export type PasosParaPedir = {
-  step: PasosParaPedirPaso;
-  title: PasosParaPedirTitulo;
-  description: PasosParaPedirDescripcion;
+  step: PasoPasosParaPedir;
+  title: TituloDePasosParaPedir;
+  description: DescripcionDePasosParaPedir;
 }[];
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type LeyendaDelPieNotaDelPie = string;
+export type NotaDelPieLeyendaDelPie = string;
 /**
  * Texto base de prototipo. El sitio lo completa con el nombre del servicio (no se edita en brand.json).
  */
@@ -331,615 +331,595 @@ export type LeyendaDeDemostracion = string;
 /**
  * Activa o desactiva este elemento.
  */
-export type DemostracionMostrarAvisoDePrototipo = boolean;
+export type MostrarAvisoDePrototipoDemostracion = boolean;
 /**
  * Activa o desactiva este elemento.
  */
-export type DemostracionPrecargarDatosDelCheckout = boolean;
+export type PrecargarDatosDelCheckoutDemostracion = boolean;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type DemostracionNombre = string;
+export type NombreDeDemostracion = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type DemostracionDireccion = string;
+export type DireccionDemostracion = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type DemostracionPisoDepto = string;
+export type PisoDeptoDemostracion = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type DemostracionNotas = string;
+export type NotasDemostracion = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type AlmacenamientoClaveDelCarritoEnElNavegador = string;
+export type ClaveDelCarritoEnElNavegadorAlmacenamiento = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type SEOYRedesSufijoDelTitulo = string;
+export type SufijoDelTituloSEOYRedes = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type SEOYRedesDescripcion = string;
+export type DescripcionDeSeoYRedes = string;
 /**
  * Ruta pública de la imagen (carpeta public/assets).
  */
-export type SEOYRedesImagenParaRedes = string;
+export type ImagenParaRedesSEOYRedes = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CatalogoMensajeDeCategoriaVacia = string;
+export type MensajeDeCategoriaVaciaCatalogo = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CatalogoBotonVerTodos = string;
+export type BotonVerTodosCatalogo = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CatalogoTitulo = string;
+export type TituloDeCatalogo = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento.
+ * Rótulo con la cantidad de variedades. {count}: cantidad de productos en el catálogo.
  */
-export type CatalogoContadorDeVariedades = string;
+export type ContadorDeVariedadesCatalogo = string;
 /**
- * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
- */
-export type AvisosEmergentesEnlaceParaVerLaCanasta = string;
-/**
- * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
- */
-export type AvisosEmergentesAvisoAlQuitarUnProducto = string;
-/**
- * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
- */
-export type AvisosEmergentesAvisoAlVaciarLaCanasta = string;
-/**
- * Texto con variables que el sitio reemplaza solo: {product}. Dejalo vacío para ocultar el elemento.
- */
-export type AvisosEmergentesAvisoAlAgregar = string;
-/**
- * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
+ * Texto mostrado en la opción para ver todas las categorías.
  */
-export type BarraInferiorCelularCatalogo = string;
+export type RotuloDeTodasLasCategoriasCatalogo = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type BarraInferiorCelularTortas = string;
+export type EnlaceParaVerLaCanastaAvisosEmergentes = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type BarraInferiorCelularCanasta = string;
+export type AvisoAlQuitarUnProductoAvisosEmergentes = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type BarraInferiorCelularContacto = string;
+export type AvisoAlVaciarLaCanastaAvisosEmergentes = string;
 /**
- * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
- */
-export type UnidadesEncargo = string;
-/**
- * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
+ * Mensaje emergente al agregar a la canasta. {product}: nombre del producto sumado.
  */
-export type UnidadesDocena = string;
+export type AvisoAlAgregarAvisosEmergentes = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type Unidades1Kilo = string;
+export type CatalogoBarraInferiorCelular = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type UnidadesMedioKilo = string;
+export type TortasBarraInferiorCelular = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type UnidadesPorDocena = string;
+export type CanastaBarraInferiorCelular = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type UnidadesPorKilo = string;
+export type ContactoBarraInferiorCelular = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type UnidadesPorMedioKilo = string;
+export type EncargoUnidades = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {unit}. Dejalo vacío para ocultar el elemento.
+ * Plantilla de formato para unidades de venta no listadas. {unit}: nombre de la unidad.
  */
-export type UnidadesPlantillaDeUnidad = string;
+export type PlantillaDeUnidadUnidades = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaTitulo = string;
+export type TituloDeCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaSubtituloVacio = string;
+export type SubtituloVacioCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaAyudaDeVaciar = string;
+export type AyudaDeVaciarCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaBotonVaciar = string;
+export type BotonVaciarCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaEtiquetaAccesibleDeCerrar = string;
+export type EtiquetaAccesibleDeCerrarCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaTituloVacio = string;
+export type TituloVacioCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaDescripcionVacia = string;
+export type DescripcionVaciaCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaBotonVacio = string;
+export type BotonVacioCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaTituloDelAvisoDeAnticipacion = string;
+export type TituloDelAvisoDeAnticipacionCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaEtiquetaAccesibleDeRestar = string;
+export type EtiquetaAccesibleDeRestarCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaEtiquetaAccesibleDeSumar = string;
+export type EtiquetaAccesibleDeSumarCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaSubtotal = string;
+export type SubtotalCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaEnvio = string;
+export type EnvioCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaNotaDeEnvio = string;
+export type NotaDeEnvioCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaTotal = string;
+export type TotalCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaNotaDelTotal = string;
+export type NotaDelTotalCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaAvisoDePagoInicio = string;
+export type AvisoDePagoInicioCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaAvisoDePagoDestacado = string;
+export type AvisoDePagoDestacadoCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaAvisoDePagoFinal = string;
+export type AvisoDePagoFinalCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaBotonContinuar = string;
+export type BotonContinuarCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaBotonSeguirComprando = string;
+export type BotonSeguirComprandoCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type CanastaResumenDeVelitaYBengalita = string;
+export type ResumenDeVelitaYBengalitaCanasta = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento.
+ * Subtítulo de la canasta con productos. {count}: cantidad de delicias seleccionadas.
  */
-export type CanastaSubtituloConProductos = string;
+export type SubtituloConProductosCanasta = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento.
+ * Texto accesible para quitar un producto. {name}: nombre del producto.
  */
-export type CanastaEtiquetaAccesibleDeEliminar = string;
+export type EtiquetaAccesibleDeEliminarCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type ErroresDelPedidoNombre = string;
+export type NombreDeErroresDelPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type ErroresDelPedidoTelefono = string;
+export type TelefonoErroresDelPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type ErroresDelPedidoDireccion = string;
+export type DireccionErroresDelPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoEtiquetaAccesibleDeVolver = string;
+export type EtiquetaAccesibleDeVolverPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoTitulo = string;
+export type TituloDePedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoPaso = string;
+export type PasoPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoTituloDelPaso = string;
+export type TituloDelPasoPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoSubtituloDelPaso = string;
+export type SubtituloDelPasoPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoOcultarDetalle = string;
+export type OcultarDetallePedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoVerDetalle = string;
+export type VerDetallePedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoTotal = string;
+export type TotalPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoSeccionDeContacto = string;
+export type SeccionDeContactoPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoCampoNombre = string;
+export type CampoNombrePedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoCampoTelefono = string;
+export type CampoTelefonoPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoAyudaDelTelefono = string;
+export type EjemploParaElCampoDeTelefono = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoSeccionDeEntrega = string;
+export type SeccionDeEntregaPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoSeccionDeFecha = string;
+export type SeccionDeFechaPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoCampoDia = string;
+export type CampoDiaPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoCampoFranjaHoraria = string;
+export type CampoFranjaHorariaPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoSeccionDeAclaraciones = string;
+export type SeccionDeAclaracionesPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoAyudaDelCampoAclaraciones = string;
+export type AyudaDelCampoAclaracionesPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoTituloDeLaVistaPrevia = string;
+export type TituloDeLaVistaPreviaPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoSelloDeLaVistaPrevia = string;
+export type SelloDeLaVistaPreviaPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoBotonConfirmar = string;
+export type BotonConfirmarPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PedidoNotaBajoElBoton = string;
+export type NotaBajoElBotonPedido = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento.
+ * Insignia decorativa del formulario. {name}: nombre de la marca.
  */
-export type PedidoSelloDelTitulo = string;
+export type SelloDelTituloPedido = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento.
+ * Resumen de cantidad de artículos. {count}: cantidad total de delicias.
  */
-export type PedidoCantidadDeProductos = string;
+export type CantidadDeProductosPedido = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {hours}. Dejalo vacío para ocultar el elemento.
+ * Aviso de tiempo previo requerido en checkout. {hours}: horas de anticipación.
  */
-export type PedidoAvisoDeAnticipacion = string;
+export type AvisoDeAnticipacionPedido = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type BarraDeCanastaEtiqueta = string;
+export type EtiquetaDeBarraDeCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type BarraDeCanastaItemSingular = string;
+export type ItemSingularBarraDeCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type BarraDeCanastaItemsPlural = string;
+export type ItemsPluralBarraDeCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type BarraDeCanastaBotonVerCarrito = string;
+export type BotonVerCarritoBarraDeCanasta = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PieDePaginaTituloDeHorarios = string;
+export type TituloDeHorariosPieDePagina = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PieDePaginaTituloDeDireccion = string;
+export type TituloDeDireccionPieDePagina = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PieDePaginaTituloDeRedes = string;
+export type TituloDeRedesPieDePagina = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type PieDePaginaNotaDeRedes = string;
+export type NotaDeRedesPieDePagina = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento.
+ * Título principal del pie de página. {name}: nombre de la marca.
  */
-export type PieDePaginaTitulo = string;
+export type TituloDePieDePagina = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type EncabezadoEtiquetaAccesibleDeWhatsApp = string;
+export type EtiquetaAccesibleDeWhatsAppEncabezado = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type EncabezadoAyudaDeWhatsApp = string;
+export type AyudaDeWhatsAppEncabezado = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type EncabezadoAyudaDelCarrito = string;
+export type AyudaDelCarritoEncabezado = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type EncabezadoEnlaceProductos = string;
+export type EnlaceProductosEncabezado = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type EncabezadoEnlaceTortas = string;
+export type EnlaceTortasEncabezado = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type EncabezadoEnlaceComoPedir = string;
+export type EnlaceComoPedirEncabezado = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type EncabezadoEnlaceContacto = string;
+export type EnlaceContactoEncabezado = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento.
+ * Texto accesible del botón del carrito. {count}: cantidad de ítems.
  */
-export type EncabezadoEtiquetaAccesibleDelCarrito = string;
+export type EtiquetaAccesibleDelCarritoEncabezado = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type TarjetaDeProductoEncargoEspecial = string;
+export type EncargoEspecialTarjetaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type TarjetaDeProductoBotonPersonalizar = string;
+export type BotonPersonalizarTarjetaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type TarjetaDeProductoAvisoAlAgregar = string;
+export type AvisoAlAgregarTarjetaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type TarjetaDeProductoBotonAgregar = string;
+export type BotonAgregarTarjetaDeProducto = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {unit}. Dejalo vacío para ocultar el elemento.
+ * Rótulo que acompaña al precio unitario. {unit}: unidad de medida del producto.
  */
-export type TarjetaDeProductoEtiquetaDePrecio = string;
+export type EtiquetaDePrecioTarjetaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoDedicatoriaPorDefecto = string;
+export type DedicatoriaPorDefectoFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoEtiquetaAccesibleDeVolver = string;
+export type EtiquetaAccesibleDeVolverFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoTitulo = string;
+export type TituloDeFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoEtiquetaAccesibleDeWhatsApp = string;
+export type EtiquetaAccesibleDeWhatsAppFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoSelloDeFavorito = string;
+export type SelloDeFavoritoFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoHorneadoEnElDia = string;
+export type HorneadoEnElDiaFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoHorneadoAPedido = string;
+export type HorneadoAPedidoFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoStockFresco = string;
+export type StockFrescoFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoGarantiaDeFrescura = string;
+export type GarantiaDeFrescuraFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoSeccionDeTamano = string;
+export type SeccionDeTamanoFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoObligatorio = string;
+export type ObligatorioFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoIncluido = string;
+export type IncluidoFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoSeccionDePersonalizacion = string;
+export type SeccionDePersonalizacionFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoOpcional = string;
+export type OpcionalFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoAyudaDelCampoDedicatoria = string;
+export type AyudaDelCampoDedicatoriaFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoPackDeVelitaTitulo = string;
+export type PackDeVelitaTituloFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoPackDeVelitaNota = string;
+export type PackDeVelitaNotaFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoSeccionDeFecha = string;
+export type SeccionDeFechaFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoTurnoMasCercano = string;
+export type TurnoMasCercanoFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoCantidad = string;
+export type CantidadFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoNotaDeCantidad = string;
+export type NotaDeCantidadFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoEtiquetaAccesibleDeRestar = string;
+export type EtiquetaAccesibleDeRestarFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoEtiquetaAccesibleDeSumar = string;
+export type EtiquetaAccesibleDeSumarFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoBotonAgregarAlPedido = string;
+export type BotonAgregarAlPedidoFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type FichaDeProductoBotonConsultarPorWhatsApp = string;
+export type BotonConsultarPorWhatsAppFichaDeProducto = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento.
+ * Insignia sobre el título en la ficha del producto. {name}: nombre de la marca.
  */
-export type FichaDeProductoSelloDelTitulo = string;
+export type SelloDelTituloFichaDeProducto = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {hours}. Dejalo vacío para ocultar el elemento.
+ * Insignia de anticipación necesaria. {hours}: horas de anticipación requeridas.
  */
-export type FichaDeProductoSelloDeAnticipacion = string;
+export type SelloDeAnticipacionFichaDeProducto = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {price}. Dejalo vacío para ocultar el elemento.
+ * Rótulo del precio inicial sin agregados. {price}: precio base formateado.
  */
-export type FichaDeProductoPrecioBase = string;
+export type PrecioBaseFichaDeProducto = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {date}, {slot}. Dejalo vacío para ocultar el elemento.
+ * Fecha y turno de entrega más cercano. {date}: día disponible, {slot}: franja horaria.
  */
-export type FichaDeProductoTurnoMasCercanoValor = string;
+export type TurnoMasCercanoValorFichaDeProducto = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type MensajesDeWhatsAppDireccionAConfirmar = string;
+export type DireccionAConfirmarMensajesDeWhatsApp = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type MensajesDeWhatsAppClienteSinNombre = string;
+export type ClienteSinNombreMensajesDeWhatsApp = string;
 /**
  * Texto de la interfaz. Dejalo vacío para ocultar el elemento.
  */
-export type MensajesDeWhatsAppNoEspecificado = string;
+export type NoEspecificadoMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento.
+ * Mensaje inicial de consulta por WhatsApp. {name}: nombre de la marca.
  */
-export type MensajesDeWhatsAppConsultaGeneral = string;
+export type ConsultaGeneralMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento.
+ * Consulta de disponibilidad horaria por WhatsApp. {name}: nombre de la marca.
  */
-export type MensajesDeWhatsAppConsultaDeDisponibilidad = string;
+export type ConsultaDeDisponibilidadMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {name}, {product}. Dejalo vacío para ocultar el elemento.
+ * Consulta sobre pedidos de tortas o encargos. {name}: nombre de la marca, {product}: nombre del producto.
  */
-export type MensajesDeWhatsAppConsultaPorUnaTorta = string;
+export type ConsultaPorUnaTortaMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento.
+ * Encabezado del pedido por WhatsApp. {name}: nombre de la marca.
  */
-export type MensajesDeWhatsAppTituloDelPedido = string;
+export type TituloDelPedidoMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {customer}. Dejalo vacío para ocultar el elemento.
+ * Línea con nombre del cliente. {customer}: nombre y apellido.
  */
-export type MensajesDeWhatsAppLineaDelCliente = string;
+export type LineaDelClienteMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {phone}. Dejalo vacío para ocultar el elemento.
+ * Línea con teléfono de contacto. {phone}: número de WhatsApp.
  */
-export type MensajesDeWhatsAppLineaDelTelefono = string;
+export type LineaDelTelefonoMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {mode}. Dejalo vacío para ocultar el elemento.
+ * Línea con modalidad de entrega. {mode}: retiro o envío.
  */
-export type MensajesDeWhatsAppLineaDeModalidad = string;
+export type LineaDeModalidadMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {address}, {details}, {date}, {slot}. Dejalo vacío para ocultar el elemento.
+ * Detalle de envío a domicilio. {address}: dirección, {details}: piso/depto, {date}: día programado, {slot}: turno.
  */
-export type MensajesDeWhatsAppModalidadEnvio = string;
+export type ModalidadEnvioMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {date}, {slot}. Dejalo vacío para ocultar el elemento.
+ * Detalle de retiro en mostrador. {date}: día programado, {slot}: turno.
  */
-export type MensajesDeWhatsAppModalidadRetiro = string;
+export type ModalidadRetiroMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {quantity}, {name}, {options}, {price}. Dejalo vacío para ocultar el elemento.
+ * Línea de ítem del pedido. {quantity}: cantidad, {name}: nombre, {options}: opciones elegidas, {price}: subtotal.
  */
-export type MensajesDeWhatsAppLineaDeProducto = string;
+export type LineaDeProductoMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {price}. Dejalo vacío para ocultar el elemento.
+ * Línea de costo de envío. {price}: importe de envío.
  */
-export type MensajesDeWhatsAppLineaDeEnvio = string;
+export type LineaDeEnvioMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {note}. Dejalo vacío para ocultar el elemento.
+ * Línea de aclaraciones y notas especiales. {note}: notas o dedicatoria.
  */
-export type MensajesDeWhatsAppLineaDeNota = string;
+export type LineaDeNotaMensajesDeWhatsApp = string;
 /**
- * Texto con variables que el sitio reemplaza solo: {total}. Dejalo vacío para ocultar el elemento.
+ * Línea de monto total estimado. {total}: total a abonar.
  */
-export type MensajesDeWhatsAppLineaDelTotal = string;
+export type LineaDelTotalMensajesDeWhatsApp = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type EnvioGratisEtiqueta = string;
+export type EtiquetaDeEnvioGratis = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ComoPedirTitulo = string;
+export type TituloDeComoPedir = string;
 /**
  * Texto editable. Dejalo vacío para ocultar el elemento.
  */
-export type ComoPedirSubtitulo = string;
+export type SubtituloDeComoPedir = string;
 /**
  * Valor numérico.
  */
-export type ExtrasPrecioDelPackDeVelitaYBengalita = number;
+export type PrecioDelPackDeVelitaYBengalitaExtras = number;
 
 /**
  * Configuración editable de la marca y de todos los textos del sitio.
@@ -966,80 +946,80 @@ export interface BrandConfig {
  * Nombre, frases, logo e íconos.
  */
 export interface Marca {
-  name: MarcaNombre;
-  tagline: MarcaFraseDeLaMarca;
-  subtagline: MarcaSubfrase;
-  logoUrl: MarcaArchivoDelLogo;
-  favicon32Url: MarcaFavicon;
-  appleTouchIconUrl: MarcaIconoApple;
-  badgeHeroKicker: MarcaSelloDelHero;
+  name: NombreDeMarca;
+  tagline: LemaOFrasePrincipal;
+  subtagline: SubtituloDeLaMarca;
+  logoUrl: LogotipoPrincipal;
+  favicon32Url: FaviconDelSitio;
+  appleTouchIconUrl: IconoParaPantallaDeInicioDeApple;
+  badgeHeroKicker: EtiquetaDestacadaEnPortada;
   faviconCrop?: RecorteDelFavicon;
 }
 /**
  * Fracciones de 0 a 1 del logo que se usan para generar el favicon.
  */
 export interface RecorteDelFavicon {
-  left?: RecorteDelFaviconIzquierda;
-  top?: RecorteDelFaviconArriba;
-  width?: RecorteDelFaviconAncho;
-  height?: RecorteDelFaviconAlto;
+  left?: MargenIzquierdoDeRecorte;
+  top?: MargenSuperiorDeRecorte;
+  width?: AnchoDelRecorte;
+  height?: AltoDelRecorte;
 }
 /**
  * Familias tipográficas y hoja de fuentes.
  */
 export interface Tipografias {
-  displayFont: TipografiasFuenteDeTitulos;
-  bodyFont: TipografiasFuenteDeTexto;
-  stylesheetUrl: TipografiasHojaDeFuentes;
+  displayFont: TipografiaDeTitulos;
+  bodyFont: TipografiaDeTextoGeneral;
+  stylesheetUrl: EnlaceATipografiasWeb;
 }
 /**
  * Paleta del sitio. Todos en formato #RRGGBB.
  */
 export interface Colores {
-  primary: ColoresColorPrincipal;
-  primaryContainer: ColoresContenedorPrincipal;
-  primaryFixed: ColoresPrincipalClaro;
-  onPrimaryContainer: ColoresTextoSobreContenedorPrincipal;
-  secondary: ColoresColorSecundario;
-  secondaryContainer: ColoresContenedorSecundario;
-  secondaryFixed: ColoresSecundarioClaro;
-  onSecondaryFixed: ColoresTextoSobreSecundarioClaro;
-  onSecondaryContainer: ColoresTextoSobreContenedorSecundario;
-  secondaryEmphasis: ColoresSecundarioDeEnfasis;
-  surface: ColoresFondoDePagina;
-  surfaceContainer: ColoresContenedor;
-  surfaceContainerLow: ColoresContenedorBajo;
-  surfaceContainerHigh: ColoresContenedorAlto;
-  surfaceContainerHighest: ColoresContenedorMaximo;
-  onSurface: ColoresTextoPrincipal;
-  onSurfaceVariant: ColoresTextoSecundario;
-  outline: ColoresBorde;
-  outlineVariant: ColoresBordeSuave;
-  tertiary: ColoresColorTerciario;
-  tertiaryContainer: ColoresContenedorTerciario;
-  tertiaryFixed: ColoresTerciarioClaro;
-  onTertiaryFixed: ColoresTextoSobreTerciarioClaro;
-  tertiaryMuted: ColoresTerciarioApagado;
-  error: ColoresError;
-  errorContainer: ColoresContenedorDeError;
+  primary: ColorPrincipalColores;
+  primaryContainer: ContenedorPrincipalColores;
+  primaryFixed: PrincipalClaroColores;
+  onPrimaryContainer: TextoSobreContenedorPrincipalColores;
+  secondary: ColorSecundarioColores;
+  secondaryContainer: ContenedorSecundarioColores;
+  secondaryFixed: SecundarioClaroColores;
+  onSecondaryFixed: TextoSobreSecundarioClaroColores;
+  onSecondaryContainer: TextoSobreContenedorSecundarioColores;
+  secondaryEmphasis: SecundarioDeEnfasisColores;
+  surface: FondoDePaginaColores;
+  surfaceContainer: ContenedorColores;
+  surfaceContainerLow: ContenedorBajoColores;
+  surfaceContainerHigh: ContenedorAltoColores;
+  surfaceContainerHighest: ContenedorMaximoColores;
+  onSurface: TextoPrincipalColores;
+  onSurfaceVariant: TextoSecundarioColores;
+  outline: BordeColores;
+  outlineVariant: BordeSuaveColores;
+  tertiary: ColorTerciarioColores;
+  tertiaryContainer: ContenedorTerciarioColores;
+  tertiaryFixed: TerciarioClaroColores;
+  onTertiaryFixed: TextoSobreTerciarioClaroColores;
+  tertiaryMuted: TerciarioApagadoColores;
+  error: ErrorColores;
+  errorContainer: ContenedorDeErrorColores;
 }
 /**
  * WhatsApp, redes, dirección y horarios.
  */
 export interface Contacto {
-  whatsappNumber: ContactoNumeroDeWhatsAppSoloDigitos;
-  whatsappDisplay: ContactoWhatsAppVisible;
-  phonePlaceholder: ContactoAyudaDelCampoTelefono;
-  customerNamePlaceholder: ContactoAyudaDelCampoNombre;
-  addressPlaceholder: ContactoAyudaDelCampoDireccion;
-  addressDetailPlaceholder: ContactoAyudaDelCampoPisoDepto;
-  instagramHandle: ContactoUsuarioDeInstagram;
-  instagramUrl: ContactoEnlaceDeInstagram;
-  address: ContactoDireccion;
-  city: ContactoCiudad;
-  scheduleWeekday: ContactoHorarioDeAtencion;
-  scheduleNote: ContactoNotaDeHorarios;
-  closedWeekdays: ContactoDiasCerrados0Domingo6Sabado;
+  whatsappNumber: NumeroDeWhatsAppSoloDigitosContacto;
+  whatsappDisplay: WhatsAppVisibleContacto;
+  phonePlaceholder: AyudaDelCampoTelefonoContacto;
+  customerNamePlaceholder: AyudaDelCampoNombreContacto;
+  addressPlaceholder: AyudaDelCampoDireccionContacto;
+  addressDetailPlaceholder: AyudaDelCampoPisoDeptoContacto;
+  instagramHandle: NombreDeUsuarioDeInstagram;
+  instagramUrl: EnlaceDeInstagramContacto;
+  address: DireccionContacto;
+  city: CiudadYProvincia;
+  scheduleWeekday: HorarioDeAtencionContacto;
+  scheduleNote: NotaDeHorariosContacto;
+  closedWeekdays: DiasCerrados0Domingo6SabadoContacto;
 }
 /**
  * Retiro, envío y franjas horarias.
@@ -1047,72 +1027,72 @@ export interface Contacto {
 export interface Entrega {
   pickup: RetiroEnElLocal;
   delivery: EnvioADomicilio;
-  timeSlots: EntregaFranjasHorarias;
-  leadNoticeCake: EntregaAvisoDeAnticipacionParaTortas;
+  timeSlots: TurnosDisponiblesParaEntregaORetiro;
+  leadNoticeCake: MensajeSobreTiempoDeAnticipacionParaTortas;
 }
 /**
  * Opción de retiro.
  */
 export interface RetiroEnElLocal {
-  title: RetiroEnElLocalTitulo;
-  price: RetiroEnElLocalPrecio;
-  description: RetiroEnElLocalDescripcion;
+  title: TituloDeRetiroEnElLocal;
+  price: PrecioDeRetiroEnElLocal;
+  description: DescripcionDeRetiroEnElLocal;
 }
 /**
  * Opción de envío.
  */
 export interface EnvioADomicilio {
-  title: EnvioADomicilioTitulo;
-  price: EnvioADomicilioPrecio;
-  description: EnvioADomicilioDescripcion;
+  title: TituloDeEnvioADomicilio;
+  price: PrecioDeEnvioADomicilio;
+  description: DescripcionDeEnvioADomicilio;
 }
 /**
  * Bloque principal de la portada.
  */
 export interface Hero {
-  kicker: HeroSobretitulo;
-  title: HeroTitulo;
-  description: HeroDescripcion;
-  ctaPrimary: HeroBotonPrincipal;
-  ctaSecondary: HeroBotonSecundario;
+  kicker: SobretituloHero;
+  title: TituloDeHero;
+  description: DescripcionDeHero;
+  ctaPrimary: BotonDeLlamadaALaAccionPrincipal;
+  ctaSecondary: BotonSecundarioParaContacto;
   badges: SellosDelHero;
-  heroImage: HeroImagenDelHero;
-  imageAlt: HeroTextoAlternativoDeLaImagen;
+  heroImage: ImagenDelHeroHero;
+  imageAlt: TextoAlternativoAccesibleDeLaImagen;
 }
 /**
  * Leyenda de demostración y nota final del pie.
  */
 export interface LeyendaDelPie {
-  footerNote: LeyendaDelPieNotaDelPie;
+  footerNote: NotaDelPieLeyendaDelPie;
   demoBadge?: LeyendaDeDemostracion;
 }
 /**
  * Opciones del prototipo de demostración.
  */
 export interface Demostracion {
-  showPrototypeBanner: DemostracionMostrarAvisoDePrototipo;
-  prefillCheckout: DemostracionPrecargarDatosDelCheckout;
-  checkoutDefaults: DemostracionDatosDeEjemploDelCheckout;
+  showPrototypeBanner: MostrarAvisoDePrototipoDemostracion;
+  prefillCheckout: PrecargarDatosDelCheckoutDemostracion;
+  checkoutDefaults: DatosDeEjemploDelCheckoutDemostracion;
 }
-export interface DemostracionDatosDeEjemploDelCheckout {
-  name: DemostracionNombre;
-  address: DemostracionDireccion;
-  addressDetail: DemostracionPisoDepto;
-  notes: DemostracionNotas;
+export interface DatosDeEjemploDelCheckoutDemostracion {
+  name: NombreDeDemostracion;
+  address: DireccionDemostracion;
+  addressDetail: PisoDeptoDemostracion;
+  notes: NotasDemostracion;
 }
 /**
  * Clave con la que el navegador guarda el carrito.
  */
 export interface Almacenamiento {
-  cartKey: AlmacenamientoClaveDelCarritoEnElNavegador;
+  cartKey: ClaveDelCarritoEnElNavegadorAlmacenamiento;
 }
 /**
  * Título, descripción e imagen al compartir.
  */
 export interface SEOYRedes {
-  titleSuffix: SEOYRedesSufijoDelTitulo;
-  description: SEOYRedesDescripcion;
-  socialImage: SEOYRedesImagenParaRedes;
+  titleSuffix: SufijoDelTituloSEOYRedes;
+  description: DescripcionDeSeoYRedes;
+  socialImage: ImagenParaRedesSEOYRedes;
 }
 /**
  * Botones, títulos y avisos del sitio. Se pueden editar o dejar vacíos para ocultarlos.
@@ -1136,223 +1116,218 @@ export interface TextosDeLaInterfaz {
  * Título, contador y mensaje de categoría vacía.
  */
 export interface Catalogo {
-  emptyCategory: CatalogoMensajeDeCategoriaVacia;
-  viewAll: CatalogoBotonVerTodos;
-  title: CatalogoTitulo;
-  countLabel: CatalogoContadorDeVariedades;
+  emptyCategory: MensajeDeCategoriaVaciaCatalogo;
+  viewAll: BotonVerTodosCatalogo;
+  title: TituloDeCatalogo;
+  countLabel: ContadorDeVariedadesCatalogo;
+  allCategoryLabel: RotuloDeTodasLasCategoriasCatalogo;
 }
 /**
  * Mensajes que aparecen al sumar o quitar productos.
  */
 export interface AvisosEmergentes {
-  viewBasket: AvisosEmergentesEnlaceParaVerLaCanasta;
-  removed: AvisosEmergentesAvisoAlQuitarUnProducto;
-  cleared: AvisosEmergentesAvisoAlVaciarLaCanasta;
-  added: AvisosEmergentesAvisoAlAgregar;
+  viewBasket: EnlaceParaVerLaCanastaAvisosEmergentes;
+  removed: AvisoAlQuitarUnProductoAvisosEmergentes;
+  cleared: AvisoAlVaciarLaCanastaAvisosEmergentes;
+  added: AvisoAlAgregarAvisosEmergentes;
 }
 /**
  * Pestañas de la barra inferior.
  */
 export interface BarraInferiorCelular {
-  catalog: BarraInferiorCelularCatalogo;
-  cakes: BarraInferiorCelularTortas;
-  basket: BarraInferiorCelularCanasta;
-  contact: BarraInferiorCelularContacto;
+  catalog: CatalogoBarraInferiorCelular;
+  cakes: TortasBarraInferiorCelular;
+  basket: CanastaBarraInferiorCelular;
+  contact: ContactoBarraInferiorCelular;
 }
 /**
  * Cómo se muestran las unidades de venta.
  */
 export interface Unidades {
-  order: UnidadesEncargo;
-  dozen: UnidadesDocena;
-  kilo: Unidades1Kilo;
-  halfKilo: UnidadesMedioKilo;
-  perDozen: UnidadesPorDocena;
-  perKilo: UnidadesPorKilo;
-  perHalfKilo: UnidadesPorMedioKilo;
-  unitTemplate: UnidadesPlantillaDeUnidad;
+  order: EncargoUnidades;
+  unitTemplate: PlantillaDeUnidadUnidades;
 }
 /**
  * Panel lateral de la canasta.
  */
 export interface Canasta {
-  title: CanastaTitulo;
-  subtitleEmpty: CanastaSubtituloVacio;
-  clearTitle: CanastaAyudaDeVaciar;
-  clear: CanastaBotonVaciar;
-  closeLabel: CanastaEtiquetaAccesibleDeCerrar;
-  emptyTitle: CanastaTituloVacio;
-  emptyDescription: CanastaDescripcionVacia;
-  emptyButton: CanastaBotonVacio;
-  leadNoticeTitle: CanastaTituloDelAvisoDeAnticipacion;
-  decreaseLabel: CanastaEtiquetaAccesibleDeRestar;
-  increaseLabel: CanastaEtiquetaAccesibleDeSumar;
-  subtotal: CanastaSubtotal;
-  shipping: CanastaEnvio;
-  shippingNote: CanastaNotaDeEnvio;
-  total: CanastaTotal;
-  totalNote: CanastaNotaDelTotal;
-  paymentNoteStart: CanastaAvisoDePagoInicio;
-  paymentNoteEmphasis: CanastaAvisoDePagoDestacado;
-  paymentNoteEnd: CanastaAvisoDePagoFinal;
-  continue: CanastaBotonContinuar;
-  keepShopping: CanastaBotonSeguirComprando;
-  candleSummary: CanastaResumenDeVelitaYBengalita;
-  subtitleFilled: CanastaSubtituloConProductos;
-  removeLabel: CanastaEtiquetaAccesibleDeEliminar;
+  title: TituloDeCanasta;
+  subtitleEmpty: SubtituloVacioCanasta;
+  clearTitle: AyudaDeVaciarCanasta;
+  clear: BotonVaciarCanasta;
+  closeLabel: EtiquetaAccesibleDeCerrarCanasta;
+  emptyTitle: TituloVacioCanasta;
+  emptyDescription: DescripcionVaciaCanasta;
+  emptyButton: BotonVacioCanasta;
+  leadNoticeTitle: TituloDelAvisoDeAnticipacionCanasta;
+  decreaseLabel: EtiquetaAccesibleDeRestarCanasta;
+  increaseLabel: EtiquetaAccesibleDeSumarCanasta;
+  subtotal: SubtotalCanasta;
+  shipping: EnvioCanasta;
+  shippingNote: NotaDeEnvioCanasta;
+  total: TotalCanasta;
+  totalNote: NotaDelTotalCanasta;
+  paymentNoteStart: AvisoDePagoInicioCanasta;
+  paymentNoteEmphasis: AvisoDePagoDestacadoCanasta;
+  paymentNoteEnd: AvisoDePagoFinalCanasta;
+  continue: BotonContinuarCanasta;
+  keepShopping: BotonSeguirComprandoCanasta;
+  candleSummary: ResumenDeVelitaYBengalitaCanasta;
+  subtitleFilled: SubtituloConProductosCanasta;
+  removeLabel: EtiquetaAccesibleDeEliminarCanasta;
 }
 /**
  * Pantalla de datos de entrega y confirmación.
  */
 export interface Pedido {
   errors: ErroresDelPedido;
-  backLabel: PedidoEtiquetaAccesibleDeVolver;
-  title: PedidoTitulo;
-  step: PedidoPaso;
-  stepTitle: PedidoTituloDelPaso;
-  stepSubtitle: PedidoSubtituloDelPaso;
-  summaryHide: PedidoOcultarDetalle;
-  summaryShow: PedidoVerDetalle;
-  total: PedidoTotal;
-  sectionContact: PedidoSeccionDeContacto;
-  nameLabel: PedidoCampoNombre;
-  phoneLabel: PedidoCampoTelefono;
-  phoneHelp: PedidoAyudaDelTelefono;
-  sectionDelivery: PedidoSeccionDeEntrega;
-  sectionDate: PedidoSeccionDeFecha;
-  dateLabel: PedidoCampoDia;
-  timeSlotLabel: PedidoCampoFranjaHoraria;
-  sectionNotes: PedidoSeccionDeAclaraciones;
-  notesPlaceholder: PedidoAyudaDelCampoAclaraciones;
-  previewTitle: PedidoTituloDeLaVistaPrevia;
-  previewBadge: PedidoSelloDeLaVistaPrevia;
-  confirm: PedidoBotonConfirmar;
-  confirmNote: PedidoNotaBajoElBoton;
-  titleBadge: PedidoSelloDelTitulo;
-  itemsCount: PedidoCantidadDeProductos;
-  leadTime: PedidoAvisoDeAnticipacion;
+  backLabel: EtiquetaAccesibleDeVolverPedido;
+  title: TituloDePedido;
+  step: PasoPedido;
+  stepTitle: TituloDelPasoPedido;
+  stepSubtitle: SubtituloDelPasoPedido;
+  summaryHide: OcultarDetallePedido;
+  summaryShow: VerDetallePedido;
+  total: TotalPedido;
+  sectionContact: SeccionDeContactoPedido;
+  nameLabel: CampoNombrePedido;
+  phoneLabel: CampoTelefonoPedido;
+  phoneHelp: EjemploParaElCampoDeTelefono;
+  sectionDelivery: SeccionDeEntregaPedido;
+  sectionDate: SeccionDeFechaPedido;
+  dateLabel: CampoDiaPedido;
+  timeSlotLabel: CampoFranjaHorariaPedido;
+  sectionNotes: SeccionDeAclaracionesPedido;
+  notesPlaceholder: AyudaDelCampoAclaracionesPedido;
+  previewTitle: TituloDeLaVistaPreviaPedido;
+  previewBadge: SelloDeLaVistaPreviaPedido;
+  confirm: BotonConfirmarPedido;
+  confirmNote: NotaBajoElBotonPedido;
+  titleBadge: SelloDelTituloPedido;
+  itemsCount: CantidadDeProductosPedido;
+  leadTime: AvisoDeAnticipacionPedido;
 }
 /**
  * Mensajes de validación del formulario.
  */
 export interface ErroresDelPedido {
-  name: ErroresDelPedidoNombre;
-  phone: ErroresDelPedidoTelefono;
-  address: ErroresDelPedidoDireccion;
+  name: NombreDeErroresDelPedido;
+  phone: TelefonoErroresDelPedido;
+  address: DireccionErroresDelPedido;
 }
 /**
  * Barra flotante con el resumen del pedido.
  */
 export interface BarraDeCanasta {
-  label: BarraDeCanastaEtiqueta;
-  itemSingular: BarraDeCanastaItemSingular;
-  itemPlural: BarraDeCanastaItemsPlural;
-  view: BarraDeCanastaBotonVerCarrito;
+  label: EtiquetaDeBarraDeCanasta;
+  itemSingular: ItemSingularBarraDeCanasta;
+  itemPlural: ItemsPluralBarraDeCanasta;
+  view: BotonVerCarritoBarraDeCanasta;
 }
 /**
  * Títulos del pie.
  */
 export interface PieDePagina {
-  hoursTitle: PieDePaginaTituloDeHorarios;
-  addressTitle: PieDePaginaTituloDeDireccion;
-  socialTitle: PieDePaginaTituloDeRedes;
-  socialNote: PieDePaginaNotaDeRedes;
-  title: PieDePaginaTitulo;
+  hoursTitle: TituloDeHorariosPieDePagina;
+  addressTitle: TituloDeDireccionPieDePagina;
+  socialTitle: TituloDeRedesPieDePagina;
+  socialNote: NotaDeRedesPieDePagina;
+  title: TituloDePieDePagina;
 }
 /**
  * Menú superior y accesos directos.
  */
 export interface Encabezado {
-  whatsappLabel: EncabezadoEtiquetaAccesibleDeWhatsApp;
-  whatsappTitle: EncabezadoAyudaDeWhatsApp;
-  cartTitle: EncabezadoAyudaDelCarrito;
-  navProducts: EncabezadoEnlaceProductos;
-  navCakes: EncabezadoEnlaceTortas;
-  navHowToOrder: EncabezadoEnlaceComoPedir;
-  navContact: EncabezadoEnlaceContacto;
-  cartLabel: EncabezadoEtiquetaAccesibleDelCarrito;
+  whatsappLabel: EtiquetaAccesibleDeWhatsAppEncabezado;
+  whatsappTitle: AyudaDeWhatsAppEncabezado;
+  cartTitle: AyudaDelCarritoEncabezado;
+  navProducts: EnlaceProductosEncabezado;
+  navCakes: EnlaceTortasEncabezado;
+  navHowToOrder: EnlaceComoPedirEncabezado;
+  navContact: EnlaceContactoEncabezado;
+  cartLabel: EtiquetaAccesibleDelCarritoEncabezado;
 }
 /**
  * Textos de cada tarjeta del catálogo.
  */
 export interface TarjetaDeProducto {
-  specialOrder: TarjetaDeProductoEncargoEspecial;
-  customize: TarjetaDeProductoBotonPersonalizar;
-  added: TarjetaDeProductoAvisoAlAgregar;
-  add: TarjetaDeProductoBotonAgregar;
-  priceLabel: TarjetaDeProductoEtiquetaDePrecio;
+  specialOrder: EncargoEspecialTarjetaDeProducto;
+  customize: BotonPersonalizarTarjetaDeProducto;
+  added: AvisoAlAgregarTarjetaDeProducto;
+  add: BotonAgregarTarjetaDeProducto;
+  priceLabel: EtiquetaDePrecioTarjetaDeProducto;
 }
 /**
  * Textos de la ventana de personalización.
  */
 export interface FichaDeProducto {
-  dedicationDefault: FichaDeProductoDedicatoriaPorDefecto;
-  backLabel: FichaDeProductoEtiquetaAccesibleDeVolver;
-  title: FichaDeProductoTitulo;
-  whatsappLabel: FichaDeProductoEtiquetaAccesibleDeWhatsApp;
-  favoriteBadge: FichaDeProductoSelloDeFavorito;
-  bakedToday: FichaDeProductoHorneadoEnElDia;
-  bakedOnDemand: FichaDeProductoHorneadoAPedido;
-  freshStock: FichaDeProductoStockFresco;
-  freshness: FichaDeProductoGarantiaDeFrescura;
-  sectionSize: FichaDeProductoSeccionDeTamano;
-  required: FichaDeProductoObligatorio;
-  included: FichaDeProductoIncluido;
-  sectionCustom: FichaDeProductoSeccionDePersonalizacion;
-  optional: FichaDeProductoOpcional;
-  dedicationPlaceholder: FichaDeProductoAyudaDelCampoDedicatoria;
-  candlePackTitle: FichaDeProductoPackDeVelitaTitulo;
-  candlePackNote: FichaDeProductoPackDeVelitaNota;
-  sectionDate: FichaDeProductoSeccionDeFecha;
-  nearestSlot: FichaDeProductoTurnoMasCercano;
-  quantity: FichaDeProductoCantidad;
-  quantityNote: FichaDeProductoNotaDeCantidad;
-  decreaseLabel: FichaDeProductoEtiquetaAccesibleDeRestar;
-  increaseLabel: FichaDeProductoEtiquetaAccesibleDeSumar;
-  addToOrder: FichaDeProductoBotonAgregarAlPedido;
-  askWhatsapp: FichaDeProductoBotonConsultarPorWhatsApp;
-  titleBadge: FichaDeProductoSelloDelTitulo;
-  leadBadge: FichaDeProductoSelloDeAnticipacion;
-  basePrice: FichaDeProductoPrecioBase;
-  nearestSlotValue: FichaDeProductoTurnoMasCercanoValor;
+  dedicationDefault: DedicatoriaPorDefectoFichaDeProducto;
+  backLabel: EtiquetaAccesibleDeVolverFichaDeProducto;
+  title: TituloDeFichaDeProducto;
+  whatsappLabel: EtiquetaAccesibleDeWhatsAppFichaDeProducto;
+  favoriteBadge: SelloDeFavoritoFichaDeProducto;
+  bakedToday: HorneadoEnElDiaFichaDeProducto;
+  bakedOnDemand: HorneadoAPedidoFichaDeProducto;
+  freshStock: StockFrescoFichaDeProducto;
+  freshness: GarantiaDeFrescuraFichaDeProducto;
+  sectionSize: SeccionDeTamanoFichaDeProducto;
+  required: ObligatorioFichaDeProducto;
+  included: IncluidoFichaDeProducto;
+  sectionCustom: SeccionDePersonalizacionFichaDeProducto;
+  optional: OpcionalFichaDeProducto;
+  dedicationPlaceholder: AyudaDelCampoDedicatoriaFichaDeProducto;
+  candlePackTitle: PackDeVelitaTituloFichaDeProducto;
+  candlePackNote: PackDeVelitaNotaFichaDeProducto;
+  sectionDate: SeccionDeFechaFichaDeProducto;
+  nearestSlot: TurnoMasCercanoFichaDeProducto;
+  quantity: CantidadFichaDeProducto;
+  quantityNote: NotaDeCantidadFichaDeProducto;
+  decreaseLabel: EtiquetaAccesibleDeRestarFichaDeProducto;
+  increaseLabel: EtiquetaAccesibleDeSumarFichaDeProducto;
+  addToOrder: BotonAgregarAlPedidoFichaDeProducto;
+  askWhatsapp: BotonConsultarPorWhatsAppFichaDeProducto;
+  titleBadge: SelloDelTituloFichaDeProducto;
+  leadBadge: SelloDeAnticipacionFichaDeProducto;
+  basePrice: PrecioBaseFichaDeProducto;
+  nearestSlotValue: TurnoMasCercanoValorFichaDeProducto;
 }
 /**
  * Textos del pedido y de las consultas que se envían por WhatsApp.
  */
 export interface MensajesDeWhatsApp {
-  addressPending: MensajesDeWhatsAppDireccionAConfirmar;
-  customerFallback: MensajesDeWhatsAppClienteSinNombre;
-  notSpecified: MensajesDeWhatsAppNoEspecificado;
-  consult: MensajesDeWhatsAppConsultaGeneral;
-  availability: MensajesDeWhatsAppConsultaDeDisponibilidad;
-  cakeInquiry: MensajesDeWhatsAppConsultaPorUnaTorta;
-  orderTitle: MensajesDeWhatsAppTituloDelPedido;
-  customerLine: MensajesDeWhatsAppLineaDelCliente;
-  phoneLine: MensajesDeWhatsAppLineaDelTelefono;
-  modeLine: MensajesDeWhatsAppLineaDeModalidad;
-  deliveryMode: MensajesDeWhatsAppModalidadEnvio;
-  pickupMode: MensajesDeWhatsAppModalidadRetiro;
-  itemLine: MensajesDeWhatsAppLineaDeProducto;
-  deliveryLine: MensajesDeWhatsAppLineaDeEnvio;
-  noteLine: MensajesDeWhatsAppLineaDeNota;
-  totalLine: MensajesDeWhatsAppLineaDelTotal;
+  addressPending: DireccionAConfirmarMensajesDeWhatsApp;
+  customerFallback: ClienteSinNombreMensajesDeWhatsApp;
+  notSpecified: NoEspecificadoMensajesDeWhatsApp;
+  consult: ConsultaGeneralMensajesDeWhatsApp;
+  availability: ConsultaDeDisponibilidadMensajesDeWhatsApp;
+  cakeInquiry: ConsultaPorUnaTortaMensajesDeWhatsApp;
+  orderTitle: TituloDelPedidoMensajesDeWhatsApp;
+  customerLine: LineaDelClienteMensajesDeWhatsApp;
+  phoneLine: LineaDelTelefonoMensajesDeWhatsApp;
+  modeLine: LineaDeModalidadMensajesDeWhatsApp;
+  deliveryMode: ModalidadEnvioMensajesDeWhatsApp;
+  pickupMode: ModalidadRetiroMensajesDeWhatsApp;
+  itemLine: LineaDeProductoMensajesDeWhatsApp;
+  deliveryLine: LineaDeEnvioMensajesDeWhatsApp;
+  noteLine: LineaDeNotaMensajesDeWhatsApp;
+  totalLine: LineaDelTotalMensajesDeWhatsApp;
 }
 /**
  * Textos relacionados a las opciones de entrega y envío.
  */
 export interface Envio {
-  freeLabel: EnvioGratisEtiqueta;
+  freeLabel: EtiquetaDeEnvioGratis;
 }
 /**
  * Título y bajada de la sección de pasos.
  */
 export interface ComoPedir {
-  title: ComoPedirTitulo;
-  subtitle: ComoPedirSubtitulo;
+  title: TituloDeComoPedir;
+  subtitle: SubtituloDeComoPedir;
 }
 /**
  * Precios de agregados.
  */
 export interface Extras {
-  candlePackPrice: ExtrasPrecioDelPackDeVelitaYBengalita;
+  candlePackPrice: PrecioDelPackDeVelitaYBengalitaExtras;
 }

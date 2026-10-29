@@ -6,7 +6,7 @@ import sharp from 'sharp';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const imageDirectory = path.join(projectRoot, 'public', 'assets', 'products');
-const productsFile = path.join(projectRoot, 'src', 'products.ts');
+const catalogFile = path.join(projectRoot, 'src', 'data', 'catalog.json');
 const generatedDimensionsFile = path.join(projectRoot, 'src', 'generated', 'imageDimensions.json');
 const assetsDirectory = path.join(projectRoot, 'public', 'assets');
 const strict = process.argv.includes('--strict');
@@ -60,13 +60,15 @@ try {
     });
   }
 
-  const productSource = await readFile(productsFile, 'utf8');
+  const catalog = JSON.parse(await readFile(catalogFile, 'utf8'));
   const expectedFiles = new Set(
-    [...productSource.matchAll(/imagen:\s*["']\/assets\/products\/([^"']+\.jpg)["']/g)]
-      .map(([, filename]) => filename),
+    (catalog.products ?? [])
+      .flatMap(p => p.images ?? [])
+      .map(img => path.basename(img))
+      .filter(f => /\.jpg$/i.test(f)),
   );
   if (expectedFiles.size === 0) {
-    throw new Error('No se encontraron imágenes de productos declaradas en src/products.ts.');
+    throw new Error('No se encontraron imágenes de productos declaradas en src/data/catalog.json.');
   }
 
   const filenames = (await readdir(imageDirectory))

@@ -1,6 +1,6 @@
 import React from 'react';
 import { brandConfig, formatText } from '../brand.config';
-import { getProductImageDimensions } from '../products';
+import { getProductImageDimensions } from '../catalog';
 import { CheckCircle2, ArrowDown, Headphones } from 'lucide-react';
 
 export const Hero: React.FC = () => {
@@ -33,62 +33,53 @@ export const Hero: React.FC = () => {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
+            className="w-full h-full object-cover object-center"
           />
-          {/* Measured Scrim for Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-primary via-brand-primary/50 to-black/20" />
-
-          {/* Floating Pill Badges */}
-          <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex flex-wrap gap-2 z-10">
-            {brandConfig.hero.badges.map(badge => (
-              <span
-                key={badge.text}
-                className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md ${
-                  badge.style === 'secondary'
-                    ? 'bg-brand-secondary-container text-brand-on-secondary-container'
-                    : 'bg-brand-tertiary-container text-white'
-                }`}
-              >
-                <span className="material-symbols-outlined text-[16px] leading-none" aria-hidden="true">
-                  {badge.icon}
-                </span>
-                {badge.text}
-              </span>
-            ))}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          
+          <div className="absolute bottom-4 left-4 right-4 text-white">
+            <span className="inline-block px-3 py-1 rounded-full bg-brand-secondary-fixed/90 backdrop-blur-md text-brand-on-secondary-fixed text-xs font-semibold mb-2 shadow-xs">
+              {brandConfig.hero.kicker}
+            </span>
+            <h1 className="font-serif text-2xl sm:text-4xl font-bold leading-tight drop-shadow-sm max-w-xl">
+              {brandConfig.hero.title}
+            </h1>
           </div>
         </div>
 
-        {/* Hero Narrative Body */}
-        <div className="p-5 sm:p-7 bg-brand-surface-container-low flex flex-col gap-3">
-          <div className="flex items-center gap-1.5 text-brand-secondary">
-            <CheckCircle2 className="w-4 h-4 text-brand-secondary" />
-            <span className="text-xs font-bold uppercase tracking-wider">
-              {brandConfig.hero.kicker}
-            </span>
-          </div>
-
-          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-primary font-bold leading-tight text-balance">
-            {brandConfig.hero.title}
-          </h1>
-
-          <p className="text-sm sm:text-base text-brand-on-surface-variant leading-relaxed max-w-2xl">
+        {/* Narrative & Quick Call To Actions */}
+        <div className="p-5 sm:p-7 flex flex-col justify-between space-y-4">
+          <p className="text-sm sm:text-base text-brand-on-surface-variant max-w-2xl leading-relaxed">
             {brandConfig.hero.description}
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center gap-3">
+          {/* Value Badges */}
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            {brandConfig.hero.badges.map((badge, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-surface text-brand-primary text-xs font-semibold shadow-xs border border-brand-surface-container-high"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-brand-secondary" />
+                <span>{badge.text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Interaction CTAs */}
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <button
               onClick={scrollToCatalog}
-              className="px-5 py-2.5 rounded-full bg-brand-primary text-white text-sm sm:text-base font-semibold flex items-center gap-2 hover:bg-brand-primary-container active:scale-95 transition-all shadow-md cursor-pointer"
+              className="py-3 px-6 rounded-full bg-brand-primary text-white font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-primary-container active:scale-[0.98] transition-all shadow-[0_4px_16px_rgba(92,56,42,0.2)] cursor-pointer"
             >
               <span>{brandConfig.hero.ctaPrimary}</span>
               <ArrowDown className="w-4 h-4" />
             </button>
-
             <button
               onClick={handleWhatsAppContact}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-brand-surface-container text-brand-on-surface-variant hover:bg-brand-surface-container-high text-xs sm:text-sm font-semibold transition-all active:scale-95 border border-brand-outline-variant/50 cursor-pointer"
+              className="py-3 px-6 rounded-full bg-brand-surface-container text-brand-primary hover:bg-brand-surface-container-high active:scale-[0.98] font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer border border-brand-surface-container-highest"
             >
-              <Headphones className="w-4 h-4 text-brand-tertiary-container" />
+              <Headphones className="w-4 h-4 text-brand-secondary" />
               <span>{brandConfig.hero.ctaSecondary}</span>
             </button>
           </div>

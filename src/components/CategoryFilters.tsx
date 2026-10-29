@@ -1,7 +1,7 @@
 import React from 'react';
 import { Txt } from './Txt';
 import { brandConfig, formatText } from '../brand.config';
-import { CATEGORIES, ProductCategory, Product } from '../products';
+import { CATEGORIES, ProductCategory, Product } from '../catalog';
 
 interface CategoryFiltersProps {
   selectedCategory: 'all' | ProductCategory;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Txt } from './Txt';
-import { Product, getProductImageDimensions } from '../products';
+import { Product, getProductImageDimensions } from '../catalog';
 import { brandConfig, formatCurrency, formatText } from '../brand.config';
 import { useCart, SelectedOptionState } from '../context/CartContext';
 import { getAvailableDates } from '../lib/availableDates';

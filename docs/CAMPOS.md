@@ -1,6 +1,10 @@
 # Diccionario de Campos Editables
 
-Este documento lista todos los campos editables del archivo `src/data/brand.json` definidos en `src/data/brand.schema.json`.
+Este documento lista todos los campos editables del sitio definidos en sus esquemas JSON correspondientes.
+
+## Marca y Configuración General (brand.json)
+
+Definido en `src/data/brand.schema.json` (origen de datos: `src/data/brand.json`).
 
 | Ruta | Título | Descripción | Widget | Asset | Ejemplo |
 |---|---|---|---|---|---|
@@ -61,11 +65,9 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `contact.closedWeekdays` | Contacto: días cerrados (0 = domingo … 6 = sábado) | Lista editable. | `list` |  |  |
 | `delivery.pickup.title` | Retiro en el local: título | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Retiro en el local |
 | `delivery.pickup.price` | Retiro en el local: precio | Valor numérico. | `number` |  |  |
-| `delivery.pickup.label` | Retiro en el local: etiqueta | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Gratis |
 | `delivery.pickup.description` | Retiro en el local: descripción | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Av. San Martín 2840 • Horario a convenir |
 | `delivery.delivery.title` | Envío a domicilio: título | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Envío en el barrio |
 | `delivery.delivery.price` | Envío a domicilio: precio | Valor numérico. | `number` |  |  |
-| `delivery.delivery.label` | Envío a domicilio: etiqueta | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | +$1.500 |
 | `delivery.delivery.description` | Envío a domicilio: descripción | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Reparto seguro en bicicleta y auto térmico |
 | `delivery.timeSlots` | Entrega: franjas horarias | Lista editable. | `list` |  |  |
 | `delivery.leadNoticeCake` | Entrega: aviso de anticipación para tortas | Texto editable. Dejalo vacío para ocultar el elemento. | `textarea` |  | Tu pedido incluye productos del día y una torta artesanal por encargo que requiere 48 hs de anticipación. |
@@ -98,29 +100,24 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `ui.catalog.viewAll` | Catálogo: botón ver todos | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.catalog.title` | Catálogo: título | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.catalog.countLabel` | Catálogo: contador de variedades | Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.catalog.allCategoryLabel` | Catálogo: rótulo de todas las categorías | Texto mostrado en la opción para ver todas las categorías. | `text` |  | Todos |
 | `ui.toast.viewBasket` | Avisos emergentes: enlace para ver la canasta | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.toast.removed` | Avisos emergentes: aviso al quitar un producto | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.toast.cleared` | Avisos emergentes: aviso al vaciar la canasta | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.toast.added` | Avisos emergentes: aviso al agregar | Texto con variables que el sitio reemplaza solo: {product}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.bottomNav.catalog` | Barra inferior (celular): catálogo | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.bottomNav.cakes` | Barra inferior (celular): tortas | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.bottomNav.cakes` | Barra inferior (celular): tortas | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Tortas |
 | `ui.bottomNav.basket` | Barra inferior (celular): canasta | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.bottomNav.contact` | Barra inferior (celular): contacto | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.units.order` | Unidades: encargo | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.units.dozen` | Unidades: docena | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.units.kilo` | Unidades: 1 kilo | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.units.halfKilo` | Unidades: medio kilo | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.units.perDozen` | Unidades: por docena | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.units.perKilo` | Unidades: por kilo | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.units.perHalfKilo` | Unidades: por medio kilo | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.units.order` | Unidades: encargo | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Encargo |
 | `ui.units.unitTemplate` | Unidades: plantilla de unidad | Texto con variables que el sitio reemplaza solo: {unit}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.cart.title` | Canasta: título | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.cart.title` | Canasta: título | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Tu canasta de delicias |
 | `ui.cart.subtitleEmpty` | Canasta: subtítulo vacío | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cart.clearTitle` | Canasta: ayuda de vaciar | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cart.clear` | Canasta: botón vaciar | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cart.closeLabel` | Canasta: etiqueta accesible de cerrar | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cart.emptyTitle` | Canasta: título vacío | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.cart.emptyDescription` | Canasta: descripción vacía | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `textarea` |  |  |
+| `ui.cart.emptyDescription` | Canasta: descripción vacía | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `textarea` |  | ¡Pasá por el catálogo y descubrí los panes recién horneados, facturas caseras y tortas por encargo! |
 | `ui.cart.emptyButton` | Canasta: botón vacío | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cart.leadNoticeTitle` | Canasta: título del aviso de anticipación | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cart.decreaseLabel` | Canasta: etiqueta accesible de restar | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
@@ -135,8 +132,8 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `ui.cart.paymentNoteEnd` | Canasta: aviso de pago (final) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cart.continue` | Canasta: botón continuar | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cart.keepShopping` | Canasta: botón seguir comprando | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.cart.candleSummary` | Canasta: resumen de velita y bengalita | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.cart.subtitleFilled` | Canasta: subtítulo con productos | Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.cart.candleSummary` | Canasta: resumen de velita y bengalita | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Con Velita + Bengalita |
+| `ui.cart.subtitleFilled` | Canasta: subtítulo con productos | Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento. | `text` |  | {count} delicias horneadas preparadas con amor |
 | `ui.cart.removeLabel` | Canasta: etiqueta accesible de eliminar | Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.errors.name` | Errores del pedido: nombre | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.errors.phone` | Errores del pedido: teléfono | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
@@ -148,7 +145,6 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `ui.checkout.stepSubtitle` | Pedido: subtítulo del paso | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.summaryHide` | Pedido: ocultar detalle | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.summaryShow` | Pedido: ver detalle | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.checkout.deliveryLine` | Pedido: línea de envío | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.total` | Pedido: total | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.sectionContact` | Pedido: sección de contacto | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.nameLabel` | Pedido: campo nombre | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
@@ -159,13 +155,13 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `ui.checkout.dateLabel` | Pedido: campo día | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.timeSlotLabel` | Pedido: campo franja horaria | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.sectionNotes` | Pedido: sección de aclaraciones | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.checkout.notesPlaceholder` | Pedido: ayuda del campo aclaraciones | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.checkout.notesPlaceholder` | Pedido: ayuda del campo aclaraciones | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Escribí notas sobre la dedicatoria o indicaciones... |
 | `ui.checkout.previewTitle` | Pedido: título de la vista previa | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.previewBadge` | Pedido: sello de la vista previa | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.confirm` | Pedido: botón confirmar | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.confirmNote` | Pedido: nota bajo el botón | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.checkout.titleBadge` | Pedido: sello del título | Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.checkout.itemsCount` | Pedido: cantidad de productos | Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.checkout.itemsCount` | Pedido: cantidad de productos | Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento. | `text` |  | {count} delicias |
 | `ui.checkout.leadTime` | Pedido: aviso de anticipación | Texto con variables que el sitio reemplaza solo: {hours}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cartBar.label` | Barra de canasta: etiqueta | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.cartBar.itemSingular` | Barra de canasta: ítem (singular) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
@@ -178,9 +174,9 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `ui.footer.title` | Pie de página: título | Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.header.whatsappLabel` | Encabezado: etiqueta accesible de WhatsApp | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.header.whatsappTitle` | Encabezado: ayuda de WhatsApp | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.header.cartTitle` | Encabezado: ayuda del carrito | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.header.cartTitle` | Encabezado: ayuda del carrito | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Ver canasta de delicias |
 | `ui.header.navProducts` | Encabezado: enlace productos | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.header.navCakes` | Encabezado: enlace tortas | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.header.navCakes` | Encabezado: enlace tortas | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Tortas por encargo |
 | `ui.header.navHowToOrder` | Encabezado: enlace cómo pedir | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.header.navContact` | Encabezado: enlace contacto | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.header.cartLabel` | Encabezado: etiqueta accesible del carrito | Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
@@ -189,7 +185,7 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `ui.productCard.added` | Tarjeta de producto: aviso al agregar | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.productCard.add` | Tarjeta de producto: botón agregar | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.productCard.priceLabel` | Tarjeta de producto: etiqueta de precio | Texto con variables que el sitio reemplaza solo: {unit}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.productDetail.dedicationDefault` | Ficha de producto: dedicatoria por defecto | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.productDetail.dedicationDefault` | Ficha de producto: dedicatoria por defecto | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | ¡Feliz Cumple Mamá! |
 | `ui.productDetail.backLabel` | Ficha de producto: etiqueta accesible de volver | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.productDetail.title` | Ficha de producto: título | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.productDetail.whatsappLabel` | Ficha de producto: etiqueta accesible de WhatsApp | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
@@ -203,9 +199,9 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `ui.productDetail.included` | Ficha de producto: incluido | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.productDetail.sectionCustom` | Ficha de producto: sección de personalización | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.productDetail.optional` | Ficha de producto: opcional | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.productDetail.dedicationPlaceholder` | Ficha de producto: ayuda del campo dedicatoria | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.productDetail.candlePackTitle` | Ficha de producto: pack de velita (título) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.productDetail.candlePackNote` | Ficha de producto: pack de velita (nota) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.productDetail.dedicationPlaceholder` | Ficha de producto: ayuda del campo dedicatoria | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Ej: ¡Feliz Cumple Mamá! |
+| `ui.productDetail.candlePackTitle` | Ficha de producto: pack de velita (título) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Pack Velita dorada + Bengalita artesanal |
+| `ui.productDetail.candlePackNote` | Ficha de producto: pack de velita (nota) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  | Lista para encender y festejar |
 | `ui.productDetail.sectionDate` | Ficha de producto: sección de fecha | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.productDetail.nearestSlot` | Ficha de producto: turno más cercano | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.productDetail.quantity` | Ficha de producto: cantidad | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
@@ -223,7 +219,7 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `ui.whatsapp.notSpecified` | Mensajes de WhatsApp: no especificado | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.whatsapp.consult` | Mensajes de WhatsApp: consulta general | Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.whatsapp.availability` | Mensajes de WhatsApp: consulta de disponibilidad | Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
-| `ui.whatsapp.cakeInquiry` | Mensajes de WhatsApp: consulta por una torta | Texto con variables que el sitio reemplaza solo: {name}, {product}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.whatsapp.cakeInquiry` | Mensajes de WhatsApp: consulta por una torta | Texto con variables que el sitio reemplaza solo: {name}, {product}. Dejalo vacío para ocultar el elemento. | `text` |  | ¡Hola {name}! Tengo una consulta sobre {product} por encargo. |
 | `ui.whatsapp.orderTitle` | Mensajes de WhatsApp: título del pedido | Texto con variables que el sitio reemplaza solo: {name}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.whatsapp.customerLine` | Mensajes de WhatsApp: línea del cliente | Texto con variables que el sitio reemplaza solo: {customer}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.whatsapp.phoneLine` | Mensajes de WhatsApp: línea del teléfono | Texto con variables que el sitio reemplaza solo: {phone}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
@@ -234,6 +230,43 @@ Este documento lista todos los campos editables del archivo `src/data/brand.json
 | `ui.whatsapp.deliveryLine` | Mensajes de WhatsApp: línea de envío | Texto con variables que el sitio reemplaza solo: {price}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.whatsapp.noteLine` | Mensajes de WhatsApp: línea de nota | Texto con variables que el sitio reemplaza solo: {note}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.whatsapp.totalLine` | Mensajes de WhatsApp: línea del total | Texto con variables que el sitio reemplaza solo: {total}. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `ui.delivery.freeLabel` | Envío gratis: etiqueta | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Gratis |
 | `howToOrder.title` | Cómo pedir: título | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | ¿Cómo hacer tu pedido? |
 | `howToOrder.subtitle` | Cómo pedir: subtítulo | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Simple, rápido y con la cercanía que nos caracteriza desde hace 15 años. |
 | `extras.candlePackPrice` | Extras: precio del pack de velita y bengalita | Valor numérico. | `number` |  |  |
+
+## Catálogo de Productos y Categorías (catalog.json)
+
+Definido en `src/data/catalog.schema.json` (origen de datos: `src/data/catalog.json`).
+
+| Ruta | Título | Descripción | Widget | Asset | Ejemplo |
+|---|---|---|---|---|---|
+| `schemaVersion` | Versión del esquema | Versión de la estructura de datos del catálogo. | `number` |  |  |
+| `categories[].id` | Identificador de categoría | Identificador único en minúsculas y separado por guiones. | `text` |  |  |
+| `categories[].label` | Nombre visible de categoría | Texto mostrado en los botones y filtros del catálogo. | `text` |  |  |
+| `units[].id` | Identificador de unidad | Clave que coincide con la unidad asignada a los productos (ej: docena, kilo, 500 grs). | `text` |  |  |
+| `units[].cartLabel` | Rótulo en el carrito | Texto mostrado junto a la cantidad dentro de la canasta. | `text` |  |  |
+| `units[].priceLabel` | Rótulo de precio en la tarjeta | Texto que acompaña al precio en la lista de productos (ej: Por docena). | `text` |  |  |
+| `products[].id` | Identificador del producto | Identificador único en minúsculas y separado por guiones. | `text` |  |  |
+| `products[].name` | Nombre del producto | Título principal visible en la tarjeta y en la ficha. | `text` |  |  |
+| `products[].category` | Categoría asignada | Debe coincidir con el identificador de una categoría existente. | `select` |  |  |
+| `products[].price` | Precio base | Monto en pesos argentinos sin recargos por opciones adicionales. | `number` |  |  |
+| `products[].unit` | Unidad de venta | Unidad de medida asociada al producto (ej: unidad, docena, kilo, 500 grs). | `text` |  |  |
+| `products[].images` | Imágenes del producto | Fotografías del producto. | `list` |  | path: /assets/products/{id}.jpg, minWidth: 1200px, ratio: 4:3, maxKB: 250KB |
+| `products[].description` | Descripción del producto | Detalle sobre ingredientes, preparación o porciones. | `textarea` |  |  |
+| `products[].badge` | Etiqueta destacada | Texto breve opcional mostrado sobre la imagen (ej: Recién salidas). | `text` |  |  |
+| `products[].requiresLeadTime` | Requiere anticipación | Indica si el producto se elabora por encargo y precisa tiempo previo. | `boolean` |  |  |
+| `products[].leadTimeHours` | Horas de anticipación | Cantidad mínima de horas requeridas para programar la entrega. | `number` |  |  |
+| `products[].options[].id` | Identificador de opción | Clave única dentro de las opciones del producto. | `text` |  |  |
+| `products[].options[].title` | Título visible de la opción | Encabezado mostrado al comprador. | `text` |  |  |
+| `products[].options[].required` | Opción obligatoria | Si es obligatoria antes de agregar a la canasta. | `boolean` |  |  |
+| `products[].options[].type` | Tipo de control | Formato de selección visual. | `select` |  |  |
+| `products[].options[].choices[].id` | Identificador de la elección | Clave técnica de la variante. | `text` |  |  |
+| `products[].options[].choices[].name` | Nombre de la elección | Texto mostrado al usuario. | `text` |  |  |
+| `products[].options[].choices[].description` | Aclaración adicional | Detalle breve complementario. | `text` |  |  |
+| `products[].options[].choices[].extraPrice` | Costo adicional | Importe en pesos que se suma al precio base (0 si no suma). | `number` |  |  |
+| `products[].options[].choices[].isDefault` | Seleccionada por defecto | Indica si debe aparecer marcada inicialmente. | `boolean` |  |  |
+| `products[].options[].placeholder` | Texto de ejemplo | Sugerencia mostrada en campos de texto libre. | `text` |  |  |
+| `products[].options[].maxLength` | Longitud máxima | Cantidad tope de caracteres en campos de texto. | `number` |  |  |
+| `products[].options[].extraPrice` | Costo adicional de opción directa | Recargo aplicable a opciones tipo checkbox sin opciones anidadas. | `number` |  |  |
+

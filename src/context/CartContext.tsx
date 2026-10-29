@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product } from '../products';
+import { Product } from '../catalog';
 import { brandConfig, formatCurrency, formatText } from '../brand.config';
 
 const cartStorageKey = brandConfig.storage.cartKey;
