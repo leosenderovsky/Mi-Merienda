@@ -1261,7 +1261,11 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Tortas"
+              ]
             },
             "basket": {
               "title": "Barra inferior (celular): canasta",
@@ -1301,7 +1305,11 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Encargo"
+              ]
             },
             "dozen": {
               "title": "Unidades: docena",
@@ -1395,7 +1403,11 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Tu canasta de delicias"
+              ]
             },
             "subtitleEmpty": {
               "title": "Canasta: subtítulo vacío",
@@ -1437,7 +1449,11 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "textarea",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "¡Pasá por el catálogo y descubrí los panes recién horneados, facturas caseras y tortas por encargo!"
+              ]
             },
             "emptyButton": {
               "title": "Canasta: botón vacío",
@@ -1542,7 +1558,11 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Con Velita + Bengalita"
+              ]
             },
             "subtitleFilled": {
               "title": "Canasta: subtítulo con productos",
@@ -1552,6 +1572,10 @@
               "description": "Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento.",
               "x-vars": [
                 "count"
+              ],
+              "x-exampleData": true,
+              "examples": [
+                "{count} delicias horneadas preparadas con amor"
               ]
             },
             "removeLabel": {
@@ -1760,7 +1784,11 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Escribí notas sobre la dedicatoria o indicaciones..."
+              ]
             },
             "previewTitle": {
               "title": "Pedido: título de la vista previa",
@@ -1808,6 +1836,10 @@
               "description": "Texto con variables que el sitio reemplaza solo: {count}. Dejalo vacío para ocultar el elemento.",
               "x-vars": [
                 "count"
+              ],
+              "x-exampleData": true,
+              "examples": [
+                "{count} delicias"
               ]
             },
             "leadTime": {
@@ -1955,7 +1987,11 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Ver canasta de delicias"
+              ]
             },
             "navProducts": {
               "title": "Encabezado: enlace productos",
@@ -1969,7 +2005,11 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Tortas por encargo"
+              ]
             },
             "navHowToOrder": {
               "title": "Encabezado: enlace cómo pedir",
@@ -2094,7 +2134,11 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "¡Feliz Cumple Mamá!"
+              ]
             },
             "backLabel": {
               "title": "Ficha de producto: etiqueta accesible de volver",
@@ -2192,21 +2236,33 @@
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Ej: ¡Feliz Cumple Mamá!"
+              ]
             },
             "candlePackTitle": {
               "title": "Ficha de producto: pack de velita (título)",
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Pack Velita dorada + Bengalita artesanal"
+              ]
             },
             "candlePackNote": {
               "title": "Ficha de producto: pack de velita (nota)",
               "x-group": "Textos",
               "type": "string",
               "x-widget": "text",
-              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento."
+              "description": "Texto de la interfaz. Dejalo vacío para ocultar el elemento.",
+              "x-exampleData": true,
+              "examples": [
+                "Lista para encender y festejar"
+              ]
             },
             "sectionDate": {
               "title": "Ficha de producto: sección de fecha",
@@ -2382,6 +2438,10 @@
               "x-vars": [
                 "name",
                 "product"
+              ],
+              "x-exampleData": true,
+              "examples": [
+                "¡Hola {name}! Tengo una consulta sobre {product} por encargo."
               ]
             },
             "orderTitle": {
