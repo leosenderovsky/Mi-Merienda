@@ -1,17 +1,19 @@
-// DEMO ONLY. El banner se oculta poniendo demo.showPrototypeBanner en false en brand.config.ts. Al entregar el sitio a un cliente real: borrar este archivo, PrototypeBanner.tsx, su import y la bandera demo.showPrototypeBanner en App.tsx y brand.config.ts.
+// DEMO ONLY. Al entregar el sitio a un cliente real, quitar este archivo y el banner.
+export const DEFAULT_DEMO_BRAND_NAME = 'Tienda ON!';
+// DEMO ONLY. Tienda ON! todavía no tiene un sitio público para enlazar.
+export const DEFAULT_DEMO_BRAND_URL = '';
+
 export const demoBannerConfig = {
-  companyName: (import.meta.env?.VITE_DEMO_BRAND_NAME ?? '').trim(),
-  link: (import.meta.env?.VITE_DEMO_BRAND_URL ?? '').trim(),
+  companyName: (import.meta.env?.VITE_DEMO_BRAND_NAME || DEFAULT_DEMO_BRAND_NAME).trim(),
+  link: (import.meta.env?.VITE_DEMO_BRAND_URL || DEFAULT_DEMO_BRAND_URL).trim(),
 };
 
 export function getDemoLegend(): string {
-  const base = 'Marca, productos y precios de ejemplo — prototipo de demostración';
-  const companyName = demoBannerConfig.companyName;
-  return companyName && companyName !== '[EMPRESA]' ? `${base} de ${companyName}` : base;
+  return 'Marca, productos y precios de ejemplo — prototipo de demostración';
 }
 
-if (import.meta.env?.DEV && (!demoBannerConfig.companyName || demoBannerConfig.companyName === '[EMPRESA]')) {
-  console.info('Banner DEMO: definí VITE_DEMO_BRAND_NAME y VITE_DEMO_BRAND_URL cuando exista la marca.');
+export function getDemoBannerLegend(): string {
+  return `prototipo de ${demoBannerConfig.companyName}`;
 }
 
 export function getValidDemoBannerLink(link: string): string | null {

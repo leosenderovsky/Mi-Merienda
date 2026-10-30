@@ -5,7 +5,7 @@
  */
 
 import catalogData from './data/catalog.json' with { type: 'json' };
-import { brandConfig } from './brand.config.ts';
+import { brandConfig, formatText } from './brand.config.ts';
 import imageDimensions from './generated/imageDimensions.json';
 import type {
   CatalogConfig,
@@ -83,6 +83,14 @@ export const units: UnidadDeMedida[] = catalogJson.units;
 /** Obtiene la configuración de una unidad de medida por su id */
 export function getUnit(unitId: string): UnidadDeMedida | undefined {
   return units.find((u) => u.id === unitId);
+}
+
+/** Conserva el rótulo histórico para la unidad genérica no configurada. */
+export function getUnitPriceLabel(unitId: string): string {
+  const configured = getUnit(unitId);
+  if (configured) return configured.priceLabel;
+  if (unitId.startsWith('unidad')) return unitId;
+  return formatText(brandConfig.ui.units.unitTemplate, { unit: unitId });
 }
 
 /** Categoría destacada con anticipación/especial (ej: tortas por encargo) */

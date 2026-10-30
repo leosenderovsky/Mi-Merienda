@@ -27,6 +27,8 @@
     "check:config:strict": "node scripts/check-config.mjs --strict",
     "check:render": "node scripts/check-render.mjs",
     "check:texts": "node scripts/check-texts.mjs",
+    "check:coupling": "node scripts/check-coupling.mjs",
+    "images:optimize": "node scripts/optimize-images.mjs",
     "docs:fields": "node scripts/generate-fields-doc.mjs"
   },
   "dependencies": {

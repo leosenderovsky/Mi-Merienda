@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Txt } from './Txt';
-import { Product, getProductImageDimensions, getUnit } from '../catalog';
+import { Product, getProductImageDimensions, getUnitPriceLabel } from '../catalog';
 import { brandConfig, formatCurrency, formatText } from '../brand.config';
 import { useCart } from '../context/CartContext';
 import { Plus, Check, SlidersHorizontal, Clock, Sparkles } from 'lucide-react';
@@ -42,9 +42,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
   };
 
   const unitLabelText = () => {
-    const configured = getUnit(product.unidad);
-    if (configured) return configured.priceLabel;
-    return product.unidad.startsWith('unidad') ? product.unidad : formatText(brandConfig.ui.units.unitTemplate, { unit: product.unidad });
+    return getUnitPriceLabel(product.unidad);
   };
 
   return (

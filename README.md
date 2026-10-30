@@ -32,7 +32,9 @@ npm run preview
 - `src/data/brand.schema.json`: esquema con etiquetas en español, tipos y reglas; `docs/CAMPOS.md` es la tabla de campos generada.
 - `src/brand.config.ts`: envoltorio que importa `brand.json` y exporta `brandConfig` (no se edita).
 - `src/components/Txt.tsx`: muestra un texto editable y no dibuja nada si está vacío.
-- `src/products.ts`: categorías y catálogo del prototipo.
+- `src/data/catalog.json`: categorías, unidades, productos y opciones editables.
+- `src/data/catalog.schema.json`: contrato del catálogo para el editor web.
+- `src/catalog.ts`: envoltorio tipado que conserva los exports usados por la interfaz.
 - `src/generated/`: datos generados para las dimensiones de las imágenes.
 - `public/assets/`: logo, iconos, imágenes del hero, catálogo y vista previa social.
 - `scripts/`: generación y controles de imágenes, logo e iconos.
@@ -56,8 +58,8 @@ Hacé los cambios en este orden:
    - `seo`: sufijo del título, descripción y recurso de imagen social.
    - `howToOrder`, `extras` y `ui`: títulos, botones, avisos, mensajes de WhatsApp y precio del pack de velita.
 2. Los tokens de `theme` se inyectan como variables CSS desde `src/main.tsx`; ahí también se asignan las dos familias tipográficas.
-3. Actualizá `src/products.ts`: cada producto tiene identificador, nombre, categoría, precio, unidad, imagen, descripción y, opcionalmente, `badge`, `requiresLeadTime`, `leadTimeHours` y `opciones`. Las opciones admiten `radio`, `checkbox` y `text`; las alternativas y los extras de precio se expresan con `extraPrice`.
-4. Si cambia el rubro, ajustá la unión `ProductCategory` y la lista `CATEGORIES` en `src/products.ts`. Revisá también la navegación específica de “Tortas por encargo” en `src/App.tsx` y `src/components/Header.tsx`.
+3. Actualizá `src/data/catalog.json`: cada producto tiene identificador, nombre, categoría, precio, unidad, imágenes, descripción y, opcionalmente, `badge`, `requiresLeadTime`, `leadTimeHours` y `options`. Las opciones admiten `radio`, `checkbox` y `text`; las alternativas y los extras de precio se expresan con `extraPrice`.
+4. Las categorías, unidades y el destino destacado se derivan del JSON. No hace falta modificar TypeScript al agregar, quitar o renombrar una categoría o unidad.
 5. Reemplazá las imágenes que correspondan en `public/assets/` y regenerá los recursos derivados con los comandos de imágenes.
 
 ### Fechas de entrega
@@ -71,7 +73,7 @@ Ningún texto visible está escrito en el código: todo sale de `src/data/brand.
 - **Cambiar un texto:** editá su valor (por ejemplo `ui.footer.addressTitle` de "Local Barrial" a "Dónde estamos").
 - **Quitar un elemento:** dejá su texto **vacío** (`""`); el elemento no se dibuja.
 - **Textos con variables:** `{name}`, `{count}`, `{hours}`, `{price}`, etc. se reemplazan solos; el esquema indica cuáles admite cada texto y `check:config` falla si usás una desconocida.
-- Los nombres, descripciones y opciones de productos están en `src/products.ts` (también datos editables).
+- Los nombres, descripciones, categorías, unidades y opciones de productos están en `src/data/catalog.json` (también datos editables).
 
 Si agregás un componente, sus textos van a `brand.json` y a `brand.schema.json`; `npm run check:texts` lo verifica.
 
@@ -83,14 +85,16 @@ Si agregás un componente, sus textos van a `brand.json` y a `brand.schema.json`
 | `npm run check:config` | Valida `brand.json` contra el esquema, imágenes, URLs, colores, WhatsApp y variables de texto. |
 | `npm run check:config:strict` | Además exige reemplazar los datos de ejemplo y rechaza los textos de `prototype-markers.json`. **Falla en el prototipo, a propósito.** |
 | `npm run check:texts` | Falla si algún texto visible está escrito en el código en vez de salir de `brand.json`. |
+| `npm run check:coupling` | Falla si una categoría o unidad del catálogo queda escrita como literal en el código. |
 | `npm run check:render` | Renderiza la aplicación sin navegador y falla ante cualquier excepción. |
+| `npm run images:optimize` | Optimiza JPG de productos y del hero conservando dimensiones y originales en `.image-originals/`. |
 | `npm run docs:fields` | Regenera `docs/CAMPOS.md`. |
 
 ## Imágenes y logo
 
 | Archivo o carpeta | Uso | Medidas actuales / requisito |
 | --- | --- | --- |
-| `public/assets/products/` | Ocho fotos JPG declaradas en `src/products.ts`. | 1600 px de ancho; 1195 o 1200 px de alto. Formato 4:3. |
+| `public/assets/products/` | Fotos JPG declaradas en `src/data/catalog.json`. | 1600 px de ancho; 1195 o 1200 px de alto. Formato 4:3. |
 | `public/assets/hero/hero-1.jpg` | Imagen principal; origen del recorte social. | 2560 × 1440 px. |
 | `public/assets/logo/logo.png` | Logo mostrado en el encabezado. | 800 × 827 px. |
 | `public/assets/logo/logo.svg` | Fuente vectorial del logo para conservar y editar el original. | Vectorial; no depende de una resolución fija. |
@@ -119,14 +123,14 @@ Partí de `.env.example`. No hace falta completar variables para levantar la app
 | Variable | Uso |
 | --- | --- |
 | `VITE_SITE_URL` | URL pública para canonical y metadatos de imagen social. |
-| `VITE_DEMO_BRAND_NAME` | Nombre que puede mostrarse en el banner de demo. |
-| `VITE_DEMO_BRAND_URL` | Enlace del banner; solo se acepta si es HTTP o HTTPS. |
+| `VITE_DEMO_BRAND_NAME` | Sobrescritura opcional del nombre del banner; por defecto `Tienda ON!`. |
+| `VITE_DEMO_BRAND_URL` | Reservada para un futuro enlace del banner; por defecto queda vacía. |
 
 Para la URL del sitio, `vite.config.ts` resuelve en este orden: `VITE_SITE_URL` leído por `loadEnv` para el modo activo o por `process.env`; en contexto `production`, `process.env.URL`; en otros contextos, `process.env.DEPLOY_PRIME_URL`; como respaldo, `process.env.URL` y luego `process.env.DEPLOY_PRIME_URL`; y, si ninguno tiene valor, usa rutas relativas. La URL resultante se usa para canonical y para hacer absoluta la URL de la imagen social.
 
 ## Modo demo
 
-`src/components/PrototypeBanner.tsx` muestra el aviso controlado por `brandConfig.demo.showPrototypeBanner`. El nombre y el enlace opcionales vienen de las variables `VITE_DEMO_BRAND_NAME` y `VITE_DEMO_BRAND_URL` leídas en `src/demoBanner.config.ts`. `getDemoLegend()` arma la leyenda de prototipo que aparece en el pie.
+`src/components/PrototypeBanner.tsx` muestra el aviso controlado por `brandConfig.demo.showPrototypeBanner`. Por defecto dice “prototipo de Tienda ON!” y no agrega enlace mientras `Tienda ON!` no tenga un sitio público. `getDemoLegend()` arma la leyenda de prototipo que aparece en el pie.
 
 `brandConfig.demo.prefillCheckout` controla si el checkout toma los valores de `checkoutDefaults`; está apagado por defecto. Antes de entregar, reemplazá todos los valores y contenidos de muestra. Corré `npm run check:config:strict`: lista cada dato de ejemplo (WhatsApp, dirección, horarios, turnos, textos de marca) que falta reemplazar en `src/data/brand.json`. Revisá también textos, precios, catálogo, imágenes y valores de checkout.
 
@@ -157,7 +161,7 @@ El comando compara el commit publicado contra `origin/main`, revisa la fuente de
 ### Verificación antes de entregar
 
 - [ ] Reemplazá marca, contacto, horarios, días cerrados y textos en `src/data/brand.json` hasta que pase `npm run check:config:strict`.
-- [ ] Reemplazá y revisá productos, precios, unidades, opciones e imágenes en `src/products.ts`.
+- [ ] Reemplazá y revisá productos, precios, unidades, opciones e imágenes en `src/data/catalog.json`.
 - [ ] Revisá las categorías y la navegación si cambió el rubro.
 - [ ] Ocultá o sacá el banner demo; confirmá que `prefillCheckout` esté apagado.
 - [ ] Generá los recursos y ejecutá los controles:
