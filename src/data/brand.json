@@ -70,13 +70,11 @@
     "pickup": {
       "title": "Retiro en el local",
       "price": 0,
-      "label": "Gratis",
       "description": "Av. San Martín 2840 • Horario a convenir"
     },
     "delivery": {
       "title": "Envío en el barrio",
       "price": 1500,
-      "label": "+$1.500",
       "description": "Reparto seguro en bicicleta y auto térmico"
     },
     "timeSlots": [
@@ -150,7 +148,8 @@
       "emptyCategory": "No hay productos en esta categoría por el momento.",
       "viewAll": "Ver todos los productos",
       "title": "Nuestras Especialidades",
-      "countLabel": "{count} Variedades"
+      "countLabel": "{count} Variedades",
+      "allCategoryLabel": "Todos"
     },
     "toast": {
       "viewBasket": "Ver canasta",
@@ -166,12 +165,6 @@
     },
     "units": {
       "order": "Encargo",
-      "dozen": "Docena",
-      "kilo": "1 Kilo",
-      "halfKilo": "500 grs",
-      "perDozen": "Por docena",
-      "perKilo": "Por kilo",
-      "perHalfKilo": "Por 1/2 kilo",
       "unitTemplate": "Unidad ({unit})"
     },
     "cart": {
@@ -213,7 +206,6 @@
       "stepSubtitle": "Entrega & Confirmación",
       "summaryHide": "Ocultar",
       "summaryShow": "Ver detalle",
-      "deliveryLine": "Envío en el barrio",
       "total": "Total Estimado",
       "sectionContact": "1. Datos de Contacto",
       "nameLabel": "Nombre y Apellido",
@@ -311,6 +303,9 @@
       "deliveryLine": "• Envío a Domicilio ({price})",
       "noteLine": "📝 *Nota:* {note}",
       "totalLine": "💰 *Total estimado: {total}*"
+    },
+    "delivery": {
+      "freeLabel": "Gratis"
     }
   },
   "howToOrder": {

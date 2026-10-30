@@ -1,0 +1,306 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CatalogConfig",
+  "description": "Configuración del catálogo de productos, categorías y unidades de venta.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "categories",
+    "units",
+    "products"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Ruta al esquema JSON."
+    },
+    "schemaVersion": {
+      "type": "integer",
+      "title": "Versión del esquema",
+      "description": "Versión de la estructura de datos del catálogo.",
+      "enum": [1]
+    },
+    "categories": {
+      "type": "array",
+      "title": "Categorías de productos",
+      "description": "Lista de categorías para clasificar los productos del catálogo.",
+      "x-group": "Comercial",
+      "items": {
+        "type": "object",
+        "title": "Categoría",
+        "description": "Información de una categoría de producto.",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Identificador de categoría",
+            "description": "Identificador único en minúsculas y separado por guiones.",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "x-widget": "text"
+          },
+          "label": {
+            "type": "string",
+            "title": "Nombre visible de categoría",
+            "description": "Texto mostrado en los botones y filtros del catálogo.",
+            "x-widget": "text"
+          }
+        }
+      }
+    },
+    "units": {
+      "type": "array",
+      "title": "Unidades de venta",
+      "description": "Unidades de medida disponibles con sus rótulos para la tarjeta y el carrito.",
+      "x-group": "Comercial",
+      "items": {
+        "type": "object",
+        "title": "Unidad de medida",
+        "description": "Definición de rótulos para una unidad de producto.",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "cartLabel",
+          "priceLabel"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Identificador de unidad",
+            "description": "Clave que coincide con la unidad asignada a los productos (ej: docena, kilo, 500 grs).",
+            "x-widget": "text"
+          },
+          "cartLabel": {
+            "type": "string",
+            "title": "Rótulo en el carrito",
+            "description": "Texto mostrado junto a la cantidad dentro de la canasta.",
+            "x-widget": "text"
+          },
+          "priceLabel": {
+            "type": "string",
+            "title": "Rótulo de precio en la tarjeta",
+            "description": "Texto que acompaña al precio en la lista de productos (ej: Por docena).",
+            "x-widget": "text"
+          }
+        }
+      }
+    },
+    "products": {
+      "type": "array",
+      "title": "Listado de productos",
+      "description": "Todos los productos ofrecidos en el catálogo.",
+      "x-group": "Comercial",
+      "items": {
+        "type": "object",
+        "title": "Producto",
+        "description": "Detalle de un producto individual.",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "category",
+          "price",
+          "unit",
+          "images",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Identificador del producto",
+            "description": "Identificador único en minúsculas y separado por guiones.",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "x-widget": "text"
+          },
+          "name": {
+            "type": "string",
+            "title": "Nombre del producto",
+            "description": "Título principal visible en la tarjeta y en la ficha.",
+            "x-widget": "text"
+          },
+          "category": {
+            "type": "string",
+            "title": "Categoría asignada",
+            "description": "Debe coincidir con el identificador de una categoría existente.",
+            "x-widget": "select"
+          },
+          "price": {
+            "type": "integer",
+            "title": "Precio base",
+            "description": "Monto en pesos argentinos sin recargos por opciones adicionales.",
+            "minimum": 1,
+            "x-widget": "number"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unidad de venta",
+            "description": "Unidad de medida asociada al producto (ej: unidad, docena, kilo, 500 grs).",
+            "x-widget": "text"
+          },
+          "images": {
+            "type": "array",
+            "title": "Imágenes del producto",
+            "description": "Fotografías del producto.",
+            "items": {
+              "type": "string",
+              "title": "Ruta de imagen",
+              "description": "Ruta en public/assets/products.",
+              "x-widget": "image",
+              "x-asset": {
+                "path": "/assets/products/{id}.jpg",
+                "minWidth": 1200,
+                "ratio": "4:3",
+                "maxKB": 250
+              }
+            }
+          },
+          "description": {
+            "type": "string",
+            "title": "Descripción del producto",
+            "description": "Detalle sobre ingredientes, preparación o porciones.",
+            "x-widget": "textarea"
+          },
+          "badge": {
+            "type": "string",
+            "title": "Etiqueta destacada",
+            "description": "Texto breve opcional mostrado sobre la imagen (ej: Recién salidas).",
+            "x-widget": "text"
+          },
+          "requiresLeadTime": {
+            "type": "boolean",
+            "title": "Requiere anticipación",
+            "description": "Indica si el producto se elabora por encargo y precisa tiempo previo.",
+            "x-widget": "boolean"
+          },
+          "leadTimeHours": {
+            "type": "integer",
+            "title": "Horas de anticipación",
+            "description": "Cantidad mínima de horas requeridas para programar la entrega.",
+            "minimum": 1,
+            "x-widget": "number"
+          },
+          "options": {
+            "type": "array",
+            "title": "Opciones y variantes",
+            "description": "Grupos de personalización disponibles para el cliente.",
+            "items": {
+              "type": "object",
+              "title": "Opción de producto",
+              "description": "Configuración de una variante u opción.",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "title",
+                "required",
+                "type"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "title": "Identificador de opción",
+                  "description": "Clave única dentro de las opciones del producto.",
+                  "x-widget": "text"
+                },
+                "title": {
+                  "type": "string",
+                  "title": "Título visible de la opción",
+                  "description": "Encabezado mostrado al comprador.",
+                  "x-widget": "text"
+                },
+                "required": {
+                  "type": "boolean",
+                  "title": "Opción obligatoria",
+                  "description": "Si es obligatoria antes de agregar a la canasta.",
+                  "x-widget": "boolean"
+                },
+                "type": {
+                  "type": "string",
+                  "title": "Tipo de control",
+                  "description": "Formato de selección visual.",
+                  "enum": [
+                    "radio",
+                    "checkbox",
+                    "text"
+                  ],
+                  "x-widget": "select"
+                },
+                "choices": {
+                  "type": "array",
+                  "title": "Elecciones disponibles",
+                  "description": "Lista de alternativas para opciones de tipo radio o selección.",
+                  "items": {
+                    "type": "object",
+                    "title": "Elección",
+                    "description": "Detalle de una variante puntual.",
+                    "additionalProperties": false,
+                    "required": [
+                      "id",
+                      "name",
+                      "extraPrice"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "title": "Identificador de la elección",
+                        "description": "Clave técnica de la variante.",
+                        "x-widget": "text"
+                      },
+                      "name": {
+                        "type": "string",
+                        "title": "Nombre de la elección",
+                        "description": "Texto mostrado al usuario.",
+                        "x-widget": "text"
+                      },
+                      "description": {
+                        "type": "string",
+                        "title": "Aclaración adicional",
+                        "description": "Detalle breve complementario.",
+                        "x-widget": "text"
+                      },
+                      "extraPrice": {
+                        "type": "integer",
+                        "title": "Costo adicional",
+                        "description": "Importe en pesos que se suma al precio base (0 si no suma).",
+                        "x-widget": "number"
+                      },
+                      "isDefault": {
+                        "type": "boolean",
+                        "title": "Seleccionada por defecto",
+                        "description": "Indica si debe aparecer marcada inicialmente.",
+                        "x-widget": "boolean"
+                      }
+                    }
+                  }
+                },
+                "placeholder": {
+                  "type": "string",
+                  "title": "Texto de ejemplo",
+                  "description": "Sugerencia mostrada en campos de texto libre.",
+                  "x-widget": "text"
+                },
+                "maxLength": {
+                  "type": "integer",
+                  "title": "Longitud máxima",
+                  "description": "Cantidad tope de caracteres en campos de texto.",
+                  "minimum": 1,
+                  "x-widget": "number"
+                },
+                "extraPrice": {
+                  "type": "integer",
+                  "title": "Costo adicional de opción directa",
+                  "description": "Recargo aplicable a opciones tipo checkbox sin opciones anidadas.",
+                  "x-widget": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

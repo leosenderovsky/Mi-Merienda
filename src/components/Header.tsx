@@ -2,7 +2,7 @@ import React from 'react';
 import { Txt } from './Txt';
 import { brandConfig, formatCurrency, formatText } from '../brand.config';
 import { useCart } from '../context/CartContext';
-import { getProductImageDimensions } from '../products';
+import { getProductImageDimensions } from '../catalog';
 import { MessageCircle, ShoppingBag } from 'lucide-react';
 
 interface HeaderProps {

@@ -1,0 +1,301 @@
+{
+  "$schema": "./catalog.schema.json",
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "id": "panes",
+      "label": "Panificados"
+    },
+    {
+      "id": "facturas",
+      "label": "Facturas & Medialunas"
+    },
+    {
+      "id": "tortas",
+      "label": "Tortas por encargo"
+    },
+    {
+      "id": "salados",
+      "label": "Salados & Sandwiches"
+    }
+  ],
+  "units": [
+    {
+      "id": "docena",
+      "cartLabel": "Docena",
+      "priceLabel": "Por docena"
+    },
+    {
+      "id": "kilo",
+      "cartLabel": "1 Kilo",
+      "priceLabel": "Por kilo"
+    },
+    {
+      "id": "500 grs",
+      "cartLabel": "500 grs",
+      "priceLabel": "Por 1/2 kilo"
+    }
+  ],
+  "products": [
+    {
+      "id": "medialunas-manteca",
+      "name": "Medialunas de Manteca Artesanales",
+      "category": "facturas",
+      "price": 4800,
+      "unit": "docena",
+      "images": [
+        "/assets/products/medialunas-manteca.jpg"
+      ],
+      "description": "Elaboradas con 72 hs de fermentación lenta, manteca pura y almíbar cítrico perfumado.",
+      "badge": "Recién salidas",
+      "options": [
+        {
+          "id": "variedad",
+          "title": "Variedad de la docena",
+          "required": true,
+          "type": "radio",
+          "choices": [
+            {
+              "id": "surtidas",
+              "name": "Surtidas (8 dulces con almíbar, 4 saladas)",
+              "extraPrice": 0,
+              "isDefault": true
+            },
+            {
+              "id": "todas-dulces",
+              "name": "12 dulces con almíbar cítrico",
+              "extraPrice": 0
+            },
+            {
+              "id": "todas-saladas",
+              "name": "12 saladas de manteca hojaldradas",
+              "extraPrice": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pan-campo-masa-madre",
+      "name": "Pan de Campo con Masa Madre",
+      "category": "panes",
+      "price": 2200,
+      "unit": "kilo",
+      "images": [
+        "/assets/products/pan-campo-masa-madre.jpg"
+      ],
+      "description": "Corteza crocante, miga aireada y húmeda. Harinas orgánicas seleccionadas sin conservantes.",
+      "badge": "24h Fermentación",
+      "options": [
+        {
+          "id": "corte",
+          "title": "Presentación",
+          "required": true,
+          "type": "radio",
+          "choices": [
+            {
+              "id": "rebanadas-gruesas",
+              "name": "Cortado en rebanadas gruesas (1 kg)",
+              "extraPrice": 0,
+              "isDefault": true
+            },
+            {
+              "id": "entero",
+              "name": "Pieza entera para cortar en casa",
+              "extraPrice": 0
+            },
+            {
+              "id": "rebanadas-finas",
+              "name": "Rebanadas finas para tostadas",
+              "extraPrice": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chipa-correntino",
+      "name": "Chipá Correntino Calentito",
+      "category": "salados",
+      "price": 5200,
+      "unit": "500 grs",
+      "images": [
+        "/assets/products/chipa-correntino.jpg"
+      ],
+      "description": "Receta tradicional con queso cáscara colorada, provolone estacionado y fécula de mandioca.",
+      "badge": "Salen calientes"
+    },
+    {
+      "id": "torta-rogel-tradicional",
+      "name": "Torta Rogel Tradicional Artesanal",
+      "category": "tortas",
+      "price": 18500,
+      "unit": "unidad",
+      "images": [
+        "/assets/products/torta-rogel-tradicional.jpg"
+      ],
+      "description": "Clásico infalible argentino. 8 capas ultra crocantes elaboradas a mano con harina seleccionada, rellenas con el mejor dulce de leche repostero de campo y coronada con generoso merengue italiano ligeramente dorado a soplete.",
+      "badge": "A pedido (48hs)",
+      "requiresLeadTime": true,
+      "leadTimeHours": 48,
+      "options": [
+        {
+          "id": "tamano",
+          "title": "1. Seleccionar tamaño",
+          "required": true,
+          "type": "radio",
+          "choices": [
+            {
+              "id": "chico",
+              "name": "Chico (10-12 porciones)",
+              "description": "Aprox. 1.5 kg",
+              "extraPrice": 0
+            },
+            {
+              "id": "mediano",
+              "name": "Mediano (16-18 porciones)",
+              "description": "Aprox. 2.2 kg • Más elegido",
+              "extraPrice": 5000,
+              "isDefault": true
+            },
+            {
+              "id": "grande",
+              "name": "Grande Fiesta (22-25 porciones)",
+              "description": "Aprox. 3.0 kg",
+              "extraPrice": 9500
+            }
+          ]
+        },
+        {
+          "id": "dedicatoria",
+          "title": "Mensaje en chocolate sobre placa artesanal",
+          "required": false,
+          "type": "text",
+          "placeholder": "Ej: ¡Feliz Cumple Mamá!",
+          "maxLength": 30
+        },
+        {
+          "id": "velita",
+          "title": "Pack Velita dorada + Bengalita artesanal",
+          "required": false,
+          "type": "checkbox",
+          "extraPrice": 1200
+        }
+      ]
+    },
+    {
+      "id": "vigilantes-sacramentos",
+      "name": "Vigilantes & Sacramentos con Membrillo",
+      "category": "facturas",
+      "price": 4800,
+      "unit": "docena",
+      "images": [
+        "/assets/products/vigilantes-sacramentos.jpg"
+      ],
+      "description": "Masa hojaldrada con grasa vacuna de primera, dulce de membrillo casero y lluvia de azúcar.",
+      "badge": "Por docena"
+    },
+    {
+      "id": "tarta-frutillas-pastelera",
+      "name": "Tarta de Frutillas con Pastelera",
+      "category": "tortas",
+      "price": 16000,
+      "unit": "unidad (24 cm)",
+      "images": [
+        "/assets/products/tarta-frutillas-pastelera.jpg"
+      ],
+      "description": "Base sablée de manteca, suave crema pastelera con chaucha de vainilla natural y frutillas frescas de estación.",
+      "badge": "A pedido (24hs)",
+      "requiresLeadTime": true,
+      "leadTimeHours": 24,
+      "options": [
+        {
+          "id": "tamano",
+          "title": "1. Seleccionar tamaño",
+          "required": true,
+          "type": "radio",
+          "choices": [
+            {
+              "id": "mediana",
+              "name": "Mediana (24 cm • 8-10 porciones)",
+              "description": "Aprox. 1.4 kg",
+              "extraPrice": 0,
+              "isDefault": true
+            },
+            {
+              "id": "grande",
+              "name": "Grande (28 cm • 12-14 porciones)",
+              "description": "Aprox. 2.0 kg",
+              "extraPrice": 4500
+            }
+          ]
+        },
+        {
+          "id": "dedicatoria",
+          "title": "Mensaje en chocolate sobre placa artesanal",
+          "required": false,
+          "type": "text",
+          "placeholder": "Ej: ¡Feliz Aniversario!",
+          "maxLength": 30
+        },
+        {
+          "id": "velita",
+          "title": "Pack Velita dorada + Bengalita artesanal",
+          "required": false,
+          "type": "checkbox",
+          "extraPrice": 1200
+        }
+      ]
+    },
+    {
+      "id": "sandwiches-miga-especiales",
+      "name": "Sándwiches de Miga Jamón y Queso",
+      "category": "salados",
+      "price": 6500,
+      "unit": "docena",
+      "images": [
+        "/assets/products/sandwiches-miga-especiales.jpg"
+      ],
+      "description": "Pan de miga casero extra blanco y húmedo, manteca untada a mano, jamón cocido natural y queso tybo suave.",
+      "badge": "Por docena",
+      "options": [
+        {
+          "id": "variedad",
+          "title": "Variedad de miga",
+          "required": true,
+          "type": "radio",
+          "choices": [
+            {
+              "id": "solo-jq",
+              "name": "12 Jamón y Queso clásico",
+              "extraPrice": 0,
+              "isDefault": true
+            },
+            {
+              "id": "surtido-tomate",
+              "name": "Surtido: 6 Jamón y Queso + 6 Jamón y Tomate",
+              "extraPrice": 500
+            },
+            {
+              "id": "surtido-huevo",
+              "name": "Surtido: 6 Jamón y Queso + 6 Queso y Huevo",
+              "extraPrice": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "baguette-rustica",
+      "name": "Baguette Tradicional Francesa",
+      "category": "panes",
+      "price": 1600,
+      "unit": "unidad",
+      "images": [
+        "/assets/products/baguette-rustica.jpg"
+      ],
+      "description": "Miga aireada, alveolos abiertos y corteza ultra crocante. Horneada sobre piso de piedra.",
+      "badge": "Recién horneada"
+    }
+  ]
+}

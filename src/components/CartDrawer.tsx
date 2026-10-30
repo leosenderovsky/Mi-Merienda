@@ -2,7 +2,7 @@ import React from 'react';
 import { Txt } from './Txt';
 import { useCart } from '../context/CartContext';
 import { brandConfig, formatCurrency, formatText } from '../brand.config';
-import { getProductImageDimensions } from '../products';
+import { getProductImageDimensions, getUnit } from '../catalog';
 import {
   ShoppingBasket,
   Trash2,
@@ -39,10 +39,9 @@ export const CartDrawer: React.FC = () => {
 
   const getUnitBadge = (item: typeof items[0]) => {
     if (item.product.requiresLeadTime) return brandConfig.ui.units.order;
-    if (item.product.unidad === 'docena') return brandConfig.ui.units.dozen;
-    if (item.product.unidad === 'kilo') return brandConfig.ui.units.kilo;
-    if (item.product.unidad === '500 grs') return brandConfig.ui.units.halfKilo;
-    return item.product.unidad;
+    const configured = getUnit(item.product.unit);
+    if (configured) return configured.cartLabel;
+    return item.product.unit;
   };
 
   return (
