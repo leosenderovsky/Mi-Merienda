@@ -51,6 +51,6 @@ export const brandConfig: BrandConfig = {
   },
   disclaimer: {
     ...brandJson.disclaimer,
-    demoBadge: getDemoLegend(),
+    demoBadge: getDemoLegend(brandJson.disclaimer.demoBadge),
   },
 };

@@ -61,12 +61,8 @@ export const Footer: React.FC = () => {
 
         {/* Requisito obligatorio: Leyenda discreta */}
         <div className="p-4 rounded-xl bg-brand-surface-container-highest/60 text-center flex flex-col gap-1 border border-brand-outline-variant/40">
-          <p className="text-[11px] sm:text-xs text-brand-on-surface-variant font-medium">
-            {brandConfig.disclaimer.demoBadge}
-          </p>
-          <p className="text-[10px] sm:text-[11px] text-brand-outline">
-            {brandConfig.disclaimer.footerNote}
-          </p>
+          <Txt as="p" className="text-[11px] sm:text-xs text-brand-on-surface-variant font-medium" value={brandConfig.disclaimer.demoBadge} />
+          <Txt as="p" className="text-[10px] sm:text-[11px] text-brand-outline" value={brandConfig.disclaimer.footerNote} />
         </div>
 
       </div>

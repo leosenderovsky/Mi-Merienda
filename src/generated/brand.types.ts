@@ -325,7 +325,7 @@ export type PasosParaPedir = {
  */
 export type NotaDelPieLeyendaDelPie = string;
 /**
- * Texto base de prototipo. El sitio lo completa con el nombre del servicio (no se edita en brand.json).
+ * Texto editable que aparece como leyenda de demostración en el pie. Dejalo vacío para ocultarlo.
  */
 export type LeyendaDeDemostracion = string;
 /**
@@ -1064,7 +1064,7 @@ export interface Hero {
  */
 export interface LeyendaDelPie {
   footerNote: NotaDelPieLeyendaDelPie;
-  demoBadge?: LeyendaDeDemostracion;
+  demoBadge: LeyendaDeDemostracion;
 }
 /**
  * Opciones del prototipo de demostración.

@@ -8,8 +8,8 @@ export const demoBannerConfig = {
   link: (import.meta.env?.VITE_DEMO_BRAND_URL || DEFAULT_DEMO_BRAND_URL).trim(),
 };
 
-export function getDemoLegend(): string {
-  return 'Marca, productos y precios de ejemplo — prototipo de demostración';
+export function getDemoLegend(configuredLegend: string): string {
+  return configuredLegend;
 }
 
 export function getDemoBannerLegend(): string {

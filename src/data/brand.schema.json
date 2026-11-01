@@ -981,7 +981,8 @@
       "description": "Leyenda de demostración y nota final del pie.",
       "x-group": "Textos",
       "required": [
-        "footerNote"
+        "footerNote",
+        "demoBadge"
       ],
       "properties": {
         "footerNote": {
@@ -998,7 +999,7 @@
         "demoBadge": {
           "type": "string",
           "title": "Leyenda de demostración",
-          "description": "Texto base de prototipo. El sitio lo completa con el nombre del servicio (no se edita en brand.json).",
+          "description": "Texto editable que aparece como leyenda de demostración en el pie. Dejalo vacío para ocultarlo.",
           "x-group": "Textos",
           "x-widget": "textarea",
           "x-exampleData": true,

@@ -85,7 +85,7 @@ Definido en `src/data/brand.schema.json` (origen de datos: `src/data/brand.json`
 | `orderSteps[].title` | Título de pasos para pedir | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Elegí tus favoritos |
 | `orderSteps[].description` | Descripción de pasos para pedir | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Seleccioná facturas del día o programá tortas con anticipación de 48hs. |
 | `disclaimer.footerNote` | Nota del pie (Leyenda del pie) | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Hecho con masa madre, harina orgánica y dedicación artesanal. |
-| `disclaimer.demoBadge` | Leyenda de demostración | Texto base de prototipo. El sitio lo completa con el nombre del servicio (no se edita en brand.json). | `textarea` |  | Marca, productos y precios de ejemplo — prototipo de demostración |
+| `disclaimer.demoBadge` | Leyenda de demostración | Texto editable que aparece como leyenda de demostración en el pie. Dejalo vacío para ocultarlo. | `textarea` |  | Marca, productos y precios de ejemplo — prototipo de demostración |
 | `demo.showPrototypeBanner` | Mostrar aviso de prototipo (Demostración) | Activa o desactiva este elemento. | `boolean` |  |  |
 | `demo.prefillCheckout` | Precargar datos del checkout (Demostración) | Activa o desactiva este elemento. | `boolean` |  |  |
 | `demo.checkoutDefaults.name` | Nombre de demostración | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  |  |
