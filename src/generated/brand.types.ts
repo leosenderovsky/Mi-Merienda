@@ -5,7 +5,7 @@
  */
 export type VersionDelEsquema = number;
 /**
- * Texto editable. Dejalo vacío para ocultar el elemento.
+ * Identificador técnico del sitio; no se muestra en la interfaz.
  */
 export type IdentificadorDelSitio = string;
 /**
@@ -25,11 +25,11 @@ export type SubtituloDeLaMarca = string;
  */
 export type LogotipoPrincipal = string;
 /**
- * Ruta pública de la imagen (carpeta public/assets).
+ * Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons.
  */
 export type FaviconDelSitio = string;
 /**
- * Ruta pública de la imagen (carpeta public/assets).
+ * Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons.
  */
 export type IconoParaPantallaDeInicioDeApple = string;
 /**
@@ -281,7 +281,7 @@ export type TextoVisible = string;
  */
 export type IconoDeSellosDelHero = string;
 /**
- * Texto editable. Dejalo vacío para ocultar el elemento.
+ * Estilo visual disponible para el sello.
  */
 export type EstiloVisual = "secondary" | "tertiary";
 /**
@@ -365,7 +365,7 @@ export type SufijoDelTituloSEOYRedes = string;
  */
 export type DescripcionDeSeoYRedes = string;
 /**
- * Ruta pública de la imagen (carpeta public/assets).
+ * Ruta pública de la imagen (carpeta public/assets). Generá la imagen social con npm run make:og.
  */
 export type ImagenParaRedesSEOYRedes = string;
 /**

@@ -29,7 +29,10 @@ function formatAsset(asset) {
   const parts = [];
   if (asset.path) parts.push(`path: ${asset.path}`);
   if (asset.minWidth) parts.push(`minWidth: ${asset.minWidth}px`);
+  if (asset.maxWidth) parts.push(`maxWidth: ${asset.maxWidth}px`);
   if (asset.ratio) parts.push(`ratio: ${asset.ratio}`);
+  if (asset.ratios) parts.push(`ratios: ${JSON.stringify(asset.ratios)}`);
+  if (asset.ratioTolerance !== undefined) parts.push(`ratioTolerance: ${asset.ratioTolerance}`);
   if (asset.maxKB) parts.push(`maxKB: ${asset.maxKB}KB`);
   return parts.join(', ');
 }

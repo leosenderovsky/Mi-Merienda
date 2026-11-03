@@ -9,13 +9,13 @@ Definido en `src/data/brand.schema.json` (origen de datos: `src/data/brand.json`
 | Ruta | Título | Descripción | Widget | Asset | Ejemplo |
 |---|---|---|---|---|---|
 | `schemaVersion` | versión del esquema | Valor numérico. | `number` |  |  |
-| `site` | identificador del sitio | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  |  |
+| `site` | identificador del sitio | Identificador técnico del sitio; no se muestra en la interfaz. | `text` |  |  |
 | `brand.name` | Nombre de marca | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Mi Merienda |
 | `brand.tagline` | Lema o frase principal | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Horneando momentos felices desde 2009 |
 | `brand.subtagline` | Subtítulo de la marca | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Panadería & Pastelería Artesanal de Barrio |
-| `brand.logoUrl` | Logotipo principal | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/logo/logo.png, maxKB: 120KB |  |
-| `brand.favicon32Url` | Favicon del sitio | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/logo/favicon-32x32.png, maxKB: 120KB |  |
-| `brand.appleTouchIconUrl` | Ícono para pantalla de inicio de Apple | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/logo/apple-touch-icon.png, minWidth: 180px, maxKB: 120KB |  |
+| `brand.logoUrl` | Logotipo principal | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/logo/logo.png, maxWidth: 800px, maxKB: 120KB |  |
+| `brand.favicon32Url` | Favicon del sitio | Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons. | `image` | path: /assets/logo/favicon-32x32.png, maxKB: 120KB |  |
+| `brand.appleTouchIconUrl` | Ícono para pantalla de inicio de Apple | Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons. | `image` | path: /assets/logo/apple-touch-icon.png, minWidth: 180px, maxKB: 120KB |  |
 | `brand.badgeHeroKicker` | Etiqueta destacada en portada | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Tradición y cariño de barrio |
 | `brand.faviconCrop.left` | Margen izquierdo de recorte | Valor numérico. | `number` |  |  |
 | `brand.faviconCrop.top` | Margen superior de recorte | Valor numérico. | `number` |  |  |
@@ -78,7 +78,7 @@ Definido en `src/data/brand.schema.json` (origen de datos: `src/data/brand.json`
 | `hero.ctaSecondary` | Botón secundario para contacto | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Atención por WhatsApp |
 | `hero.badges[].text` | Texto visible | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Hornadas cada 2 hs |
 | `hero.badges[].icon` | Ícono de sellos del hero | Texto editable. Dejalo vacío para ocultar el elemento. | `icon` |  | local_fire_department |
-| `hero.badges[].style` | Estilo visual | Texto editable. Dejalo vacío para ocultar el elemento. | `icon` |  | secondary |
+| `hero.badges[].style` | Estilo visual | Estilo visual disponible para el sello. | `select` |  | secondary |
 | `hero.heroImage` | Imagen del hero (Hero) | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/hero/hero-1.jpg, maxKB: 350KB |  |
 | `hero.imageAlt` | Texto alternativo accesible de la imagen | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Panes artesanos y medialunas recién horneadas |
 | `orderSteps[].step` | Paso (Pasos para pedir) | Valor numérico. | `number` |  |  |
@@ -95,7 +95,7 @@ Definido en `src/data/brand.schema.json` (origen de datos: `src/data/brand.json`
 | `storage.cartKey` | Clave del carrito en el navegador (Almacenamiento) | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `seo.titleSuffix` | Sufijo del título (SEO y redes) | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Panadería & Pastelería |
 | `seo.description` | Descripción de seo y redes | Texto editable. Dejalo vacío para ocultar el elemento. | `textarea` |  | Panadería y pastelería artesanal Mi Merienda. Productos frescos del día y pedidos especiales por encargo. |
-| `seo.socialImage` | Imagen para redes (SEO y redes) | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/misc/og-image.jpg, minWidth: 1200px, maxKB: 200KB |  |
+| `seo.socialImage` | Imagen para redes (SEO y redes) | Ruta pública de la imagen (carpeta public/assets). Generá la imagen social con npm run make:og. | `image` | path: /assets/misc/og-image.jpg, minWidth: 1200px, maxKB: 200KB |  |
 | `ui.catalog.emptyCategory` | Mensaje de categoría vacía (Catálogo) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.catalog.viewAll` | Botón ver todos (Catálogo) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.catalog.title` | Título de catálogo | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
@@ -252,7 +252,7 @@ Definido en `src/data/catalog.schema.json` (origen de datos: `src/data/catalog.j
 | `products[].category` | Categoría asignada | Debe coincidir con el identificador de una categoría existente. | `select` |  |  |
 | `products[].price` | Precio base | Monto en pesos argentinos sin recargos por opciones adicionales. | `number` |  |  |
 | `products[].unit` | Unidad de venta | Unidad de medida asociada al producto (ej: unidad, docena, kilo, 500 grs). | `text` |  |  |
-| `products[].images` | Imágenes del producto | Fotografías del producto. | `list` |  | path: /assets/products/{id}.jpg, minWidth: 1200px, ratio: 4:3, maxKB: 250KB |
+| `products[].images` | Imágenes del producto | Fotografías del producto. | `list` |  | path: /assets/products/{id}.jpg, minWidth: 1200px, ratio: 4:3, ratioTolerance: 0.05, maxKB: 250KB |
 | `products[].description` | Descripción del producto | Detalle sobre ingredientes, preparación o porciones. | `textarea` |  |  |
 | `products[].badge` | Etiqueta destacada | Texto breve opcional mostrado sobre la imagen (ej: Recién salidas). | `text` |  |  |
 | `products[].requiresLeadTime` | Requiere anticipación | Indica si el producto se elabora por encargo y precisa tiempo previo. | `boolean` |  |  |

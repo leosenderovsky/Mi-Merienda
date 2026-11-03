@@ -11,6 +11,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
+import sharp from 'sharp';
+import { getImageConstraintIssues } from './image-constraints.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dataPath = path.join(root, 'src/data/brand.json');
@@ -49,6 +51,23 @@ if (!validateBrand(data))
 
 const getPath = (obj, p) => p.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
 
+async function checkImageAsset(filePath, asset, sourcePath) {
+  try {
+    const buffer = await readFile(filePath);
+    const metadata = await sharp(buffer).metadata();
+    if (!metadata.width || !metadata.height) throw new Error('no se pudieron leer las dimensiones');
+    const issues = getImageConstraintIssues(asset, {
+      width: metadata.width,
+      height: metadata.height,
+      bytes: buffer.byteLength,
+    });
+    for (const issue of issues)
+      errors.push(`${sourcePath}: la imagen no cumple x-asset (${issue})`);
+  } catch (error) {
+    errors.push(`${sourcePath}: no se pudieron verificar los requisitos x-asset: ${error.message}`);
+  }
+}
+
 /** Recorrido paralelo esquema ↔ datos (brand.json). */
 async function walkBrand(sNode, dNode, p) {
   if (!sNode || dNode === undefined || dNode === null) return;
@@ -63,8 +82,11 @@ async function walkBrand(sNode, dNode, p) {
   if (typeof dNode !== 'string') return;
   const widget = sNode['x-widget'];
   if (widget === 'image' && dNode) {
+    const filePath = path.join(publicDir, dNode.replace(/^\//, ''));
     try {
-      await stat(path.join(publicDir, dNode.replace(/^\//, '')));
+      await stat(filePath);
+      if (sNode['x-asset']) await checkImageAsset(filePath, sNode['x-asset'], `brand.json ${p}`);
+      else errors.push(`brand.schema.json ${p}: falta la especificación x-asset de la imagen`);
     } catch {
       errors.push(`brand.json ${p}: la imagen no existe en public/: ${dNode}`);
     }
@@ -105,6 +127,7 @@ try {
       );
 
   const categoryIds = new Set((catalog.categories ?? []).map((c) => c.id));
+  const unitIds = new Set((catalog.units ?? []).map((unit) => unit.id));
 
   // IDs de producto: únicos y en kebab-case
   const KEBAB_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -117,6 +140,8 @@ try {
     // category debe existir en categories[].id
     if (!categoryIds.has(product.category))
       errors.push(`catalog.json products[${product.id}]: category "${product.category}" no existe en categories`);
+    if (!unitIds.has(product.unit))
+      warnings.push(`catalog.json products[${product.id}]: unit "${product.unit}" no existe en units; se aplicará el respaldo de unidad (ui.units.unitTemplate cuando corresponda)`);
 
     // precios > 0
     if (typeof product.price === 'number' && product.price <= 0)
@@ -130,8 +155,12 @@ try {
 
     // imágenes existen en public/
     for (const imgPath of product.images ?? []) {
+      const filePath = path.join(publicDir, imgPath.replace(/^\//, ''));
       try {
-        await stat(path.join(publicDir, imgPath.replace(/^\//, '')));
+        await stat(filePath);
+        const imageAsset = catalogSchema.properties.products.items.properties.images.items['x-asset'];
+        if (imageAsset) await checkImageAsset(filePath, imageAsset, `catalog.json products[${product.id}]`);
+        else errors.push('catalog.schema.json products[].images[]: falta la especificación x-asset');
       } catch {
         errors.push(`catalog.json products[${product.id}]: imagen no existe en public/: ${imgPath}`);
       }
