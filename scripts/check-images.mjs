@@ -3,16 +3,15 @@ import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import { getImageConstraintIssues } from './image-constraints.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const imageDirectory = path.join(projectRoot, 'public', 'assets', 'products');
 const catalogFile = path.join(projectRoot, 'src', 'data', 'catalog.json');
+const catalogSchemaFile = path.join(projectRoot, 'src', 'data', 'catalog.schema.json');
 const generatedDimensionsFile = path.join(projectRoot, 'src', 'generated', 'imageDimensions.json');
 const assetsDirectory = path.join(projectRoot, 'public', 'assets');
 const strict = process.argv.includes('--strict');
-const minimumWidth = 1200;
-const expectedRatio = 4 / 3;
-const ratioTolerance = 0.05;
 const warnings = [];
 let failed = false;
 
@@ -61,6 +60,9 @@ try {
   }
 
   const catalog = JSON.parse(await readFile(catalogFile, 'utf8'));
+  const catalogSchema = JSON.parse(await readFile(catalogSchemaFile, 'utf8'));
+  const imageAsset = catalogSchema.properties.products.items.properties.images.items['x-asset'];
+  if (!imageAsset) throw new Error('No se encontró x-asset para catalog.products[].images[].');
   const expectedFiles = new Set(
     (catalog.products ?? [])
       .flatMap(p => p.images ?? [])
@@ -110,9 +112,11 @@ try {
   console.log('-'.repeat(88));
   for (const image of inspected) {
     const issues = [];
-    if (image.width < minimumWidth) issues.push('BAJA RESOLUCIÓN');
-    const ratio = image.width / image.height;
-    if (Math.abs(ratio - expectedRatio) > ratioTolerance) issues.push('RATIO');
+    const constraintIssues = getImageConstraintIssues(imageAsset, image);
+    if (constraintIssues.includes('minWidth')) issues.push('BAJA RESOLUCIÓN');
+    if (constraintIssues.includes('maxWidth')) issues.push('ANCHO EXCESIVO');
+    if (constraintIssues.includes('ratio')) issues.push('RATIO');
+    if (constraintIssues.includes('maxKB')) issues.push('PESO EXCESIVO');
     const duplicates = hashes.get(image.hash);
     if (duplicates.length > 1) issues.push(`DUPLICADA (${duplicates.filter(name => name !== image.filename).join(', ')})`);
 

@@ -6,5 +6,39 @@
     "src/generated/brand.types.ts",
     "src/generated/catalog.types.ts"
   ],
+  "usedByTooling": [
+    {
+      "path": "brand.subtagline",
+      "reason": "La plantilla HTML y la configuración de marca la usan fuera de los componentes recorridos."
+    },
+    {
+      "path": "brand.favicon32Url",
+      "reason": "vite.config.ts inyecta la URL en index.html al compilar."
+    },
+    {
+      "path": "brand.appleTouchIconUrl",
+      "reason": "vite.config.ts inyecta la URL en index.html al compilar."
+    },
+    {
+      "path": "brand.badgeHeroKicker",
+      "reason": "La generación de marca utiliza esta etiqueta fuera de los componentes recorridos."
+    },
+    {
+      "path": "contact.whatsappDisplay",
+      "reason": "La plantilla de WhatsApp muestra el valor fuera de los componentes recorridos."
+    },
+    {
+      "path": "seo.titleSuffix",
+      "reason": "vite.config.ts lo concatena al título HTML."
+    },
+    {
+      "path": "seo.description",
+      "reason": "vite.config.ts lo inyecta en la descripción HTML."
+    },
+    {
+      "path": "seo.socialImage",
+      "reason": "vite.config.ts inyecta la imagen social en los metadatos HTML."
+    }
+  ],
   "allowStrings": []
 }
