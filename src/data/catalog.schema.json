@@ -19,7 +19,9 @@
       "type": "integer",
       "title": "Versión del esquema",
       "description": "Versión de la estructura de datos del catálogo.",
-      "enum": [1]
+      "enum": [
+        1
+      ]
     },
     "categories": {
       "type": "array",
@@ -41,15 +43,18 @@
             "title": "Identificador de categoría",
             "description": "Identificador único en minúsculas y separado por guiones.",
             "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-            "x-widget": "text"
+            "x-widget": "text",
+            "x-group": "Comercial"
           },
           "label": {
             "type": "string",
             "title": "Nombre visible de categoría",
             "description": "Texto mostrado en los botones y filtros del catálogo.",
-            "x-widget": "text"
+            "x-widget": "text",
+            "x-group": "Textos"
           }
-        }
+        },
+        "x-group": "Comercial"
       }
     },
     "units": {
@@ -72,21 +77,25 @@
             "type": "string",
             "title": "Identificador de unidad",
             "description": "Clave que coincide con la unidad asignada a los productos (ej: docena, kilo, 500 grs).",
-            "x-widget": "text"
+            "x-widget": "text",
+            "x-group": "Comercial"
           },
           "cartLabel": {
             "type": "string",
             "title": "Rótulo en el carrito",
             "description": "Texto mostrado junto a la cantidad dentro de la canasta.",
-            "x-widget": "text"
+            "x-widget": "text",
+            "x-group": "Textos"
           },
           "priceLabel": {
             "type": "string",
             "title": "Rótulo de precio en la tarjeta",
             "description": "Texto que acompaña al precio en la lista de productos (ej: Por docena).",
-            "x-widget": "text"
+            "x-widget": "text",
+            "x-group": "Textos"
           }
-        }
+        },
+        "x-group": "Comercial"
       }
     },
     "products": {
@@ -114,32 +123,37 @@
             "title": "Identificador del producto",
             "description": "Identificador único en minúsculas y separado por guiones.",
             "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-            "x-widget": "text"
+            "x-widget": "text",
+            "x-group": "Comercial"
           },
           "name": {
             "type": "string",
             "title": "Nombre del producto",
             "description": "Título principal visible en la tarjeta y en la ficha.",
-            "x-widget": "text"
+            "x-widget": "text",
+            "x-group": "Textos"
           },
           "category": {
             "type": "string",
             "title": "Categoría asignada",
             "description": "Debe coincidir con el identificador de una categoría existente.",
-            "x-widget": "select"
+            "x-widget": "select",
+            "x-group": "Comercial"
           },
           "price": {
             "type": "integer",
             "title": "Precio base",
             "description": "Monto en pesos argentinos sin recargos por opciones adicionales.",
             "minimum": 1,
-            "x-widget": "number"
+            "x-widget": "number",
+            "x-group": "Comercial"
           },
           "unit": {
             "type": "string",
             "title": "Unidad de venta",
             "description": "Unidad de medida asociada al producto (ej: unidad, docena, kilo, 500 grs).",
-            "x-widget": "text"
+            "x-widget": "text",
+            "x-group": "Comercial"
           },
           "images": {
             "type": "array",
@@ -154,34 +168,41 @@
                 "path": "/assets/products/{id}.jpg",
                 "minWidth": 1200,
                 "ratio": "4:3",
+                "ratioTolerance": 0.05,
                 "maxKB": 250
-              }
-            }
+              },
+              "x-group": "Im?genes"
+            },
+            "x-group": "Im?genes"
           },
           "description": {
             "type": "string",
             "title": "Descripción del producto",
             "description": "Detalle sobre ingredientes, preparación o porciones.",
-            "x-widget": "textarea"
+            "x-widget": "textarea",
+            "x-group": "Textos"
           },
           "badge": {
             "type": "string",
             "title": "Etiqueta destacada",
             "description": "Texto breve opcional mostrado sobre la imagen (ej: Recién salidas).",
-            "x-widget": "text"
+            "x-widget": "text",
+            "x-group": "Textos"
           },
           "requiresLeadTime": {
             "type": "boolean",
             "title": "Requiere anticipación",
             "description": "Indica si el producto se elabora por encargo y precisa tiempo previo.",
-            "x-widget": "boolean"
+            "x-widget": "boolean",
+            "x-group": "Comercial"
           },
           "leadTimeHours": {
             "type": "integer",
             "title": "Horas de anticipación",
             "description": "Cantidad mínima de horas requeridas para programar la entrega.",
             "minimum": 1,
-            "x-widget": "number"
+            "x-widget": "number",
+            "x-group": "Comercial"
           },
           "options": {
             "type": "array",
@@ -203,19 +224,22 @@
                   "type": "string",
                   "title": "Identificador de opción",
                   "description": "Clave única dentro de las opciones del producto.",
-                  "x-widget": "text"
+                  "x-widget": "text",
+                  "x-group": "Comercial"
                 },
                 "title": {
                   "type": "string",
                   "title": "Título visible de la opción",
                   "description": "Encabezado mostrado al comprador.",
-                  "x-widget": "text"
+                  "x-widget": "text",
+                  "x-group": "Textos"
                 },
                 "required": {
                   "type": "boolean",
                   "title": "Opción obligatoria",
                   "description": "Si es obligatoria antes de agregar a la canasta.",
-                  "x-widget": "boolean"
+                  "x-widget": "boolean",
+                  "x-group": "Comercial"
                 },
                 "type": {
                   "type": "string",
@@ -226,12 +250,14 @@
                     "checkbox",
                     "text"
                   ],
-                  "x-widget": "select"
+                  "x-widget": "select",
+                  "x-group": "Comercial"
                 },
                 "choices": {
                   "type": "array",
                   "title": "Elecciones disponibles",
                   "description": "Lista de alternativas para opciones de tipo radio o selección.",
+                  "x-group": "Textos",
                   "items": {
                     "type": "object",
                     "title": "Elección",
@@ -247,60 +273,72 @@
                         "type": "string",
                         "title": "Identificador de la elección",
                         "description": "Clave técnica de la variante.",
-                        "x-widget": "text"
+                        "x-widget": "text",
+                        "x-group": "Comercial"
                       },
                       "name": {
                         "type": "string",
                         "title": "Nombre de la elección",
                         "description": "Texto mostrado al usuario.",
-                        "x-widget": "text"
+                        "x-widget": "text",
+                        "x-group": "Textos"
                       },
                       "description": {
                         "type": "string",
                         "title": "Aclaración adicional",
                         "description": "Detalle breve complementario.",
-                        "x-widget": "text"
+                        "x-widget": "text",
+                        "x-group": "Textos"
                       },
                       "extraPrice": {
                         "type": "integer",
                         "title": "Costo adicional",
                         "description": "Importe en pesos que se suma al precio base (0 si no suma).",
-                        "x-widget": "number"
+                        "x-widget": "number",
+                        "x-group": "Comercial"
                       },
                       "isDefault": {
                         "type": "boolean",
                         "title": "Seleccionada por defecto",
                         "description": "Indica si debe aparecer marcada inicialmente.",
-                        "x-widget": "boolean"
+                        "x-widget": "boolean",
+                        "x-group": "Comercial"
                       }
-                    }
-                  }
+                    },
+                    "x-group": "Textos"
+                  },
+                  "x-group": "Textos"
                 },
                 "placeholder": {
                   "type": "string",
                   "title": "Texto de ejemplo",
                   "description": "Sugerencia mostrada en campos de texto libre.",
-                  "x-widget": "text"
+                  "x-widget": "text",
+                  "x-group": "Textos"
                 },
                 "maxLength": {
                   "type": "integer",
                   "title": "Longitud máxima",
                   "description": "Cantidad tope de caracteres en campos de texto.",
                   "minimum": 1,
-                  "x-widget": "number"
+                  "x-widget": "number",
+                  "x-group": "Comercial"
                 },
                 "extraPrice": {
                   "type": "integer",
                   "title": "Costo adicional de opción directa",
                   "description": "Recargo aplicable a opciones tipo checkbox sin opciones anidadas.",
-                  "x-widget": "number"
+                  "x-widget": "number",
+                  "x-group": "Comercial"
                 }
-              }
-            }
+              },
+              "x-group": "Textos"
+            },
+            "x-group": "Textos"
           }
-        }
+        },
+        "x-group": "Comercial"
       }
     }
   }
 }
-
