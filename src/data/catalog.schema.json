@@ -171,9 +171,9 @@
                 "ratioTolerance": 0.05,
                 "maxKB": 250
               },
-              "x-group": "Im?genes"
+              "x-group": "Imágenes"
             },
-            "x-group": "Im?genes"
+            "x-group": "Imágenes"
           },
           "description": {
             "type": "string",

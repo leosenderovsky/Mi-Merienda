@@ -32,6 +32,50 @@ const DIGIT_FIELDS = (
 
 const errors = [];
 const warnings = [];
+const ALLOWED_SCHEMA_GROUPS = new Set([
+  'Marca',
+  'Contacto',
+  'Botones',
+  'Acentos',
+  'Textos',
+  'Fondos',
+  'Bordes',
+  'Estados',
+  'Comercial',
+  'Imágenes',
+  'Secciones',
+  'Textos de interfaz',
+]);
+
+function validateSchemaGroups(schema, schemaName) {
+  function visit(node, nodePath = '') {
+    if (!node || typeof node !== 'object') return;
+    if (Object.hasOwn(node, 'x-group')) {
+      const group = node['x-group'];
+      if (
+        typeof group !== 'string' ||
+        /[?\uFFFD]/.test(group) ||
+        !ALLOWED_SCHEMA_GROUPS.has(group)
+      )
+        errors.push(
+          `${schemaName} ${nodePath || '/'}: x-group inválido ${JSON.stringify(group)} (permitidos: ${[...ALLOWED_SCHEMA_GROUPS].join(', ')})`,
+        );
+    }
+    for (const [key, child] of Object.entries(node))
+      visit(child, nodePath ? `${nodePath}.${key}` : key);
+  }
+
+  visit(schema);
+}
+
+for (const file of (await readdir(path.join(root, 'src/data'))).filter((name) =>
+  name.endsWith('.schema.json'),
+)) {
+  const schemaContents = JSON.parse(
+    await readFile(path.join(root, 'src/data', file), 'utf8'),
+  );
+  validateSchemaGroups(schemaContents, file);
+}
 
 // ─── AJV ────────────────────────────────────────────────────────────────────
 const ajv = new Ajv({ allErrors: true, strict: false });
