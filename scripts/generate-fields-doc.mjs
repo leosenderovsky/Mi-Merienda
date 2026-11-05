@@ -27,13 +27,13 @@ const schemaConfigs = [
 function formatAsset(asset) {
   if (!asset) return '';
   const parts = [];
-  if (asset.path) parts.push(`path: ${asset.path}`);
-  if (asset.minWidth) parts.push(`minWidth: ${asset.minWidth}px`);
-  if (asset.maxWidth) parts.push(`maxWidth: ${asset.maxWidth}px`);
-  if (asset.ratio) parts.push(`ratio: ${asset.ratio}`);
-  if (asset.ratios) parts.push(`ratios: ${JSON.stringify(asset.ratios)}`);
+  if (asset.path !== undefined) parts.push(`path: ${asset.path}`);
+  if (asset.minWidth !== undefined) parts.push(`minWidth: ${asset.minWidth}px`);
+  if (asset.maxWidth !== undefined) parts.push(`maxWidth: ${asset.maxWidth}px`);
+  if (asset.ratio !== undefined) parts.push(`ratio: ${asset.ratio}`);
+  if (asset.ratios !== undefined) parts.push(`ratios: ${JSON.stringify(asset.ratios)}`);
   if (asset.ratioTolerance !== undefined) parts.push(`ratioTolerance: ${asset.ratioTolerance}`);
-  if (asset.maxKB) parts.push(`maxKB: ${asset.maxKB}KB`);
+  if (asset.maxKB !== undefined) parts.push(`maxKB: ${asset.maxKB}KB`);
   return parts.join(', ');
 }
 

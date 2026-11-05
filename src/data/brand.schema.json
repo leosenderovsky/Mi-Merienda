@@ -109,6 +109,7 @@
           "x-skipMarkers": true,
           "x-asset": {
             "path": "/assets/logo/favicon-32x32.png",
+            "ratio": "1:1",
             "maxKB": 120
           }
         },
@@ -122,6 +123,7 @@
           "x-asset": {
             "path": "/assets/logo/apple-touch-icon.png",
             "minWidth": 180,
+            "ratio": "1:1",
             "maxKB": 120
           }
         },
@@ -911,6 +913,7 @@
           "x-skipMarkers": true,
           "x-asset": {
             "path": "/assets/hero/hero-1.jpg",
+            "ratio": "16:9",
             "maxKB": 350
           }
         },
@@ -1147,6 +1150,7 @@
           "x-asset": {
             "path": "/assets/misc/og-image.jpg",
             "minWidth": 1200,
+            "ratio": "40:21",
             "maxKB": 200
           }
         }

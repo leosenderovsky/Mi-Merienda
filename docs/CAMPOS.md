@@ -14,8 +14,8 @@ Definido en `src/data/brand.schema.json` (origen de datos: `src/data/brand.json`
 | `brand.tagline` | Lema o frase principal | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Horneando momentos felices desde 2009 |
 | `brand.subtagline` | Subtítulo de la marca | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Panadería & Pastelería Artesanal de Barrio |
 | `brand.logoUrl` | Logotipo principal | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/logo/logo.png, maxWidth: 800px, maxKB: 120KB |  |
-| `brand.favicon32Url` | Favicon del sitio | Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons. | `image` | path: /assets/logo/favicon-32x32.png, maxKB: 120KB |  |
-| `brand.appleTouchIconUrl` | Ícono para pantalla de inicio de Apple | Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons. | `image` | path: /assets/logo/apple-touch-icon.png, minWidth: 180px, maxKB: 120KB |  |
+| `brand.favicon32Url` | Favicon del sitio | Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons. | `image` | path: /assets/logo/favicon-32x32.png, ratio: 1:1, maxKB: 120KB |  |
+| `brand.appleTouchIconUrl` | Ícono para pantalla de inicio de Apple | Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons. | `image` | path: /assets/logo/apple-touch-icon.png, minWidth: 180px, ratio: 1:1, maxKB: 120KB |  |
 | `brand.badgeHeroKicker` | Etiqueta destacada en portada | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Tradición y cariño de barrio |
 | `brand.faviconCrop.left` | Margen izquierdo de recorte | Valor numérico. | `number` |  |  |
 | `brand.faviconCrop.top` | Margen superior de recorte | Valor numérico. | `number` |  |  |
@@ -79,7 +79,7 @@ Definido en `src/data/brand.schema.json` (origen de datos: `src/data/brand.json`
 | `hero.badges[].text` | Texto visible | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Hornadas cada 2 hs |
 | `hero.badges[].icon` | Ícono de sellos del hero | Texto editable. Dejalo vacío para ocultar el elemento. | `icon` |  | local_fire_department |
 | `hero.badges[].style` | Estilo visual | Estilo visual disponible para el sello. | `select` |  | secondary |
-| `hero.heroImage` | Imagen del hero (Hero) | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/hero/hero-1.jpg, maxKB: 350KB |  |
+| `hero.heroImage` | Imagen del hero (Hero) | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/hero/hero-1.jpg, ratio: 16:9, maxKB: 350KB |  |
 | `hero.imageAlt` | Texto alternativo accesible de la imagen | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Panes artesanos y medialunas recién horneadas |
 | `orderSteps[].step` | Paso (Pasos para pedir) | Valor numérico. | `number` |  |  |
 | `orderSteps[].title` | Título de pasos para pedir | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Elegí tus favoritos |
@@ -95,7 +95,7 @@ Definido en `src/data/brand.schema.json` (origen de datos: `src/data/brand.json`
 | `storage.cartKey` | Clave del carrito en el navegador (Almacenamiento) | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `seo.titleSuffix` | Sufijo del título (SEO y redes) | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Panadería & Pastelería |
 | `seo.description` | Descripción de seo y redes | Texto editable. Dejalo vacío para ocultar el elemento. | `textarea` |  | Panadería y pastelería artesanal Mi Merienda. Productos frescos del día y pedidos especiales por encargo. |
-| `seo.socialImage` | Imagen para redes (SEO y redes) | Ruta pública de la imagen (carpeta public/assets). Generá la imagen social con npm run make:og. | `image` | path: /assets/misc/og-image.jpg, minWidth: 1200px, maxKB: 200KB |  |
+| `seo.socialImage` | Imagen para redes (SEO y redes) | Ruta pública de la imagen (carpeta public/assets). Generá la imagen social con npm run make:og. | `image` | path: /assets/misc/og-image.jpg, minWidth: 1200px, ratio: 40:21, maxKB: 200KB |  |
 | `ui.catalog.emptyCategory` | Mensaje de categoría vacía (Catálogo) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.catalog.viewAll` | Botón ver todos (Catálogo) | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |
 | `ui.catalog.title` | Título de catálogo | Texto de la interfaz. Dejalo vacío para ocultar el elemento. | `text` |  |  |

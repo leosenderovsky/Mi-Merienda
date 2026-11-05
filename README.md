@@ -90,6 +90,22 @@ Si agregás un componente, sus textos van a `brand.json` y a `brand.schema.json`
 | `npm run images:optimize` | Optimiza JPG de productos y del hero conservando dimensiones y originales en `.image-originals/`. |
 | `npm run docs:fields` | Regenera `docs/CAMPOS.md`. |
 
+### Formato de x-asset
+
+Los esquemas usan `x-asset` para describir cómo el editor recorta, comprime y guarda imágenes.
+
+| Clave | Tipo | Uso |
+| --- | --- | --- |
+| `path` | texto | Ruta de destino obligatoria; puede incluir `{id}`. |
+| `minWidth` | número | Ancho mínimo en píxeles. |
+| `maxWidth` | número | Ancho máximo en píxeles. |
+| `ratio` | `"W:H"` | Una proporción fija. |
+| `ratios` | lista de `"W:H"` | Varias proporciones aceptadas. |
+| `ratioTolerance` | número | Diferencia absoluta admitida; por defecto `0.02`. |
+| `maxKB` | número | Peso máximo en KB. |
+
+`ratio` y `ratios` son excluyentes. Si la proporción es libre, se omiten ambas claves. Toda imagen que el editor deba recortar debe declarar una de ellas.
+
 ## Imágenes y logo
 
 | Archivo o carpeta | Uso | Medidas actuales / requisito |

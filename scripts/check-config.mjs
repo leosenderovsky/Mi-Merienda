@@ -47,6 +47,79 @@ const ALLOWED_SCHEMA_GROUPS = new Set([
   'Textos de interfaz',
 ]);
 
+const VALID_ASSET_KEYS = new Set([
+  'path',
+  'minWidth',
+  'maxWidth',
+  'ratio',
+  'ratios',
+  'ratioTolerance',
+  'maxKB',
+]);
+const RATIO_PATTERN = /^\d+:\d+$/;
+const RECROP_IMAGE_FIELDS = new Set([
+  'brand.favicon32Url',
+  'brand.appleTouchIconUrl',
+  'hero.heroImage',
+  'seo.socialImage',
+  'products[].images[]',
+]);
+
+function validateAsset(asset, schemaName, fieldPath) {
+  const assetPath = `${schemaName} ${fieldPath}.x-asset`;
+  if (!asset || typeof asset !== 'object' || Array.isArray(asset)) {
+    errors.push(`${assetPath}: x-asset debe ser un objeto`);
+    return;
+  }
+  for (const key of Object.keys(asset)) {
+    if (!VALID_ASSET_KEYS.has(key))
+      errors.push(`${assetPath}.${key}: clave no permitida en x-asset`);
+  }
+  if (typeof asset.path !== 'string' || asset.path.length === 0)
+    errors.push(`${assetPath}.path: es obligatorio y debe ser texto`);
+  if (Object.hasOwn(asset, 'ratio') &&
+      (typeof asset.ratio !== 'string' || !RATIO_PATTERN.test(asset.ratio)))
+    errors.push(`${assetPath}.ratio: debe tener formato "W:H" con enteros`);
+  if (Object.hasOwn(asset, 'ratios')) {
+    if (!Array.isArray(asset.ratios) ||
+        asset.ratios.some((ratio) => typeof ratio !== 'string' || !RATIO_PATTERN.test(ratio)))
+      errors.push(`${assetPath}.ratios: debe ser una lista de proporciones "W:H" con enteros`);
+  }
+  if (Object.hasOwn(asset, 'ratio') && Object.hasOwn(asset, 'ratios'))
+    errors.push(`${assetPath}: ratio y ratios son excluyentes`);
+  if (Object.hasOwn(asset, 'ratioTolerance') &&
+      (typeof asset.ratioTolerance !== 'number' || !Number.isFinite(asset.ratioTolerance) || asset.ratioTolerance < 0))
+    errors.push(`${assetPath}.ratioTolerance: debe ser un número mayor o igual que 0`);
+  for (const key of ['minWidth', 'maxWidth', 'maxKB']) {
+    if (Object.hasOwn(asset, key) &&
+        (typeof asset[key] !== 'number' || !Number.isFinite(asset[key]) || asset[key] < 0))
+      errors.push(`${assetPath}.${key}: debe ser un número mayor o igual que 0`);
+  }
+  if (RECROP_IMAGE_FIELDS.has(fieldPath) && !asset.ratio && !asset.ratios)
+    errors.push(`${assetPath}: falta ratio o ratios en una imagen recortable`);
+}
+
+function validateSchemaAssets(schema, schemaName) {
+  function visit(node, nodePath = '') {
+    if (!node || typeof node !== 'object') return;
+    if (Object.hasOwn(node, 'x-asset')) validateAsset(node['x-asset'], schemaName, nodePath);
+    if (node['x-widget'] === 'image' && !Object.hasOwn(node, 'x-asset'))
+      errors.push(`${schemaName} ${nodePath}: falta la especificación x-asset de la imagen`);
+    for (const [key, child] of Object.entries(node)) {
+      if (key === 'x-asset') continue;
+      if (key === 'properties' && child && typeof child === 'object') {
+        for (const [propertyName, propertySchema] of Object.entries(child))
+          visit(propertySchema, nodePath ? `${nodePath}.${propertyName}` : propertyName);
+      } else if (key === 'items') {
+        visit(child, `${nodePath}[]`);
+      } else if (key !== 'properties') {
+        visit(child, nodePath ? `${nodePath}.${key}` : key);
+      }
+    }
+  }
+  visit(schema);
+}
+
 function validateSchemaGroups(schema, schemaName) {
   function visit(node, nodePath = '') {
     if (!node || typeof node !== 'object') return;
@@ -75,6 +148,7 @@ for (const file of (await readdir(path.join(root, 'src/data'))).filter((name) =>
     await readFile(path.join(root, 'src/data', file), 'utf8'),
   );
   validateSchemaGroups(schemaContents, file);
+  validateSchemaAssets(schemaContents, file);
 }
 
 // ─── AJV ────────────────────────────────────────────────────────────────────
