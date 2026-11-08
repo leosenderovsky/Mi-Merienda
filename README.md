@@ -192,4 +192,8 @@ npm run check:render
 npm run build
 ```
 
+### AnotaciÃ³n x-role
+
+`src/data/brand.schema.json` identifica el nombre de marca para el editor web con `x-role`. Los valores permitidos son `brandName` (obligatorio, exactamente uno), `brandShortName` (opcional, como mÃ¡ximo uno) y `legalName` (opcional, como mÃ¡ximo uno). Cada campo anotado debe ser `type: string`, estar fuera de arrays, tener `x-exampleData: true` y `examples[0]` con el nombre del prototipo. Si un nombre abreviado o razÃ³n social contiene ese nombre, tambiÃ©n debe tener `x-exampleData: true`.
+
 - [ ] Publicá `dist` y comprobá el sitio desplegado, los metadatos y el recorrido de pedido hasta WhatsApp.

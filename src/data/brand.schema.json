@@ -57,6 +57,7 @@
         "name": {
           "title": "Nombre de marca",
           "x-group": "Marca",
+          "x-role": "brandName",
           "type": "string",
           "x-widget": "text",
           "description": "Texto editable. Dejalo vacío para ocultar el elemento.",

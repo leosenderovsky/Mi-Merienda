@@ -141,6 +141,52 @@ function validateSchemaGroups(schema, schemaName) {
   visit(schema);
 }
 
+const ALLOWED_BRAND_ROLES = new Set(['brandName', 'brandShortName', 'legalName']);
+
+function validateBrandRoles(schema, brandNameExample) {
+  const roles = new Map();
+
+  function visit(node, nodePath = '', inArray = false) {
+    if (!node || typeof node !== 'object') return;
+    if (Object.hasOwn(node, 'x-role')) {
+      const rolePath = `brand.schema.json ${nodePath || '/'}`;
+      const role = node['x-role'];
+      if (!ALLOWED_BRAND_ROLES.has(role))
+        errors.push(`${rolePath}.x-role: valor invÃ¡lido ${JSON.stringify(role)} (permitidos: ${[...ALLOWED_BRAND_ROLES].join(', ')})`);
+      if (roles.has(role))
+        errors.push(`${rolePath}.x-role: el role "${role}" estÃ¡ repetido; ya aparece en ${roles.get(role)}`);
+      else roles.set(role, rolePath);
+
+      if (role === 'brandName' || role === 'brandShortName' || role === 'legalName') {
+        if (node.type !== 'string') errors.push(`${rolePath}: x-role "${role}" requiere type string`);
+        if (inArray) errors.push(`${rolePath}: x-role "${role}" no puede estar dentro de un array`);
+        if (node['x-exampleData'] !== true)
+          errors.push(`${rolePath}: x-role "${role}" requiere x-exampleData: true`);
+        if (!Array.isArray(node.examples) || typeof node.examples[0] !== 'string' || node.examples[0].length === 0)
+          errors.push(`${rolePath}: x-role "${role}" requiere examples[0] con el nombre del prototipo`);
+        if ((role === 'brandShortName' || role === 'legalName') &&
+            Array.isArray(node.examples) &&
+            node.examples.some((value) => typeof value === 'string' && value.toLowerCase().includes(brandNameExample.toLowerCase())) &&
+            node['x-exampleData'] !== true)
+          errors.push(`${rolePath}: el campo con x-role "${role}" contiene el nombre del prototipo y requiere x-exampleData: true`);
+      }
+    }
+    for (const [key, child] of Object.entries(node)) {
+      if (key === 'properties' && child && typeof child === 'object') {
+        for (const [propertyName, propertySchema] of Object.entries(child))
+          visit(propertySchema, nodePath ? `${nodePath}.${propertyName}` : propertyName, inArray);
+      } else if (key === 'items') {
+        visit(child, `${nodePath}[]`, true);
+      } else if (key !== 'properties') {
+        visit(child, nodePath ? `${nodePath}.${key}` : key, inArray);
+      }
+    }
+  }
+
+  visit(schema);
+  if (!roles.has('brandName')) errors.push('brand.schema.json: falta exactamente un campo con x-role "brandName"');
+}
+
 for (const file of (await readdir(path.join(root, 'src/data'))).filter((name) =>
   name.endsWith('.schema.json'),
 )) {
@@ -149,6 +195,18 @@ for (const file of (await readdir(path.join(root, 'src/data'))).filter((name) =>
   );
   validateSchemaGroups(schemaContents, file);
   validateSchemaAssets(schemaContents, file);
+  if (file === 'brand.schema.json') {
+    const brandSchemaName = schemaContents.properties?.brand?.properties?.name?.examples?.[0];
+    validateBrandRoles(schemaContents, typeof brandSchemaName === 'string' ? brandSchemaName : '');
+  } else if (file === 'catalog.schema.json' || file === 'size-guide.schema.json') {
+    (function rejectBrandRoles(node, nodePath = '') {
+      if (!node || typeof node !== 'object') return;
+      if (Object.hasOwn(node, 'x-role'))
+        errors.push(`${file} ${nodePath || '/'}: x-role no estÃ¡ permitido en este esquema`);
+      for (const [key, child] of Object.entries(node))
+        rejectBrandRoles(child, nodePath ? `${nodePath}.${key}` : key);
+    })(schemaContents);
+  }
 }
 
 // ─── AJV ────────────────────────────────────────────────────────────────────
