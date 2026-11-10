@@ -125,6 +125,40 @@ async function walkBrand(sNode, dNode, p) {
   }
   if (typeof dNode !== 'string') return;
   const widget = sNode['x-widget'];
+
+  // ─── x-asset.path: reglas de coherencia ───────────────────────────────────
+  const asset = sNode['x-asset'];
+  if (asset && typeof asset.path === 'string') {
+    const assetPath = asset.path;
+    // (a) path debe empezar con "/" y no con "public/"
+    if (!assetPath.startsWith('/'))
+      errors.push(`brand.schema.json ${p}: x-asset.path debe empezar con "/" ("${assetPath}")`);
+    if (assetPath.startsWith('public/') || assetPath.startsWith('/public/'))
+      errors.push(`brand.schema.json ${p}: x-asset.path no debe incluir "public/" ("${assetPath}")`);
+
+    // (b) si el campo tiene valor y el path no lleva {id}, el valor debe coincidir con path
+    const pathHasPlaceholder = /\{[^}]+\}/.test(assetPath);
+    if (dNode && !pathHasPlaceholder && dNode !== assetPath)
+      errors.push(`brand.json ${p}: el valor "${dNode}" no coincide con x-asset.path "${assetPath}"`);
+
+    // (c) si tiene valor, el archivo debe existir en public/ + path
+    if (dNode) {
+      const resolvedPath = path.join(publicDir, assetPath.replace(/^\//, ''));
+      // Solo verificar existencia si el path no lleva placeholder
+      if (!pathHasPlaceholder) {
+        try {
+          const fileStat = await stat(resolvedPath);
+          // (d) ADVERTENCIA si el archivo pesa más que maxKB
+          if (asset.maxKB && fileStat.size > asset.maxKB * 1024)
+            warnings.push(`brand.json ${p}: la imagen "${assetPath}" pesa ${(fileStat.size / 1024).toFixed(0)} KB (máximo: ${asset.maxKB} KB)`);
+        } catch {
+          errors.push(`brand.json ${p}: la imagen del x-asset.path no existe en public/: ${assetPath}`);
+        }
+      }
+    }
+    // Campos opcionales sin valor se ignoran (dNode está vacío o undefined, ya manejado)
+  }
+
   if (widget === 'image' && dNode) {
     const filePath = path.join(publicDir, dNode.replace(/^\//, ''));
     try {

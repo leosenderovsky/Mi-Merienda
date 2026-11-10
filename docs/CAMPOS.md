@@ -14,7 +14,7 @@ Definido en `src/data/brand.schema.json` (origen de datos: `src/data/brand.json`
 | `brand.tagline` | Lema o frase principal | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Horneando momentos felices desde 2009 |
 | `brand.subtagline` | Subtítulo de la marca | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Panadería & Pastelería Artesanal de Barrio |
 | `brand.logoUrl` | Logotipo principal | Ruta pública de la imagen (carpeta public/assets). | `image` | path: /assets/logo/logo.png, maxWidth: 800px, maxKB: 120KB |  |
-| `brand.favicon32Url` | Favicon del sitio | Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons. | `image` | path: /assets/logo/favicon-32x32.png, maxKB: 120KB |  |
+| `brand.favicon32Url` | Favicon del sitio | Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons. | `image` | path: /assets/logo/favicon-32.png, maxKB: 120KB |  |
 | `brand.appleTouchIconUrl` | Ícono para pantalla de inicio de Apple | Ruta pública de la imagen (carpeta public/assets). Generá los íconos con npm run make:icons. | `image` | path: /assets/logo/apple-touch-icon.png, minWidth: 180px, maxKB: 120KB |  |
 | `brand.badgeHeroKicker` | Etiqueta destacada en portada | Texto editable. Dejalo vacío para ocultar el elemento. | `text` |  | Tradición y cariño de barrio |
 | `brand.faviconCrop.left` | Margen izquierdo de recorte | Valor numérico. | `number` |  |  |
